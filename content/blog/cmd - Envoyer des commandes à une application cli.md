@@ -1,7 +1,7 @@
 ---
 title: "cmd : Envoyer des commandes à une application cli"
 date: "2022-04-24T08:54:44+02:00"
-draft: true
+draft: false
 tags:
 - windows
 - claire
