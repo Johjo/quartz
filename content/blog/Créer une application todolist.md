@@ -24,7 +24,7 @@ Il est probable que je recommence ce projet plusieurs fois. L'idée n'étant pas
 Let's go !
 
 Liste des billets : 
-- [[blog/draft/la première fonctionnalité|la première fonctionnalité]]
+- [[blog/draft/todolist - la première fonctionnalité|la première fonctionnalité]]
 
 
 

@@ -6,4 +6,7 @@ tags:
 - rust
 ---
 
+## Références
+https://docs.rs/crate/parameterized/latest
+
 
