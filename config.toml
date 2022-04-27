@@ -1,4 +1,4 @@
-baseURL = "https://wiki.ytreza.dev"
+baseURL = "https://www.ytreza.dev"
 languageCode = "fr-FR"
 pygmentsUseClasses = true
 relativeURLs = false
