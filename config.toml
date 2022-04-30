@@ -1,4 +1,5 @@
 baseURL = "https://www.ytreza.dev"
+disqusShortname = "www-ytreza-dev"
 languageCode = "fr-FR"
 pygmentsUseClasses = true
 relativeURLs = false
