@@ -24,7 +24,13 @@
       </ul>
       {{partial "toc.html" .}} 
       {{partial "textprocessing.html" . }}
+          <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ .Permalink }} &title={{ .Title | htmlEscape }} &summary={{ .Summary | htmlEscape }}&source=LinkedIn">Partager sur linkedin</a>
+
     </article>
+
+I didn’t look in your theme’s code or documentation. You should check if this option isn’t already built in, and if it isn’t, adapt the Facebook button to match your needs.
+
+Happy new year :slight_smile:
     {{ template "_internal/disqus.html" . }}
     {{partial "footer.html" .}}
     {{partial "popover.html" .}}
