@@ -1,7 +1,6 @@
 ---
 title: "Rust - je n'arrive pas à accéder à mon crate dans mes tests"
 date: "2022-04-29T21:59:36+02:00"
-draft: true
 tags:
 - rust
 ---
