@@ -1,7 +1,7 @@
 <!doctype html><html lang=en><head><meta charset=utf-8><meta name=description content="Aujourd&rsquo;hui, nous allons étudier le [[kata/bowling|kata bowling]]. Mais nous allons le faire d&rsquo;une manière un peu différente : avec un seul test."><title>Etude du kata bowling (en un seul test)</title><meta name=viewport content="width=device-width,initial-scale=1"><link rel="shortcut icon" type=image/png href=https://www.ytreza.dev/icon.png><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Source+Sans+Pro:wght@400;600;700&family=Fira+Code:wght@400;700&display=swap" rel=stylesheet><link href=https://www.ytreza.dev/styles.43355a9a8dd6bd19e4e06361fef53dca.min.css rel=stylesheet><script src=https://www.ytreza.dev/js/darkmode.46b07878b7f5d9e26ad7a3c40f8a0605.min.js></script>
 <link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css integrity=sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs crossorigin=anonymous><script defer src=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js integrity=sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx crossorigin=anonymous></script>
 <script defer src=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js integrity=sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR crossorigin=anonymous></script>
-<script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1}],throwOnError:!1})})</script><script>const BASE_URL="https://www.ytreza.dev",fetchData=Promise.all([fetch("https://www.ytreza.dev/indices/linkIndex.9de9a5ba7a69c4f7d25f728e9ed4e243.min.json").then(e=>e.json()).then(e=>({index:e.index,links:e.links})),fetch("https://www.ytreza.dev/indices/contentIndex.88935dd43fc55e18091ca493e9f4ed6b.min.json").then(e=>e.json())]).then(([{index:e,links:t},n])=>({index:e,links:t,content:n}))</script></head><body><div id=search-container><div id=search-space><input autocomplete=off id=search-bar name=search type=text aria-label=Search placeholder="Search for something..."><div id=results-container></div></div></div><script src=https://cdn.jsdelivr.net/npm/flexsearch@0.7.21/dist/flexsearch.bundle.js integrity="sha256-i3A0NZGkhsKjVMzFxv3ksk0DZh3aXqu0l49Bbh0MdjE=" crossorigin=anonymous defer></script>
+<script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1}],throwOnError:!1})})</script><script>const BASE_URL="https://www.ytreza.dev",fetchData=Promise.all([fetch("https://www.ytreza.dev/indices/linkIndex.9de9a5ba7a69c4f7d25f728e9ed4e243.min.json").then(e=>e.json()).then(e=>({index:e.index,links:e.links})),fetch("https://www.ytreza.dev/indices/contentIndex.0742dbf8f8ef40ff55561c232a02d053.min.json").then(e=>e.json())]).then(([{index:e,links:t},n])=>({index:e,links:t,content:n}))</script></head><body><div id=search-container><div id=search-space><input autocomplete=off id=search-bar name=search type=text aria-label=Search placeholder="Search for something..."><div id=results-container></div></div></div><script src=https://cdn.jsdelivr.net/npm/flexsearch@0.7.21/dist/flexsearch.bundle.js integrity="sha256-i3A0NZGkhsKjVMzFxv3ksk0DZh3aXqu0l49Bbh0MdjE=" crossorigin=anonymous defer></script>
 <script defer src=https://www.ytreza.dev/js/search.bc849b857f2c1b822264d40635bb67b6.min.js></script><div class=singlePage><header><h1 id=page-title><a href=https://www.ytreza.dev>Wiki ytreza.dev</a></h1><svg tabindex="0" id="search-icon" aria-labelledby="title desc" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title id="title">Search Icon</title><desc id="desc">Icon to open search</desc><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"/><circle cx="8" cy="8" r="7"/></g></svg><div class=spacer></div><div class=darkmode><input class=toggle id=darkmode-toggle type=checkbox tabindex=-1>
 <label id=toggle-label-light for=darkmode-toggle tabindex=-1><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="dayIcon" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35"><title>Light Mode</title><path d="M6 17.5C6 16.672 5.328 16 4.5 16h-3C.672 16 0 16.672.0 17.5S.672 19 1.5 19h3C5.328 19 6 18.328 6 17.5zM7.5 26c-.414.0-.789.168-1.061.439l-2 2C4.168 28.711 4 29.086 4 29.5 4 30.328 4.671 31 5.5 31c.414.0.789-.168 1.06-.44l2-2C8.832 28.289 9 27.914 9 27.5 9 26.672 8.329 26 7.5 26zm10-20C18.329 6 19 5.328 19 4.5v-3C19 .672 18.329.0 17.5.0S16 .672 16 1.5v3C16 5.328 16.671 6 17.5 6zm10 3c.414.0.789-.168 1.06-.439l2-2C30.832 6.289 31 5.914 31 5.5 31 4.672 30.329 4 29.5 4c-.414.0-.789.168-1.061.44l-2 2C26.168 6.711 26 7.086 26 7.5 26 8.328 26.671 9 27.5 9zM6.439 8.561C6.711 8.832 7.086 9 7.5 9 8.328 9 9 8.328 9 7.5c0-.414-.168-.789-.439-1.061l-2-2C6.289 4.168 5.914 4 5.5 4 4.672 4 4 4.672 4 5.5c0 .414.168.789.439 1.06l2 2.001zM33.5 16h-3c-.828.0-1.5.672-1.5 1.5s.672 1.5 1.5 1.5h3c.828.0 1.5-.672 1.5-1.5S34.328 16 33.5 16zM28.561 26.439C28.289 26.168 27.914 26 27.5 26c-.828.0-1.5.672-1.5 1.5.0.414.168.789.439 1.06l2 2C28.711 30.832 29.086 31 29.5 31c.828.0 1.5-.672 1.5-1.5.0-.414-.168-.789-.439-1.061l-2-2zM17.5 29c-.829.0-1.5.672-1.5 1.5v3c0 .828.671 1.5 1.5 1.5s1.5-.672 1.5-1.5v-3C19 29.672 18.329 29 17.5 29zm0-22C11.71 7 7 11.71 7 17.5S11.71 28 17.5 28 28 23.29 28 17.5 23.29 7 17.5 7zm0 18c-4.136.0-7.5-3.364-7.5-7.5s3.364-7.5 7.5-7.5 7.5 3.364 7.5 7.5S21.636 25 17.5 25z"/></svg></label><label id=toggle-label-dark for=darkmode-toggle tabindex=-1><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="nightIcon" viewBox="0 0 100 100" style="enable-background='new 0 0 100 100'"><title>Dark Mode</title><path d="M96.76 66.458c-.853-.852-2.15-1.064-3.23-.534-6.063 2.991-12.858 4.571-19.655 4.571C62.022 70.495 50.88 65.88 42.5 57.5 29.043 44.043 25.658 23.536 34.076 6.47c.532-1.08.318-2.379-.534-3.23-.851-.852-2.15-1.064-3.23-.534-4.918 2.427-9.375 5.619-13.246 9.491-9.447 9.447-14.65 22.008-14.65 35.369.0 13.36 5.203 25.921 14.65 35.368s22.008 14.65 35.368 14.65c13.361.0 25.921-5.203 35.369-14.65 3.872-3.871 7.064-8.328 9.491-13.246C97.826 68.608 97.611 67.309 96.76 66.458z"/></svg></label></div></header><article><h1>Etude du kata bowling (en un seul test)</h1><p class=meta>Last updated May 4, 2022</p><ul class=tags><li><a href=https://www.ytreza.dev/tags/%C3%A9tude-de-kata/>Étude de kata</a></li><li><a href=https://www.ytreza.dev/tags/refactoring/>Refactoring</a></li><li><a href=https://www.ytreza.dev/tags/tricher-avec-tdd/>Tricher avec tdd</a></li><li><a href=https://www.ytreza.dev/tags/clarification/>Clarification</a></li></ul><aside class=mainTOC><details><summary>Table of Contents</summary><nav id=TableOfContents><ol><li><a href=#on-démarre-la-partie>On démarre la partie</a></li><li><a href=#je-triche-tu-triches-nous-trichons>Je triche, tu triches, nous trichons</a></li><li><a href=#clarifions-quoi--comment->Clarifions&mldr; Quoi ? Comment ?</a></li><li><a href=#clarifions-un-peu-plus>Clarifions un peu plus</a></li><li><a href=#la-classe-bowling->La classe Bowling :</a></li></ol></nav></details></aside><p>Aujourd&rsquo;hui, nous allons étudier le <a href=/kata/bowling rel=noopener class=internal-link data-src=/kata/bowling>kata bowling</a>. Mais nous allons le faire d&rsquo;une manière un peu différente : <strong>avec un seul test</strong>.</p><p>Nous sortons donc des sentiers battus du TDD pour mettre en évidence une technique de développement basée sur le refactoring, et en particulier la triche (utilisée dans l&rsquo;étape <em>GREEN</em>) et la clarification (utilisée dans l&rsquo;étape <em>REFACTORING</em>).</p><p>Chaque fois que vous voyez un nouveau morceau de code, les tests (bon, il n&rsquo;y en aura qu&rsquo;un seul) sont lancés à chaque fois.</p><p>Le code est présenté en mode diff. Les <code>+</code> indiquent le code qui a été ajouté et les <code>-</code> le code qui a été enlevé.</p><h2 id=on-démarre-la-partie>On démarre la partie</h2><p>Tout commence donc par un test (le seul test de cette étude).</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
 </span><span class=lnt> 2
@@ -63,26 +63,26 @@
 </span></span></span><span class=line><span class=cl><span class=gu></span>public void one_game() {  
 </span></span><span class=line><span class=cl>    Bowling game = new Bowling();  
 </span></span><span class=line><span class=cl>  
-</span></span><span class=line><span class=cl><span class=gi>+    game.roll(3);  
-</span></span></span><span class=line><span class=cl><span class=gi>+    game.roll(4);  
-</span></span></span><span class=line><span class=cl><span class=gi>+    game.roll(6);  
-</span></span></span><span class=line><span class=cl><span class=gi>+    game.roll(3);  
-</span></span></span><span class=line><span class=cl><span class=gi>+    game.roll(2);  
-</span></span></span><span class=line><span class=cl><span class=gi>+    game.roll(8);  
-</span></span></span><span class=line><span class=cl><span class=gi>+    game.roll(4);  
-</span></span></span><span class=line><span class=cl><span class=gi>+    game.roll(3);  
-</span></span></span><span class=line><span class=cl><span class=gi>+    game.roll(4);  
-</span></span></span><span class=line><span class=cl><span class=gi>+    game.roll(4);  
-</span></span></span><span class=line><span class=cl><span class=gi>+    game.roll(5);  
-</span></span></span><span class=line><span class=cl><span class=gi>+    game.roll(2);  
-</span></span></span><span class=line><span class=cl><span class=gi>+    game.roll(6);  
-</span></span></span><span class=line><span class=cl><span class=gi>+    game.roll(4);  
-</span></span></span><span class=line><span class=cl><span class=gi>+    game.roll(10);  
-</span></span></span><span class=line><span class=cl><span class=gi>+    game.roll(8);  
-</span></span></span><span class=line><span class=cl><span class=gi>+    game.roll(0);  
-</span></span></span><span class=line><span class=cl><span class=gi>+    game.roll(10);  
-</span></span></span><span class=line><span class=cl><span class=gi>+    game.roll(8);  
-</span></span></span><span class=line><span class=cl><span class=gi>+    game.roll(1);  
+</span></span><span class=line><span class=cl><span class=gi>+   game.roll(3);  
+</span></span></span><span class=line><span class=cl><span class=gi>+   game.roll(4);  
+</span></span></span><span class=line><span class=cl><span class=gi>+   game.roll(6);  
+</span></span></span><span class=line><span class=cl><span class=gi>+   game.roll(3);  
+</span></span></span><span class=line><span class=cl><span class=gi>+   game.roll(2);  
+</span></span></span><span class=line><span class=cl><span class=gi>+   game.roll(8);  
+</span></span></span><span class=line><span class=cl><span class=gi>+   game.roll(4);  
+</span></span></span><span class=line><span class=cl><span class=gi>+   game.roll(3);  
+</span></span></span><span class=line><span class=cl><span class=gi>+   game.roll(4);  
+</span></span></span><span class=line><span class=cl><span class=gi>+   game.roll(4);  
+</span></span></span><span class=line><span class=cl><span class=gi>+   game.roll(5);  
+</span></span></span><span class=line><span class=cl><span class=gi>+   game.roll(2);  
+</span></span></span><span class=line><span class=cl><span class=gi>+   game.roll(6);  
+</span></span></span><span class=line><span class=cl><span class=gi>+   game.roll(4);  
+</span></span></span><span class=line><span class=cl><span class=gi>+   game.roll(10);  
+</span></span></span><span class=line><span class=cl><span class=gi>+   game.roll(8);  
+</span></span></span><span class=line><span class=cl><span class=gi>+   game.roll(0);  
+</span></span></span><span class=line><span class=cl><span class=gi>+   game.roll(10);  
+</span></span></span><span class=line><span class=cl><span class=gi>+   game.roll(8);  
+</span></span></span><span class=line><span class=cl><span class=gi>+   game.roll(1);  
 </span></span></span><span class=line><span class=cl><span class=gi></span>  
 </span></span><span class=line><span class=cl>}
 </span></span></code></pre></td></tr></table></div></div><p>Et on passe du <em>RED</em> au <em>GREEN</em> en ajoutant la méthode <code>roll</code> dans la classe <code>Bowling</code>.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>1
@@ -172,8 +172,8 @@
 </span><span class=lnt>3
 </span><span class=lnt>4
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-diff data-lang=diff><span class=line><span class=cl>public int score() {  
-</span></span><span class=line><span class=cl><span class=gd>-	return -1;  	
-</span></span></span><span class=line><span class=cl><span class=gd></span><span class=gi>+	return 117;  
+</span></span><span class=line><span class=cl><span class=gd>-   return -1;  	
+</span></span></span><span class=line><span class=cl><span class=gd></span><span class=gi>+   return 117;  
 </span></span></span><span class=line><span class=cl><span class=gi></span>}  
 </span></span></code></pre></td></tr></table></div></div><p>On passe de l&rsquo;étape <em>RED</em> à l&rsquo;étape <em>GREEN</em> en 2 secondes. Voilà, nous venons de pratiquer ce que j&rsquo;appelle la <strong>triche</strong>. Indiquer directement dans le code le résultat attendu.</p><p>À partir de maintenant, nos tests doivent toujours passer. Nous entrons dans la phase du <em>REFACTORING</em>. Et nous n&rsquo;en ressortirons pas tant que notre algo ne sera pas terminé.</p><h2 id=clarifions-quoi--comment->Clarifions&mldr; Quoi ? Comment ?</h2><blockquote><p>Dev : C&rsquo;est bien beau ce 117, mais je ne vois pas d&rsquo;algo là-dedans
 Moi : C&rsquo;est vrai, mais pourtant, l&rsquo;algo est là, mais tu ne le vois pas encore
@@ -185,7 +185,7 @@ Dev : 117 ? C&rsquo;est le score total de ma partie de bowling&mldr;</p></blockq
 </span><span class=lnt>4
 </span><span class=lnt>5
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-diff data-lang=diff><span class=line><span class=cl>public int score() {  
-</span></span><span class=line><span class=cl><span class=gd>-	return 117;  
+</span></span><span class=line><span class=cl><span class=gd>-   return 117;  
 </span></span></span><span class=line><span class=cl><span class=gd></span><span class=gi>+   int score = 117;  
 </span></span></span><span class=line><span class=cl><span class=gi>+   return score;  
 </span></span></span><span class=line><span class=cl><span class=gi></span>}
@@ -205,7 +205,7 @@ Moi : Oui, pour calculer le score, il faut connaître les règles du bowling et 
 </span><span class=lnt>5
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-diff data-lang=diff><span class=line><span class=cl>public int score() {  
 </span></span><span class=line><span class=cl><span class=gd>-   int score = 117;  
-</span></span></span><span class=line><span class=cl><span class=gd></span><span class=gi>+	int score = 3 + 4 + 6 + 3 + 2 + 8 + 4 + 4 + 3 + 4 + 4 + 5 + 2 + 6 + 4 + 10 + 10 + 8 + 0 + 8 + 0 + 10 + 8 + 1;  
+</span></span></span><span class=line><span class=cl><span class=gd></span><span class=gi>+   int score = 3 + 4 + 6 + 3 + 2 + 8 + 4 + 4 + 3 + 4 + 4 + 5 + 2 + 6 + 4 + 10 + 10 + 8 + 0 + 8 + 0 + 10 + 8 + 1;  
 </span></span></span><span class=line><span class=cl><span class=gi></span>    return score;  
 </span></span><span class=line><span class=cl>}
 </span></span></code></pre></td></tr></table></div></div><p>Pour réussir cela, nous avons introduit la notion de <strong>COMMENT</strong>. Mais attention, il ne faut pas changer de niveau d&rsquo;abstraction trop rapidement. Si c&rsquo;est possible, on introduit l&rsquo;un après l&rsquo;autre.</p><p>Organisons un peu le code pour faire apparaître le <strong>QUOI</strong>.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
@@ -241,34 +241,34 @@ Moi : Oui, pour calculer le score, il faut connaître les règles du bowling et 
 </span><span class=lnt>31
 </span><span class=lnt>32
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-diff data-lang=diff><span class=line><span class=cl>public int score() {  
-</span></span><span class=line><span class=cl><span class=gd>-	int score = 3 + 4 + 6 + 3 + 2 + 8 + 4 + 4 + 3 + 4 + 4 + 5 + 2 + 6 + 4 + 10 + 10 + 8 + 0 + 8 + 0 + 10 + 8 + 1;  
+</span></span><span class=line><span class=cl><span class=gd>-   int score = 3 + 4 + 6 + 3 + 2 + 8 + 4 + 4 + 3 + 4 + 4 + 5 + 2 + 6 + 4 + 10 + 10 + 8 + 0 + 8 + 0 + 10 + 8 + 1;  
 </span></span></span><span class=line><span class=cl><span class=gd></span>
-</span></span><span class=line><span class=cl><span class=gi>+	int score = 0;  
+</span></span><span class=line><span class=cl><span class=gi>+   int score = 0;  
 </span></span></span><span class=line><span class=cl><span class=gi></span>  
-</span></span><span class=line><span class=cl><span class=gi>+	score += 3;  
-</span></span></span><span class=line><span class=cl><span class=gi>+	score += 4; 
-</span></span></span><span class=line><span class=cl><span class=gi>+	score += 6;  
-</span></span></span><span class=line><span class=cl><span class=gi>+	score += 3;  
-</span></span></span><span class=line><span class=cl><span class=gi>+	score += 2;  
-</span></span></span><span class=line><span class=cl><span class=gi>+	score += 8;  
-</span></span></span><span class=line><span class=cl><span class=gi>+	score += 4;  
-</span></span></span><span class=line><span class=cl><span class=gi>+	score += 4;  
-</span></span></span><span class=line><span class=cl><span class=gi>+	score += 3;  
-</span></span></span><span class=line><span class=cl><span class=gi>+	score += 4;  
-</span></span></span><span class=line><span class=cl><span class=gi>+	score += 4;  
-</span></span></span><span class=line><span class=cl><span class=gi>+	score += 5;  
-</span></span></span><span class=line><span class=cl><span class=gi>+	score += 2;  
-</span></span></span><span class=line><span class=cl><span class=gi>+	score += 6;  
-</span></span></span><span class=line><span class=cl><span class=gi>+	score += 4;  
-</span></span></span><span class=line><span class=cl><span class=gi>+	score += 10;  
-</span></span></span><span class=line><span class=cl><span class=gi>+	score += 10;  
-</span></span></span><span class=line><span class=cl><span class=gi>+	score += 8;  
-</span></span></span><span class=line><span class=cl><span class=gi>+	score += 0;  
-</span></span></span><span class=line><span class=cl><span class=gi>+	score += 8;  
-</span></span></span><span class=line><span class=cl><span class=gi>+	score += 0;  
-</span></span></span><span class=line><span class=cl><span class=gi>+	score += 10;  
-</span></span></span><span class=line><span class=cl><span class=gi>+	score += 8;  
-</span></span></span><span class=line><span class=cl><span class=gi>+	score += 1;  
+</span></span><span class=line><span class=cl><span class=gi>+   score += 3;  
+</span></span></span><span class=line><span class=cl><span class=gi>+   score += 4; 
+</span></span></span><span class=line><span class=cl><span class=gi>+   score += 6;  
+</span></span></span><span class=line><span class=cl><span class=gi>+   score += 3;  
+</span></span></span><span class=line><span class=cl><span class=gi>+   score += 2;  
+</span></span></span><span class=line><span class=cl><span class=gi>+   score += 8;  
+</span></span></span><span class=line><span class=cl><span class=gi>+   score += 4;  
+</span></span></span><span class=line><span class=cl><span class=gi>+   score += 4;  
+</span></span></span><span class=line><span class=cl><span class=gi>+   score += 3;  
+</span></span></span><span class=line><span class=cl><span class=gi>+   score += 4;  
+</span></span></span><span class=line><span class=cl><span class=gi>+   score += 4;  
+</span></span></span><span class=line><span class=cl><span class=gi>+   score += 5;  
+</span></span></span><span class=line><span class=cl><span class=gi>+   score += 2;  
+</span></span></span><span class=line><span class=cl><span class=gi>+   score += 6;  
+</span></span></span><span class=line><span class=cl><span class=gi>+   score += 4;  
+</span></span></span><span class=line><span class=cl><span class=gi>+   score += 10;  
+</span></span></span><span class=line><span class=cl><span class=gi>+   score += 10;  
+</span></span></span><span class=line><span class=cl><span class=gi>+   score += 8;  
+</span></span></span><span class=line><span class=cl><span class=gi>+   score += 0;  
+</span></span></span><span class=line><span class=cl><span class=gi>+   score += 8;  
+</span></span></span><span class=line><span class=cl><span class=gi>+   score += 0;  
+</span></span></span><span class=line><span class=cl><span class=gi>+   score += 10;  
+</span></span></span><span class=line><span class=cl><span class=gi>+   score += 8;  
+</span></span></span><span class=line><span class=cl><span class=gi>+   score += 1;  
 </span></span></span><span class=line><span class=cl><span class=gi></span>  
 </span></span><span class=line><span class=cl>    return score;  
 </span></span><span class=line><span class=cl>}
@@ -324,49 +324,49 @@ Moi : Oui, pour calculer le score, il faut connaître les règles du bowling et 
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-diff data-lang=diff><span class=line><span class=cl>public int score() {  
 </span></span><span class=line><span class=cl>    int score = 0;  
 </span></span><span class=line><span class=cl>  
-</span></span><span class=line><span class=cl><span class=gi>+	 // frame 1  
-</span></span></span><span class=line><span class=cl><span class=gi></span>	score += 3; // roll 1  
-</span></span><span class=line><span class=cl>	score += 4; // roll 2  
+</span></span><span class=line><span class=cl><span class=gi>+   // frame 1  
+</span></span></span><span class=line><span class=cl><span class=gi></span>    score += 3; // roll 1  
+</span></span><span class=line><span class=cl>    score += 4; // roll 2  
 </span></span><span class=line><span class=cl>	  
-</span></span><span class=line><span class=cl><span class=gi>+	// frame 2  
-</span></span></span><span class=line><span class=cl><span class=gi></span>	score += 6; // roll 3  
-</span></span><span class=line><span class=cl>	score += 3; // roll 4  
+</span></span><span class=line><span class=cl><span class=gi>+   // frame 2  
+</span></span></span><span class=line><span class=cl><span class=gi></span>    score += 6; // roll 3  
+</span></span><span class=line><span class=cl>    score += 3; // roll 4  
 </span></span><span class=line><span class=cl>	  
-</span></span><span class=line><span class=cl><span class=gi>+	// frame 3  
-</span></span></span><span class=line><span class=cl><span class=gi></span>	score += 2; // roll 5  
-</span></span><span class=line><span class=cl>	score += 8; // roll 6 (spare)  
-</span></span><span class=line><span class=cl>	score += 4; // roll 7 (spare bonus)  
+</span></span><span class=line><span class=cl><span class=gi>+   // frame 3  
+</span></span></span><span class=line><span class=cl><span class=gi></span>    score += 2; // roll 5  
+</span></span><span class=line><span class=cl>    score += 8; // roll 6 (spare)  
+</span></span><span class=line><span class=cl>    score += 4; // roll 7 (spare bonus)  
 </span></span><span class=line><span class=cl>	  
-</span></span><span class=line><span class=cl><span class=gi>+	// frame 4  
-</span></span></span><span class=line><span class=cl><span class=gi></span>	score += 4; // roll 7  
-</span></span><span class=line><span class=cl>	score += 3; // roll 8  
+</span></span><span class=line><span class=cl><span class=gi>+   // frame 4  
+</span></span></span><span class=line><span class=cl><span class=gi></span>    score += 4; // roll 7  
+</span></span><span class=line><span class=cl>    score += 3; // roll 8  
 </span></span><span class=line><span class=cl>	  
-</span></span><span class=line><span class=cl><span class=gi>+	// frame 5  
-</span></span></span><span class=line><span class=cl><span class=gi></span>	score += 4; // roll 9  
-</span></span><span class=line><span class=cl>	score += 4; // roll 10  
+</span></span><span class=line><span class=cl><span class=gi>+   // frame 5  
+</span></span></span><span class=line><span class=cl><span class=gi></span>    score += 4; // roll 9  
+</span></span><span class=line><span class=cl>    score += 4; // roll 10  
 </span></span><span class=line><span class=cl>	  
-</span></span><span class=line><span class=cl><span class=gi>+	// frame 6  
-</span></span></span><span class=line><span class=cl><span class=gi></span>	score += 5; // roll 11  
-</span></span><span class=line><span class=cl>	score += 2; // roll 12  
+</span></span><span class=line><span class=cl><span class=gi>+   // frame 6  
+</span></span></span><span class=line><span class=cl><span class=gi></span>    score += 5; // roll 11  
+</span></span><span class=line><span class=cl>    score += 2; // roll 12  
 </span></span><span class=line><span class=cl>	  
-</span></span><span class=line><span class=cl><span class=gi>+	// frame 7  
-</span></span></span><span class=line><span class=cl><span class=gi></span>	score += 6; // roll 13  
-</span></span><span class=line><span class=cl>	score += 4; // roll 14 (spare) 
-</span></span><span class=line><span class=cl>	score += 10; // roll 15 (spare bonus)   
+</span></span><span class=line><span class=cl><span class=gi>+   // frame 7  
+</span></span></span><span class=line><span class=cl><span class=gi></span>    score += 6; // roll 13  
+</span></span><span class=line><span class=cl>    score += 4; // roll 14 (spare) 
+</span></span><span class=line><span class=cl>    score += 10; // roll 15 (spare bonus)   
 </span></span><span class=line><span class=cl>	  
-</span></span><span class=line><span class=cl><span class=gi>+	// frame 8  
-</span></span></span><span class=line><span class=cl><span class=gi></span>	score += 10; // roll 15 (strike)  
-</span></span><span class=line><span class=cl>	score += 8; // roll 16 (strike bonus)  
-</span></span><span class=line><span class=cl>	score += 0; // roll 17 (strike bonus)  
+</span></span><span class=line><span class=cl><span class=gi>+   // frame 8  
+</span></span></span><span class=line><span class=cl><span class=gi></span>    score += 10; // roll 15 (strike)  
+</span></span><span class=line><span class=cl>    score += 8; // roll 16 (strike bonus)  
+</span></span><span class=line><span class=cl>    score += 0; // roll 17 (strike bonus)  
 </span></span><span class=line><span class=cl>	  	  
-</span></span><span class=line><span class=cl><span class=gi>+	// frame 9  
-</span></span></span><span class=line><span class=cl><span class=gi></span>	score += 8; // roll 16  
-</span></span><span class=line><span class=cl>	score += 0; // roll 17   
+</span></span><span class=line><span class=cl><span class=gi>+   // frame 9  
+</span></span></span><span class=line><span class=cl><span class=gi></span>    score += 8; // roll 16  
+</span></span><span class=line><span class=cl>    score += 0; // roll 17   
 </span></span><span class=line><span class=cl>	  
-</span></span><span class=line><span class=cl><span class=gi>+	// frame 10  
-</span></span></span><span class=line><span class=cl><span class=gi></span>	score += 10; // roll 18 (strike)  
-</span></span><span class=line><span class=cl>	score += 8; // roll 19 (strike bonus)  
-</span></span><span class=line><span class=cl>	score += 1; // roll 20 (strike bonus)
+</span></span><span class=line><span class=cl><span class=gi>+   // frame 10  
+</span></span></span><span class=line><span class=cl><span class=gi></span>    score += 10; // roll 18 (strike)  
+</span></span><span class=line><span class=cl>    score += 8; // roll 19 (strike bonus)  
+</span></span><span class=line><span class=cl>    score += 1; // roll 20 (strike bonus)
 </span></span><span class=line><span class=cl>  
 </span></span><span class=line><span class=cl>    return score;  
 </span></span><span class=line><span class=cl>}
@@ -403,7 +403,7 @@ Moi : oui, chaque nombre représente le nombre de quilles tombées lors d&rsquo;
 </span></span><span class=line><span class=cl><span class=gi>+   List&lt;Integer&gt; rolls = new ArrayList&lt;&gt;();  
 </span></span></span><span class=line><span class=cl><span class=gi></span>  
 </span></span><span class=line><span class=cl><span class=gi>+   public void roll(int pins) {  
-</span></span></span><span class=line><span class=cl><span class=gi>+	   rolls.add(pins);  
+</span></span></span><span class=line><span class=cl><span class=gi>+       rolls.add(pins);  
 </span></span></span><span class=line><span class=cl><span class=gi>+   }  
 </span></span></span><span class=line><span class=cl><span class=gi></span>  
 </span></span><span class=line><span class=cl>    public int score() {  
@@ -413,7 +413,7 @@ Moi : oui, chaque nombre représente le nombre de quilles tombées lors d&rsquo;
 </span></span><span class=line><span class=cl>        score += 3;  
 </span></span><span class=line><span class=cl>        score += 4;  
 </span></span><span class=line><span class=cl>  
-</span></span><span class=line><span class=cl>		// ...
+</span></span><span class=line><span class=cl>       // ...
 </span></span><span class=line><span class=cl>  
 </span></span><span class=line><span class=cl>        // frame 10
 </span></span><span class=line><span class=cl>        score += 10;  
@@ -502,74 +502,74 @@ Moi : oui, chaque nombre représente le nombre de quilles tombées lors d&rsquo;
 </span></span><span class=line><span class=cl>    int score = 0;  
 </span></span><span class=line><span class=cl>  
 </span></span><span class=line><span class=cl>    // frame 1  
-</span></span><span class=line><span class=cl><span class=gd>-	score += 3; // roll 1  
-</span></span></span><span class=line><span class=cl><span class=gd>-	score += 4; // roll 2      
-</span></span></span><span class=line><span class=cl><span class=gd></span><span class=gi>+	score += rolls.get(0); // roll 1  
-</span></span></span><span class=line><span class=cl><span class=gi>+	score += rolls.get(1); // roll 2  
+</span></span><span class=line><span class=cl><span class=gd>-   score += 3; // roll 1  
+</span></span></span><span class=line><span class=cl><span class=gd>-   score += 4; // roll 2      
+</span></span></span><span class=line><span class=cl><span class=gd></span><span class=gi>+   score += rolls.get(0); // roll 1  
+</span></span></span><span class=line><span class=cl><span class=gi>+   score += rolls.get(1); // roll 2  
 </span></span></span><span class=line><span class=cl><span class=gi></span>  
 </span></span><span class=line><span class=cl>    // frame 2
-</span></span><span class=line><span class=cl><span class=gd>-	score += 6; // roll 3  
-</span></span></span><span class=line><span class=cl><span class=gd>-	score += 3; // roll 4    
-</span></span></span><span class=line><span class=cl><span class=gd></span><span class=gi>+	score += rolls.get(2); // roll 3  
-</span></span></span><span class=line><span class=cl><span class=gi>+	score += rolls.get(3); // roll 4  
+</span></span><span class=line><span class=cl><span class=gd>-   score += 6; // roll 3  
+</span></span></span><span class=line><span class=cl><span class=gd>-   score += 3; // roll 4    
+</span></span></span><span class=line><span class=cl><span class=gd></span><span class=gi>+   score += rolls.get(2); // roll 3  
+</span></span></span><span class=line><span class=cl><span class=gi>+   score += rolls.get(3); // roll 4  
 </span></span></span><span class=line><span class=cl><span class=gi></span>  
 </span></span><span class=line><span class=cl>    // frame 3
-</span></span><span class=line><span class=cl><span class=gd>-	score += 2; // roll 5  
-</span></span></span><span class=line><span class=cl><span class=gd>-	score += 8; // roll 6 (spare)  
-</span></span></span><span class=line><span class=cl><span class=gd>-	score += 4; // roll 7 (spare bonus)      
-</span></span></span><span class=line><span class=cl><span class=gd></span><span class=gi>+	score += rolls.get(4); // roll 5  
-</span></span></span><span class=line><span class=cl><span class=gi>+	score += rolls.get(5); // roll 6 (spare)  
-</span></span></span><span class=line><span class=cl><span class=gi>+	score += rolls.get(6); // roll 7 (spare bonus)  
+</span></span><span class=line><span class=cl><span class=gd>-   score += 2; // roll 5  
+</span></span></span><span class=line><span class=cl><span class=gd>-   score += 8; // roll 6 (spare)  
+</span></span></span><span class=line><span class=cl><span class=gd>-   score += 4; // roll 7 (spare bonus)      
+</span></span></span><span class=line><span class=cl><span class=gd></span><span class=gi>+   score += rolls.get(4); // roll 5  
+</span></span></span><span class=line><span class=cl><span class=gi>+   score += rolls.get(5); // roll 6 (spare)  
+</span></span></span><span class=line><span class=cl><span class=gi>+   score += rolls.get(6); // roll 7 (spare bonus)  
 </span></span></span><span class=line><span class=cl><span class=gi></span>  
 </span></span><span class=line><span class=cl>    // frame 4
-</span></span><span class=line><span class=cl><span class=gd>-	score += 4; // roll 7  
-</span></span></span><span class=line><span class=cl><span class=gd>-	score += 3; // roll 8     
-</span></span></span><span class=line><span class=cl><span class=gd></span><span class=gi>+	score += rolls.get(6); // roll 7  
-</span></span></span><span class=line><span class=cl><span class=gi>+	score += rolls.get(7); // roll 8  
+</span></span><span class=line><span class=cl><span class=gd>-   score += 4; // roll 7  
+</span></span></span><span class=line><span class=cl><span class=gd>-   score += 3; // roll 8     
+</span></span></span><span class=line><span class=cl><span class=gd></span><span class=gi>+   score += rolls.get(6); // roll 7  
+</span></span></span><span class=line><span class=cl><span class=gi>+   score += rolls.get(7); // roll 8  
 </span></span></span><span class=line><span class=cl><span class=gi></span>  
 </span></span><span class=line><span class=cl>    // frame 5
-</span></span><span class=line><span class=cl><span class=gd>-	score += 4; // roll 9  
-</span></span></span><span class=line><span class=cl><span class=gd>-	score += 4; // roll 10    
-</span></span></span><span class=line><span class=cl><span class=gd></span><span class=gi>+	score += rolls.get(8); // roll 9  
-</span></span></span><span class=line><span class=cl><span class=gi>+	score += rolls.get(9); // roll 10  
+</span></span><span class=line><span class=cl><span class=gd>-   score += 4; // roll 9  
+</span></span></span><span class=line><span class=cl><span class=gd>-   score += 4; // roll 10    
+</span></span></span><span class=line><span class=cl><span class=gd></span><span class=gi>+   score += rolls.get(8); // roll 9  
+</span></span></span><span class=line><span class=cl><span class=gi>+   score += rolls.get(9); // roll 10  
 </span></span></span><span class=line><span class=cl><span class=gi></span>  
 </span></span><span class=line><span class=cl>    // frame 6
-</span></span><span class=line><span class=cl><span class=gd>-	score += 5; // roll 11  
-</span></span></span><span class=line><span class=cl><span class=gd>-	score += 2; // roll 12          
-</span></span></span><span class=line><span class=cl><span class=gd></span><span class=gi>+   score += rolls.get(10); // roll 11  
-</span></span></span><span class=line><span class=cl><span class=gi>+	score += rolls.get(11); // roll 12  
+</span></span><span class=line><span class=cl><span class=gd>-   score += 5; // roll 11  
+</span></span></span><span class=line><span class=cl><span class=gd>-   score += 2; // roll 12          
+</span></span></span><span class=line><span class=cl><span class=gd></span><span class=gi>+     score += rolls.get(10); // roll 11  
+</span></span></span><span class=line><span class=cl><span class=gi>+   score += rolls.get(11); // roll 12  
 </span></span></span><span class=line><span class=cl><span class=gi></span>  
 </span></span><span class=line><span class=cl>    // frame 7
-</span></span><span class=line><span class=cl><span class=gd>-	score += 6; // roll 13  
-</span></span></span><span class=line><span class=cl><span class=gd>-	score += 4; // roll 14 (spare) 
-</span></span></span><span class=line><span class=cl><span class=gd>-	score += 10; // roll 15 (spare bonus)       
-</span></span></span><span class=line><span class=cl><span class=gd></span><span class=gi>+   score += rolls.get(12); // roll 13  
-</span></span></span><span class=line><span class=cl><span class=gi>+	score += rolls.get(13); // roll 14 (spare)  
-</span></span></span><span class=line><span class=cl><span class=gi>+	score += rolls.get(14); // roll 15 (spare bonus)    
+</span></span><span class=line><span class=cl><span class=gd>-   score += 6; // roll 13  
+</span></span></span><span class=line><span class=cl><span class=gd>-   score += 4; // roll 14 (spare) 
+</span></span></span><span class=line><span class=cl><span class=gd>-   score += 10; // roll 15 (spare bonus)       
+</span></span></span><span class=line><span class=cl><span class=gd></span><span class=gi>+     score += rolls.get(12); // roll 13  
+</span></span></span><span class=line><span class=cl><span class=gi>+   score += rolls.get(13); // roll 14 (spare)  
+</span></span></span><span class=line><span class=cl><span class=gi>+   score += rolls.get(14); // roll 15 (spare bonus)    
 </span></span></span><span class=line><span class=cl><span class=gi></span>  
 </span></span><span class=line><span class=cl>    // frame 8
-</span></span><span class=line><span class=cl><span class=gd>-	score += 10; // roll 15 (strike)  
-</span></span></span><span class=line><span class=cl><span class=gd>-	score += 8; // roll 16 (strike bonus)  
-</span></span></span><span class=line><span class=cl><span class=gd>-	score += 0; // roll 17 (strike bonus)      
-</span></span></span><span class=line><span class=cl><span class=gd></span><span class=gi>+	score += rolls.get(14); // roll 15 (strike)  
-</span></span></span><span class=line><span class=cl><span class=gi>+	score += rolls.get(15); // roll 16 (strike bonus)  
-</span></span></span><span class=line><span class=cl><span class=gi>+	score += rolls.get(16); // roll 17 (strike bonus)  
+</span></span><span class=line><span class=cl><span class=gd>-   score += 10; // roll 15 (strike)  
+</span></span></span><span class=line><span class=cl><span class=gd>-   score += 8; // roll 16 (strike bonus)  
+</span></span></span><span class=line><span class=cl><span class=gd>-   score += 0; // roll 17 (strike bonus)      
+</span></span></span><span class=line><span class=cl><span class=gd></span><span class=gi>+   score += rolls.get(14); // roll 15 (strike)  
+</span></span></span><span class=line><span class=cl><span class=gi>+   score += rolls.get(15); // roll 16 (strike bonus)  
+</span></span></span><span class=line><span class=cl><span class=gi>+   score += rolls.get(16); // roll 17 (strike bonus)  
 </span></span></span><span class=line><span class=cl><span class=gi></span>  
 </span></span><span class=line><span class=cl>  
 </span></span><span class=line><span class=cl>    // frame 9
-</span></span><span class=line><span class=cl><span class=gd>-	score += 8; // roll 16  
-</span></span></span><span class=line><span class=cl><span class=gd>-	score += 0; // roll 17      
-</span></span></span><span class=line><span class=cl><span class=gd></span><span class=gi>+	score += rolls.get(15); // roll 16  
-</span></span></span><span class=line><span class=cl><span class=gi>+	score += rolls.get(16); // roll 17  
+</span></span><span class=line><span class=cl><span class=gd>-   score += 8; // roll 16  
+</span></span></span><span class=line><span class=cl><span class=gd>-   score += 0; // roll 17      
+</span></span></span><span class=line><span class=cl><span class=gd></span><span class=gi>+   score += rolls.get(15); // roll 16  
+</span></span></span><span class=line><span class=cl><span class=gi>+   score += rolls.get(16); // roll 17  
 </span></span></span><span class=line><span class=cl><span class=gi></span>  
 </span></span><span class=line><span class=cl>  
 </span></span><span class=line><span class=cl>    // frame 10
-</span></span><span class=line><span class=cl><span class=gd>-	score += 10; // roll 18 (strike)  
-</span></span></span><span class=line><span class=cl><span class=gd>-	score += 8; // roll 19 (strike bonus)  
-</span></span></span><span class=line><span class=cl><span class=gd>-	score += 1; // roll 20 (strike bonus)-   
-</span></span></span><span class=line><span class=cl><span class=gd></span><span class=gi>+	score += rolls.get(17); // roll 18 (strike)  
-</span></span></span><span class=line><span class=cl><span class=gi>+	score += rolls.get(18); // roll 19 (strike bonus)  
-</span></span></span><span class=line><span class=cl><span class=gi>+	score += rolls.get(19); // roll 20 (strike bonus)  
+</span></span><span class=line><span class=cl><span class=gd>-   score += 10; // roll 18 (strike)  
+</span></span></span><span class=line><span class=cl><span class=gd>-   score += 8; // roll 19 (strike bonus)  
+</span></span></span><span class=line><span class=cl><span class=gd>-   score += 1; // roll 20 (strike bonus)-   
+</span></span></span><span class=line><span class=cl><span class=gd></span><span class=gi>+   score += rolls.get(17); // roll 18 (strike)  
+</span></span></span><span class=line><span class=cl><span class=gi>+   score += rolls.get(18); // roll 19 (strike bonus)  
+</span></span></span><span class=line><span class=cl><span class=gi>+   score += rolls.get(19); // roll 20 (strike bonus)  
 </span></span></span><span class=line><span class=cl><span class=gi></span>  
 </span></span><span class=line><span class=cl>    return score;  
 </span></span><span class=line><span class=cl>}
@@ -797,62 +797,62 @@ Moi : C&rsquo;est pourquoi nous allons la mettre en évidence</p></blockquote><p
 </span></span><span class=line><span class=cl><span class=gi>+   int frameIndex = 0;  
 </span></span></span><span class=line><span class=cl><span class=gi></span>  
 </span></span><span class=line><span class=cl>    // frame 1  
-</span></span><span class=line><span class=cl><span class=gd>-	score += rolls.get(0); // roll 1
-</span></span></span><span class=line><span class=cl><span class=gd>-	score += rolls.get(0 + 1); // roll 2
+</span></span><span class=line><span class=cl><span class=gd>-   score += rolls.get(0); // roll 1
+</span></span></span><span class=line><span class=cl><span class=gd>-   score += rolls.get(0 + 1); // roll 2
 </span></span></span><span class=line><span class=cl><span class=gd></span><span class=gi>+   frameIndex = 0;  
 </span></span></span><span class=line><span class=cl><span class=gi>+   score += rolls.get(frameIndex); // roll 1  
 </span></span></span><span class=line><span class=cl><span class=gi>+   score += rolls.get(frameIndex + 1); // roll 2  
 </span></span></span><span class=line><span class=cl><span class=gi></span>  
 </span></span><span class=line><span class=cl>    // frame 2   
-</span></span><span class=line><span class=cl><span class=gd>-	score += rolls.get(2); // roll 3
-</span></span></span><span class=line><span class=cl><span class=gd>-	score += rolls.get(2 + 1); // roll 4
+</span></span><span class=line><span class=cl><span class=gd>-   score += rolls.get(2); // roll 3
+</span></span></span><span class=line><span class=cl><span class=gd>-   score += rolls.get(2 + 1); // roll 4
 </span></span></span><span class=line><span class=cl><span class=gd></span><span class=gi>+   frameIndex = 2;  
 </span></span></span><span class=line><span class=cl><span class=gi>+   score += rolls.get(frameIndex); // roll 3  
 </span></span></span><span class=line><span class=cl><span class=gi>+   score += rolls.get(frameIndex + 1); // roll 4  
 </span></span></span><span class=line><span class=cl><span class=gi></span>  
 </span></span><span class=line><span class=cl>    // frame 3
-</span></span><span class=line><span class=cl><span class=gd>-	score += rolls.get(4); // roll 5
-</span></span></span><span class=line><span class=cl><span class=gd>-	score += rolls.get(4 + 1); // roll 6 (spare)
-</span></span></span><span class=line><span class=cl><span class=gd>-	score += rolls.get(4 + 2); // roll 7 (spare bonus)    
+</span></span><span class=line><span class=cl><span class=gd>-   score += rolls.get(4); // roll 5
+</span></span></span><span class=line><span class=cl><span class=gd>-   score += rolls.get(4 + 1); // roll 6 (spare)
+</span></span></span><span class=line><span class=cl><span class=gd>-   score += rolls.get(4 + 2); // roll 7 (spare bonus)    
 </span></span></span><span class=line><span class=cl><span class=gd></span><span class=gi>+   frameIndex = 4;  
 </span></span></span><span class=line><span class=cl><span class=gi>+   score += rolls.get(frameIndex); // roll 5  
 </span></span></span><span class=line><span class=cl><span class=gi>+   score += rolls.get(frameIndex + 1); // roll 6 (spare)  
 </span></span></span><span class=line><span class=cl><span class=gi>+   score += rolls.get(frameIndex + 2); // roll 7 (spare bonus)  
 </span></span></span><span class=line><span class=cl><span class=gi></span>  
 </span></span><span class=line><span class=cl>    // frame 4    
-</span></span><span class=line><span class=cl><span class=gd>-	score += rolls.get(6); // roll 7
-</span></span></span><span class=line><span class=cl><span class=gd>-	score += rolls.get(6 + 1); // roll 8    
+</span></span><span class=line><span class=cl><span class=gd>-   score += rolls.get(6); // roll 7
+</span></span></span><span class=line><span class=cl><span class=gd>-   score += rolls.get(6 + 1); // roll 8    
 </span></span></span><span class=line><span class=cl><span class=gd></span><span class=gi>+   frameIndex = 6;  
 </span></span></span><span class=line><span class=cl><span class=gi>+   score += rolls.get(frameIndex); // roll 7  
 </span></span></span><span class=line><span class=cl><span class=gi>+   score += rolls.get(frameIndex + 1); // roll 8  
 </span></span></span><span class=line><span class=cl><span class=gi></span>  
 </span></span><span class=line><span class=cl>    // frame 5    
-</span></span><span class=line><span class=cl><span class=gd>-	score += rolls.get(8); // roll 9
-</span></span></span><span class=line><span class=cl><span class=gd>-	score += rolls.get(8 + 1); // roll 10    
+</span></span><span class=line><span class=cl><span class=gd>-   score += rolls.get(8); // roll 9
+</span></span></span><span class=line><span class=cl><span class=gd>-   score += rolls.get(8 + 1); // roll 10    
 </span></span></span><span class=line><span class=cl><span class=gd></span><span class=gi>+   frameIndex = 8;  
 </span></span></span><span class=line><span class=cl><span class=gi>+   score += rolls.get(frameIndex); // roll 9  
 </span></span></span><span class=line><span class=cl><span class=gi>+   score += rolls.get(frameIndex + 1); // roll 10  
 </span></span></span><span class=line><span class=cl><span class=gi></span>  
 </span></span><span class=line><span class=cl>    // frame 6    
-</span></span><span class=line><span class=cl><span class=gd>-	score += rolls.get(10); // roll 11
-</span></span></span><span class=line><span class=cl><span class=gd>-	score += rolls.get(10 + 1); // roll 12
+</span></span><span class=line><span class=cl><span class=gd>-   score += rolls.get(10); // roll 11
+</span></span></span><span class=line><span class=cl><span class=gd>-   score += rolls.get(10 + 1); // roll 12
 </span></span></span><span class=line><span class=cl><span class=gd></span><span class=gi>+   frameIndex = 10;  
 </span></span></span><span class=line><span class=cl><span class=gi>+   score += rolls.get(frameIndex); // roll 11  
 </span></span></span><span class=line><span class=cl><span class=gi>+   score += rolls.get(frameIndex + 1); // roll 12  
 </span></span></span><span class=line><span class=cl><span class=gi></span>  
 </span></span><span class=line><span class=cl>    // frame 7    
-</span></span><span class=line><span class=cl><span class=gd>-	score += rolls.get(12); // roll 13
-</span></span></span><span class=line><span class=cl><span class=gd>-	score += rolls.get(12 + 1); // roll 14
-</span></span></span><span class=line><span class=cl><span class=gd>-	score += rolls.get(12 + 2); // roll 15    
+</span></span><span class=line><span class=cl><span class=gd>-   score += rolls.get(12); // roll 13
+</span></span></span><span class=line><span class=cl><span class=gd>-   score += rolls.get(12 + 1); // roll 14
+</span></span></span><span class=line><span class=cl><span class=gd>-   score += rolls.get(12 + 2); // roll 15    
 </span></span></span><span class=line><span class=cl><span class=gd></span><span class=gi>+   frameIndex = 12;  
 </span></span></span><span class=line><span class=cl><span class=gi>+   score += rolls.get(frameIndex); // roll 13  
 </span></span></span><span class=line><span class=cl><span class=gi>+   score += rolls.get(frameIndex + 1); // roll 14  
 </span></span></span><span class=line><span class=cl><span class=gi>+   score += rolls.get(frameIndex + 2); // roll 15  
 </span></span></span><span class=line><span class=cl><span class=gi></span>  
 </span></span><span class=line><span class=cl>    // frame 8   
-</span></span><span class=line><span class=cl><span class=gd>-	score += rolls.get(14); // roll 15 (strike)
-</span></span></span><span class=line><span class=cl><span class=gd>-	score += rolls.get(14 + 1); // roll 16 (strike bonus)
-</span></span></span><span class=line><span class=cl><span class=gd>-	score += rolls.get(14 + 2); // roll 17 (strike bonus)
+</span></span><span class=line><span class=cl><span class=gd>-   score += rolls.get(14); // roll 15 (strike)
+</span></span></span><span class=line><span class=cl><span class=gd>-   score += rolls.get(14 + 1); // roll 16 (strike bonus)
+</span></span></span><span class=line><span class=cl><span class=gd>-   score += rolls.get(14 + 2); // roll 17 (strike bonus)
 </span></span></span><span class=line><span class=cl><span class=gd></span><span class=gi>+   frameIndex = 14;  
 </span></span></span><span class=line><span class=cl><span class=gi>+   score += rolls.get(frameIndex); // roll 15 (strike)  
 </span></span></span><span class=line><span class=cl><span class=gi>+   score += rolls.get(frameIndex + 1); // roll 16 (strike bonus)  
@@ -860,17 +860,17 @@ Moi : C&rsquo;est pourquoi nous allons la mettre en évidence</p></blockquote><p
 </span></span></span><span class=line><span class=cl><span class=gi></span>  
 </span></span><span class=line><span class=cl>  
 </span></span><span class=line><span class=cl>    // frame 9    
-</span></span><span class=line><span class=cl><span class=gd>-	score += rolls.get(15); // roll 16
-</span></span></span><span class=line><span class=cl><span class=gd>-	score += rolls.get(15 + 1); // roll 17    
+</span></span><span class=line><span class=cl><span class=gd>-   score += rolls.get(15); // roll 16
+</span></span></span><span class=line><span class=cl><span class=gd>-   score += rolls.get(15 + 1); // roll 17    
 </span></span></span><span class=line><span class=cl><span class=gd></span><span class=gi>+   frameIndex = 15;  
 </span></span></span><span class=line><span class=cl><span class=gi>+   score += rolls.get(frameIndex); // roll 16  
 </span></span></span><span class=line><span class=cl><span class=gi>+   score += rolls.get(frameIndex + 1); // roll 17  
 </span></span></span><span class=line><span class=cl><span class=gi></span>  
 </span></span><span class=line><span class=cl>  
 </span></span><span class=line><span class=cl>    // frame 10    
-</span></span><span class=line><span class=cl><span class=gd>-	score += rolls.get(17); // roll 18 (strike)
-</span></span></span><span class=line><span class=cl><span class=gd>-	score += rolls.get(17 + 1); // roll 19 (strike bonus)
-</span></span></span><span class=line><span class=cl><span class=gd>-	score += rolls.get(17 + 2); // roll 20 (strike bonus)
+</span></span><span class=line><span class=cl><span class=gd>-   score += rolls.get(17); // roll 18 (strike)
+</span></span></span><span class=line><span class=cl><span class=gd>-   score += rolls.get(17 + 1); // roll 19 (strike bonus)
+</span></span></span><span class=line><span class=cl><span class=gd>-   score += rolls.get(17 + 2); // roll 20 (strike bonus)
 </span></span></span><span class=line><span class=cl><span class=gd></span><span class=gi>+   frameIndex = 17;  
 </span></span></span><span class=line><span class=cl><span class=gi>+   score += rolls.get(frameIndex); // roll 18 (strike)  
 </span></span></span><span class=line><span class=cl><span class=gi>+   score += rolls.get(frameIndex + 1); // roll 19 (strike bonus)  
@@ -979,7 +979,7 @@ Moi : Ce que l&rsquo;on fait depuis le début, on clarifie puis on met en évide
 </span></span><span class=line><span class=cl>    // frame 4    
 </span></span><span class=line><span class=cl><span class=gd>-   frameIndex = 6;  
 </span></span></span><span class=line><span class=cl><span class=gd></span><span class=gi>+   frameIndex = 4 + 2;  
-</span></span></span><span class=line><span class=cl><span class=gi></span>	score += rolls.get(frameIndex); // roll 7  
+</span></span></span><span class=line><span class=cl><span class=gi></span>    score += rolls.get(frameIndex); // roll 7  
 </span></span><span class=line><span class=cl>    score += rolls.get(frameIndex + 1); // roll 8  
 </span></span><span class=line><span class=cl>  
 </span></span><span class=line><span class=cl>    // frame 5    
@@ -1121,7 +1121,7 @@ Moi : Ce que l&rsquo;on fait depuis le début, on clarifie puis on met en évide
 </span></span><span class=line><span class=cl>    // frame 4    
 </span></span><span class=line><span class=cl><span class=gd>-   frameIndex = 4 + 2;  
 </span></span></span><span class=line><span class=cl><span class=gd></span><span class=gi>+   frameIndex = frameIndex + 2;  
-</span></span></span><span class=line><span class=cl><span class=gi></span>	score += rolls.get(frameIndex); // roll 7  
+</span></span></span><span class=line><span class=cl><span class=gi></span>    score += rolls.get(frameIndex); // roll 7  
 </span></span><span class=line><span class=cl>    score += rolls.get(frameIndex + 1); // roll 8  
 </span></span><span class=line><span class=cl>  
 </span></span><span class=line><span class=cl>    // frame 5    
@@ -1239,76 +1239,76 @@ Moi : On va continuer de clarifier en introduisant la notion de bonus. On va de 
 </span><span class=lnt>69
 </span><span class=lnt>70
 </span><span class=lnt>71
-</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-diff data-lang=diff><span class=line><span class=cl>    public int score() {
-</span></span><span class=line><span class=cl>	int score = 0;
-</span></span><span class=line><span class=cl>	int frameIndex = 0;
-</span></span><span class=line><span class=cl><span class=gi>+	int bonus = 0;
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-diff data-lang=diff><span class=line><span class=cl>public int score() {
+</span></span><span class=line><span class=cl>    int score = 0;
+</span></span><span class=line><span class=cl>    int frameIndex = 0;
+</span></span><span class=line><span class=cl><span class=gi>+   int bonus = 0;
+</span></span></span><span class=line><span class=cl><span class=gi></span>    
+</span></span><span class=line><span class=cl>    // frame 1
+</span></span><span class=line><span class=cl>    frameIndex = 0;
+</span></span><span class=line><span class=cl>    score += rolls.get(frameIndex); // roll 1
+</span></span><span class=line><span class=cl>    score += rolls.get(frameIndex + 1); // roll 2
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    // frame 2
+</span></span><span class=line><span class=cl>    frameIndex = frameIndex + 2;
+</span></span><span class=line><span class=cl>    score += rolls.get(frameIndex); // roll 3
+</span></span><span class=line><span class=cl>    score += rolls.get(frameIndex + 1); // roll 4
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    // frame 3
+</span></span><span class=line><span class=cl>    frameIndex = frameIndex + 2;
+</span></span><span class=line><span class=cl>    score += rolls.get(frameIndex); // roll 5
+</span></span><span class=line><span class=cl>    score += rolls.get(frameIndex + 1); // roll 6 (spare)
+</span></span><span class=line><span class=cl>    bonus = rolls.get(frameIndex + 2); // roll 7 (spare bonus)
+</span></span><span class=line><span class=cl>    score += bonus;
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    // frame 4
+</span></span><span class=line><span class=cl>    frameIndex = frameIndex + 2;
+</span></span><span class=line><span class=cl>    score += rolls.get(frameIndex); // roll 7
+</span></span><span class=line><span class=cl>    score += rolls.get(frameIndex + 1); // roll 8
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    // frame 5
+</span></span><span class=line><span class=cl>    frameIndex = frameIndex + 2;
+</span></span><span class=line><span class=cl>    score += rolls.get(frameIndex); // roll 9
+</span></span><span class=line><span class=cl>    score += rolls.get(frameIndex + 1); // roll 10
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    // frame 6
+</span></span><span class=line><span class=cl>    frameIndex = frameIndex + 2;
+</span></span><span class=line><span class=cl>    score += rolls.get(frameIndex); // roll 11
+</span></span><span class=line><span class=cl>    score += rolls.get(frameIndex + 1); // roll 12
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    // frame 7
+</span></span><span class=line><span class=cl>    frameIndex = frameIndex + 2;
+</span></span><span class=line><span class=cl>    score += rolls.get(frameIndex); // roll 13
+</span></span><span class=line><span class=cl>    score += rolls.get(frameIndex + 1); // roll 14 (spare)
+</span></span><span class=line><span class=cl><span class=gd>-   score += rolls.get(frameIndex + 2); // roll 15 (spare bonus)
+</span></span></span><span class=line><span class=cl><span class=gd></span><span class=gi>+   bonus = rolls.get(frameIndex + 2); // roll 15 (spare bonus)
+</span></span></span><span class=line><span class=cl><span class=gi>+   score += bonus;
 </span></span></span><span class=line><span class=cl><span class=gi></span>
-</span></span><span class=line><span class=cl>	// frame 1
-</span></span><span class=line><span class=cl>	frameIndex = 0;
-</span></span><span class=line><span class=cl>	score += rolls.get(frameIndex); // roll 1
-</span></span><span class=line><span class=cl>	score += rolls.get(frameIndex + 1); // roll 2
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>	// frame 2
-</span></span><span class=line><span class=cl>	frameIndex = frameIndex + 2;
-</span></span><span class=line><span class=cl>	score += rolls.get(frameIndex); // roll 3
-</span></span><span class=line><span class=cl>	score += rolls.get(frameIndex + 1); // roll 4
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>	// frame 3
-</span></span><span class=line><span class=cl>	frameIndex = frameIndex + 2;
-</span></span><span class=line><span class=cl>	score += rolls.get(frameIndex); // roll 5
-</span></span><span class=line><span class=cl>	score += rolls.get(frameIndex + 1); // roll 6 (spare)
-</span></span><span class=line><span class=cl>	bonus = rolls.get(frameIndex + 2); // roll 7 (spare bonus)
-</span></span><span class=line><span class=cl>	score += bonus;
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>	// frame 4
-</span></span><span class=line><span class=cl>	frameIndex = frameIndex + 2;
-</span></span><span class=line><span class=cl>	score += rolls.get(frameIndex); // roll 7
-</span></span><span class=line><span class=cl>	score += rolls.get(frameIndex + 1); // roll 8
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>	// frame 5
-</span></span><span class=line><span class=cl>	frameIndex = frameIndex + 2;
-</span></span><span class=line><span class=cl>	score += rolls.get(frameIndex); // roll 9
-</span></span><span class=line><span class=cl>	score += rolls.get(frameIndex + 1); // roll 10
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>	// frame 6
-</span></span><span class=line><span class=cl>	frameIndex = frameIndex + 2;
-</span></span><span class=line><span class=cl>	score += rolls.get(frameIndex); // roll 11
-</span></span><span class=line><span class=cl>	score += rolls.get(frameIndex + 1); // roll 12
-</span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>	// frame 7
-</span></span><span class=line><span class=cl>	frameIndex = frameIndex + 2;
-</span></span><span class=line><span class=cl>	score += rolls.get(frameIndex); // roll 13
-</span></span><span class=line><span class=cl>	score += rolls.get(frameIndex + 1); // roll 14 (spare)
-</span></span><span class=line><span class=cl><span class=gd>-	score += rolls.get(frameIndex + 2); // roll 15 (spare bonus)
-</span></span></span><span class=line><span class=cl><span class=gd></span><span class=gi>+	bonus = rolls.get(frameIndex + 2); // roll 15 (spare bonus)
-</span></span></span><span class=line><span class=cl><span class=gi>+	score += bonus;
+</span></span><span class=line><span class=cl>    // frame 8
+</span></span><span class=line><span class=cl>    frameIndex = frameIndex + 2;
+</span></span><span class=line><span class=cl>    score += rolls.get(frameIndex); // roll 15 (strike)
+</span></span><span class=line><span class=cl><span class=gd>-   score += rolls.get(frameIndex + 1); // roll 16 (strike bonus)
+</span></span></span><span class=line><span class=cl><span class=gd>-   score += rolls.get(frameIndex + 2); // roll 17 (strike bonus)
+</span></span></span><span class=line><span class=cl><span class=gd></span><span class=gi>+   bonus = rolls.get(frameIndex + 1); // roll 16 (strike bonus)
+</span></span></span><span class=line><span class=cl><span class=gi>+   bonus += rolls.get(frameIndex + 2); // roll 17 (strike bonus)
+</span></span></span><span class=line><span class=cl><span class=gi>+   score += bonus;
 </span></span></span><span class=line><span class=cl><span class=gi></span>
-</span></span><span class=line><span class=cl>	// frame 8
-</span></span><span class=line><span class=cl>	frameIndex = frameIndex + 2;
-</span></span><span class=line><span class=cl>	score += rolls.get(frameIndex); // roll 15 (strike)
-</span></span><span class=line><span class=cl><span class=gd>-	score += rolls.get(frameIndex + 1); // roll 16 (strike bonus)
-</span></span></span><span class=line><span class=cl><span class=gd>-	score += rolls.get(frameIndex + 2); // roll 17 (strike bonus)
-</span></span></span><span class=line><span class=cl><span class=gd></span><span class=gi>+	bonus = rolls.get(frameIndex + 1); // roll 16 (strike bonus)
-</span></span></span><span class=line><span class=cl><span class=gi>+	bonus += rolls.get(frameIndex + 2); // roll 17 (strike bonus)
-</span></span></span><span class=line><span class=cl><span class=gi>+	score += bonus;
-</span></span></span><span class=line><span class=cl><span class=gi></span>
-</span></span><span class=line><span class=cl>	// frame 9
-</span></span><span class=line><span class=cl>	frameIndex = frameIndex + 1;
-</span></span><span class=line><span class=cl>	score += rolls.get(frameIndex); // roll 16
-</span></span><span class=line><span class=cl>	score += rolls.get(frameIndex + 1); // roll 17
+</span></span><span class=line><span class=cl>    // frame 9
+</span></span><span class=line><span class=cl>    frameIndex = frameIndex + 1;
+</span></span><span class=line><span class=cl>    score += rolls.get(frameIndex); // roll 16
+</span></span><span class=line><span class=cl>     score += rolls.get(frameIndex + 1); // roll 17
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>
-</span></span><span class=line><span class=cl>	// frame 10
-</span></span><span class=line><span class=cl>	frameIndex = frameIndex + 2;
-</span></span><span class=line><span class=cl>	score += rolls.get(frameIndex); // roll 18 (strike)
-</span></span><span class=line><span class=cl><span class=gd>-	score += rolls.get(frameIndex + 1); // roll 19 (strike bonus)
-</span></span></span><span class=line><span class=cl><span class=gd>-	score += rolls.get(frameIndex + 2); // roll 20 (strike bonus)
-</span></span></span><span class=line><span class=cl><span class=gd></span><span class=gi>+	bonus = rolls.get(frameIndex + 1); // roll 19 (strike bonus)
-</span></span></span><span class=line><span class=cl><span class=gi>+	bonus += rolls.get(frameIndex + 2); // roll 20 (strike bonus)
-</span></span></span><span class=line><span class=cl><span class=gi>+	score += bonus;
+</span></span><span class=line><span class=cl>    // frame 10
+</span></span><span class=line><span class=cl>    frameIndex = frameIndex + 2;
+</span></span><span class=line><span class=cl>    score += rolls.get(frameIndex); // roll 18 (strike)
+</span></span><span class=line><span class=cl><span class=gd>-   score += rolls.get(frameIndex + 1); // roll 19 (strike bonus)
+</span></span></span><span class=line><span class=cl><span class=gd>-   score += rolls.get(frameIndex + 2); // roll 20 (strike bonus)
+</span></span></span><span class=line><span class=cl><span class=gd></span><span class=gi>+   bonus = rolls.get(frameIndex + 1); // roll 19 (strike bonus)
+</span></span></span><span class=line><span class=cl><span class=gi>+   bonus += rolls.get(frameIndex + 2); // roll 20 (strike bonus)
+</span></span></span><span class=line><span class=cl><span class=gi>+   score += bonus;
 </span></span></span><span class=line><span class=cl><span class=gi></span>
-</span></span><span class=line><span class=cl>	return score;
+</span></span><span class=line><span class=cl>   return score;
 </span></span><span class=line><span class=cl>}
 </span></span></code></pre></td></tr></table></div></div><blockquote><p>Dev : C&rsquo;est bien beau ce concept de bonus, mais on ne les voit pas dans tous les blocs !
 Moi : Et donc ?
@@ -1400,15 +1400,15 @@ Moi : Tu as tout à fait raison, mais rien ne nous interdit d&rsquo;introduire l
 </span></span><span class=line><span class=cl>    frameIndex = 0;
 </span></span><span class=line><span class=cl>    score += rolls.get(frameIndex); // roll 1
 </span></span><span class=line><span class=cl>    score += rolls.get(frameIndex + 1); // roll 2
-</span></span><span class=line><span class=cl><span class=gi>+	bonus = 0;
-</span></span></span><span class=line><span class=cl><span class=gi>+	score += bonus;
+</span></span><span class=line><span class=cl><span class=gi>+   bonus = 0;
+</span></span></span><span class=line><span class=cl><span class=gi>+   score += bonus;
 </span></span></span><span class=line><span class=cl><span class=gi></span>
 </span></span><span class=line><span class=cl>    // frame 2
 </span></span><span class=line><span class=cl>    frameIndex = frameIndex + 2;
 </span></span><span class=line><span class=cl>    score += rolls.get(frameIndex); // roll 3
 </span></span><span class=line><span class=cl>    score += rolls.get(frameIndex + 1); // roll 4
-</span></span><span class=line><span class=cl><span class=gi>+	bonus = 0;
-</span></span></span><span class=line><span class=cl><span class=gi>+	score += bonus;
+</span></span><span class=line><span class=cl><span class=gi>+   bonus = 0;
+</span></span></span><span class=line><span class=cl><span class=gi>+   score += bonus;
 </span></span></span><span class=line><span class=cl><span class=gi></span>
 </span></span><span class=line><span class=cl>    // frame 3
 </span></span><span class=line><span class=cl>    frameIndex = frameIndex + 2;
@@ -1421,22 +1421,22 @@ Moi : Tu as tout à fait raison, mais rien ne nous interdit d&rsquo;introduire l
 </span></span><span class=line><span class=cl>    frameIndex = frameIndex + 2;
 </span></span><span class=line><span class=cl>    score += rolls.get(frameIndex); // roll 7
 </span></span><span class=line><span class=cl>    score += rolls.get(frameIndex + 1); // roll 8
-</span></span><span class=line><span class=cl><span class=gi>+	bonus = 0;
-</span></span></span><span class=line><span class=cl><span class=gi>+	score += bonus;
+</span></span><span class=line><span class=cl><span class=gi>+   bonus = 0;
+</span></span></span><span class=line><span class=cl><span class=gi>+   score += bonus;
 </span></span></span><span class=line><span class=cl><span class=gi></span>
 </span></span><span class=line><span class=cl>    // frame 5
 </span></span><span class=line><span class=cl>    frameIndex = frameIndex + 2;
 </span></span><span class=line><span class=cl>    score += rolls.get(frameIndex); // roll 9
 </span></span><span class=line><span class=cl>    score += rolls.get(frameIndex + 1); // roll 10
-</span></span><span class=line><span class=cl><span class=gi>+	bonus = 0;
-</span></span></span><span class=line><span class=cl><span class=gi>+	score += bonus;
+</span></span><span class=line><span class=cl><span class=gi>+   bonus = 0;
+</span></span></span><span class=line><span class=cl><span class=gi>+   score += bonus;
 </span></span></span><span class=line><span class=cl><span class=gi></span>
 </span></span><span class=line><span class=cl>    // frame 6
 </span></span><span class=line><span class=cl>    frameIndex = frameIndex + 2;
 </span></span><span class=line><span class=cl>    score += rolls.get(frameIndex); // roll 11
 </span></span><span class=line><span class=cl>    score += rolls.get(frameIndex + 1); // roll 12
-</span></span><span class=line><span class=cl><span class=gi>+	bonus = 0;
-</span></span></span><span class=line><span class=cl><span class=gi>+	score += bonus;
+</span></span><span class=line><span class=cl><span class=gi>+   bonus = 0;
+</span></span></span><span class=line><span class=cl><span class=gi>+   score += bonus;
 </span></span></span><span class=line><span class=cl><span class=gi></span>
 </span></span><span class=line><span class=cl>    // frame 7
 </span></span><span class=line><span class=cl>    frameIndex = frameIndex + 2;
@@ -1456,8 +1456,8 @@ Moi : Tu as tout à fait raison, mais rien ne nous interdit d&rsquo;introduire l
 </span></span><span class=line><span class=cl>    frameIndex = frameIndex + 1;
 </span></span><span class=line><span class=cl>    score += rolls.get(frameIndex); // roll 16
 </span></span><span class=line><span class=cl>    score += rolls.get(frameIndex + 1); // roll 17
-</span></span><span class=line><span class=cl><span class=gi>+	bonus = 0;
-</span></span></span><span class=line><span class=cl><span class=gi>+	score += bonus;
+</span></span><span class=line><span class=cl><span class=gi>+   bonus = 0;
+</span></span></span><span class=line><span class=cl><span class=gi>+   score += bonus;
 </span></span></span><span class=line><span class=cl><span class=gi></span>
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>    // frame 10
@@ -2205,13 +2205,13 @@ Dev : Mettre en évidence le concept puis la duplication.</p></blockquote><p>Le 
 </span><span class=lnt>107
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-diff data-lang=diff><span class=line><span class=cl>
 </span></span><span class=line><span class=cl>public int score() {
-</span></span><span class=line><span class=cl>	int score = 0;
-</span></span><span class=line><span class=cl>	int frameIndex = 0;
-</span></span><span class=line><span class=cl>	int bonus = 0;
+</span></span><span class=line><span class=cl>    int score = 0;
+</span></span><span class=line><span class=cl>    int frameIndex = 0;
+</span></span><span class=line><span class=cl>    int bonus = 0;
 </span></span><span class=line><span class=cl><span class=gi>+   int frameScore = 0;
 </span></span></span><span class=line><span class=cl><span class=gi></span>
-</span></span><span class=line><span class=cl>        // frame 1
-</span></span><span class=line><span class=cl>        frameIndex = 0;
+</span></span><span class=line><span class=cl>    // frame 1
+</span></span><span class=line><span class=cl>    frameIndex = 0;
 </span></span><span class=line><span class=cl>
 </span></span><span class=line><span class=cl><span class=gi>+   frameScore = rolls.get(frameIndex); // roll 1
 </span></span></span><span class=line><span class=cl><span class=gi>+   frameScore += rolls.get(frameIndex + 1); // roll 2
@@ -2283,7 +2283,7 @@ Dev : Mettre en évidence le concept puis la duplication.</p></blockquote><p>Le 
 </span></span></span><span class=line><span class=cl><span class=gd></span>
 </span></span><span class=line><span class=cl>    // frame 8
 </span></span><span class=line><span class=cl>    frameIndex = frameIndex + 2;
-</span></span><span class=line><span class=cl><span class=gi>+	frameScore = rolls.get(frameIndex); // roll 15 (strike)
+</span></span><span class=line><span class=cl><span class=gi>+       frameScore = rolls.get(frameIndex); // roll 15 (strike)
 </span></span></span><span class=line><span class=cl><span class=gi></span><span class=gd>-   score += rolls.get(frameIndex); // roll 15 (strike)
 </span></span></span><span class=line><span class=cl><span class=gd></span>    bonus = calculateFrameBonus(frameIndex);
 </span></span><span class=line><span class=cl><span class=gi>+   score += frameScore + bonus;
@@ -3858,6 +3858,7 @@ Moi : Ouiiiii ! Tous nos blocs sont identiques.</p></blockquote><p>Notre code tr
 </span><span class=lnt>57
 </span><span class=lnt>58
 </span><span class=lnt>59
+</span><span class=lnt>60
 </span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=kd>public</span> <span class=kd>class</span> <span class=nc>Bowling</span> <span class=o>{</span>  
 </span></span><span class=line><span class=cl>    <span class=n>List</span><span class=o>&lt;</span><span class=n>Integer</span><span class=o>&gt;</span> <span class=n>rolls</span> <span class=o>=</span> <span class=k>new</span> <span class=n>ArrayList</span><span class=o>&lt;&gt;();</span>  
 </span></span><span class=line><span class=cl>  
@@ -3905,7 +3906,8 @@ Moi : Ouiiiii ! Tous nos blocs sont identiques.</p></blockquote><p>Notre code tr
 </span></span><span class=line><span class=cl>            <span class=n>bonus</span> <span class=o>+=</span> <span class=n>rolls</span><span class=o>.</span><span class=na>get</span><span class=o>(</span><span class=n>frameIndex</span> <span class=o>+</span> <span class=n>2</span><span class=o>);</span>  
 </span></span><span class=line><span class=cl>        <span class=o>}</span> <span class=k>else</span> <span class=k>if</span> <span class=o>(</span><span class=n>isSpare</span><span class=o>(</span><span class=n>frameIndex</span><span class=o>))</span>  
 </span></span><span class=line><span class=cl>            <span class=n>bonus</span> <span class=o>=</span> <span class=n>rolls</span><span class=o>.</span><span class=na>get</span><span class=o>(</span><span class=n>frameIndex</span> <span class=o>+</span> <span class=n>2</span><span class=o>);</span>  
-</span></span><span class=line><span class=cl>        <span class=k>else</span>            <span class=n>bonus</span> <span class=o>=</span> <span class=n>0</span><span class=o>;</span>  
+</span></span><span class=line><span class=cl>        <span class=k>else</span>
+</span></span><span class=line><span class=cl>            <span class=n>bonus</span> <span class=o>=</span> <span class=n>0</span><span class=o>;</span>  
 </span></span><span class=line><span class=cl>        <span class=k>return</span> <span class=n>bonus</span><span class=o>;</span>  
 </span></span><span class=line><span class=cl>    <span class=o>}</span>  
 </span></span><span class=line><span class=cl>  
