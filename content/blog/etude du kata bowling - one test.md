@@ -54,26 +54,26 @@ On rajoute donc au test tous les lancers nécessaires pour faire une partie. Il 
 public void one_game() {  
     Bowling game = new Bowling();  
   
-+    game.roll(3);  
-+    game.roll(4);  
-+    game.roll(6);  
-+    game.roll(3);  
-+    game.roll(2);  
-+    game.roll(8);  
-+    game.roll(4);  
-+    game.roll(3);  
-+    game.roll(4);  
-+    game.roll(4);  
-+    game.roll(5);  
-+    game.roll(2);  
-+    game.roll(6);  
-+    game.roll(4);  
-+    game.roll(10);  
-+    game.roll(8);  
-+    game.roll(0);  
-+    game.roll(10);  
-+    game.roll(8);  
-+    game.roll(1);  
++   game.roll(3);  
++   game.roll(4);  
++   game.roll(6);  
++   game.roll(3);  
++   game.roll(2);  
++   game.roll(8);  
++   game.roll(4);  
++   game.roll(3);  
++   game.roll(4);  
++   game.roll(4);  
++   game.roll(5);  
++   game.roll(2);  
++   game.roll(6);  
++   game.roll(4);  
++   game.roll(10);  
++   game.roll(8);  
++   game.roll(0);  
++   game.roll(10);  
++   game.roll(8);  
++   game.roll(1);  
   
 }
 ```
@@ -140,8 +140,8 @@ Le passage au vert se fait de la manière la plus simple, en indiquant le résul
 
 ```diff
 public int score() {  
--	return -1;  	
-+	return 117;  
+-   return -1;  	
++   return 117;  
 }  
 ```
 On passe de l'étape *RED* à l'étape *GREEN* en 2 secondes. Voilà, nous venons de pratiquer ce que j'appelle la **triche**. Indiquer directement dans le code le résultat attendu.
@@ -161,7 +161,7 @@ Mettons en évidence ce nouveau concept, à l'aide d'un [[wiki/extract variable|
 
 ```diff
 public int score() {  
--	return 117;  
+-   return 117;  
 +   int score = 117;  
 +   return score;  
 }
@@ -183,7 +183,7 @@ Si on traduit cela en code, ça nous donne. En guide d'exercice, tu peux reparti
 ```diff
 public int score() {  
 -   int score = 117;  
-+	int score = 3 + 4 + 6 + 3 + 2 + 8 + 4 + 4 + 3 + 4 + 4 + 5 + 2 + 6 + 4 + 10 + 10 + 8 + 0 + 8 + 0 + 10 + 8 + 1;  
++   int score = 3 + 4 + 6 + 3 + 2 + 8 + 4 + 4 + 3 + 4 + 4 + 5 + 2 + 6 + 4 + 10 + 10 + 8 + 0 + 8 + 0 + 10 + 8 + 1;  
     return score;  
 }
 ```
@@ -194,34 +194,34 @@ Organisons un peu le code pour faire apparaître le **QUOI**.
 
 ```diff
 public int score() {  
--	int score = 3 + 4 + 6 + 3 + 2 + 8 + 4 + 4 + 3 + 4 + 4 + 5 + 2 + 6 + 4 + 10 + 10 + 8 + 0 + 8 + 0 + 10 + 8 + 1;  
+-   int score = 3 + 4 + 6 + 3 + 2 + 8 + 4 + 4 + 3 + 4 + 4 + 5 + 2 + 6 + 4 + 10 + 10 + 8 + 0 + 8 + 0 + 10 + 8 + 1;  
 
-+	int score = 0;  
++   int score = 0;  
   
-+	score += 3;  
-+	score += 4; 
-+	score += 6;  
-+	score += 3;  
-+	score += 2;  
-+	score += 8;  
-+	score += 4;  
-+	score += 4;  
-+	score += 3;  
-+	score += 4;  
-+	score += 4;  
-+	score += 5;  
-+	score += 2;  
-+	score += 6;  
-+	score += 4;  
-+	score += 10;  
-+	score += 10;  
-+	score += 8;  
-+	score += 0;  
-+	score += 8;  
-+	score += 0;  
-+	score += 10;  
-+	score += 8;  
-+	score += 1;  
++   score += 3;  
++   score += 4; 
++   score += 6;  
++   score += 3;  
++   score += 2;  
++   score += 8;  
++   score += 4;  
++   score += 4;  
++   score += 3;  
++   score += 4;  
++   score += 4;  
++   score += 5;  
++   score += 2;  
++   score += 6;  
++   score += 4;  
++   score += 10;  
++   score += 10;  
++   score += 8;  
++   score += 0;  
++   score += 8;  
++   score += 0;  
++   score += 10;  
++   score += 8;  
++   score += 1;  
   
     return score;  
 }
@@ -233,49 +233,49 @@ Et encore une étape (pour rappel, le test passe toujours) :
 public int score() {  
     int score = 0;  
   
-+	 // frame 1  
-	score += 3; // roll 1  
-	score += 4; // roll 2  
++   // frame 1  
+    score += 3; // roll 1  
+    score += 4; // roll 2  
 	  
-+	// frame 2  
-	score += 6; // roll 3  
-	score += 3; // roll 4  
++   // frame 2  
+    score += 6; // roll 3  
+    score += 3; // roll 4  
 	  
-+	// frame 3  
-	score += 2; // roll 5  
-	score += 8; // roll 6 (spare)  
-	score += 4; // roll 7 (spare bonus)  
++   // frame 3  
+    score += 2; // roll 5  
+    score += 8; // roll 6 (spare)  
+    score += 4; // roll 7 (spare bonus)  
 	  
-+	// frame 4  
-	score += 4; // roll 7  
-	score += 3; // roll 8  
++   // frame 4  
+    score += 4; // roll 7  
+    score += 3; // roll 8  
 	  
-+	// frame 5  
-	score += 4; // roll 9  
-	score += 4; // roll 10  
++   // frame 5  
+    score += 4; // roll 9  
+    score += 4; // roll 10  
 	  
-+	// frame 6  
-	score += 5; // roll 11  
-	score += 2; // roll 12  
++   // frame 6  
+    score += 5; // roll 11  
+    score += 2; // roll 12  
 	  
-+	// frame 7  
-	score += 6; // roll 13  
-	score += 4; // roll 14 (spare) 
-	score += 10; // roll 15 (spare bonus)   
++   // frame 7  
+    score += 6; // roll 13  
+    score += 4; // roll 14 (spare) 
+    score += 10; // roll 15 (spare bonus)   
 	  
-+	// frame 8  
-	score += 10; // roll 15 (strike)  
-	score += 8; // roll 16 (strike bonus)  
-	score += 0; // roll 17 (strike bonus)  
++   // frame 8  
+    score += 10; // roll 15 (strike)  
+    score += 8; // roll 16 (strike bonus)  
+    score += 0; // roll 17 (strike bonus)  
 	  	  
-+	// frame 9  
-	score += 8; // roll 16  
-	score += 0; // roll 17   
++   // frame 9  
+    score += 8; // roll 16  
+    score += 0; // roll 17   
 	  
-+	// frame 10  
-	score += 10; // roll 18 (strike)  
-	score += 8; // roll 19 (strike bonus)  
-	score += 1; // roll 20 (strike bonus)
++   // frame 10  
+    score += 10; // roll 18 (strike)  
+    score += 8; // roll 19 (strike bonus)  
+    score += 1; // roll 20 (strike bonus)
   
     return score;  
 }
@@ -300,7 +300,7 @@ public class Bowling {
 +   List<Integer> rolls = new ArrayList<>();  
   
 +   public void roll(int pins) {  
-+	   rolls.add(pins);  
++       rolls.add(pins);  
 +   }  
   
     public int score() {  
@@ -310,7 +310,7 @@ public class Bowling {
         score += 3;  
         score += 4;  
   
-		// ...
+       // ...
   
         // frame 10
         score += 10;  
@@ -329,74 +329,74 @@ public int score() {
     int score = 0;  
   
     // frame 1  
--	score += 3; // roll 1  
--	score += 4; // roll 2      
-+	score += rolls.get(0); // roll 1  
-+	score += rolls.get(1); // roll 2  
+-   score += 3; // roll 1  
+-   score += 4; // roll 2      
++   score += rolls.get(0); // roll 1  
++   score += rolls.get(1); // roll 2  
   
     // frame 2
--	score += 6; // roll 3  
--	score += 3; // roll 4    
-+	score += rolls.get(2); // roll 3  
-+	score += rolls.get(3); // roll 4  
+-   score += 6; // roll 3  
+-   score += 3; // roll 4    
++   score += rolls.get(2); // roll 3  
++   score += rolls.get(3); // roll 4  
   
     // frame 3
--	score += 2; // roll 5  
--	score += 8; // roll 6 (spare)  
--	score += 4; // roll 7 (spare bonus)      
-+	score += rolls.get(4); // roll 5  
-+	score += rolls.get(5); // roll 6 (spare)  
-+	score += rolls.get(6); // roll 7 (spare bonus)  
+-   score += 2; // roll 5  
+-   score += 8; // roll 6 (spare)  
+-   score += 4; // roll 7 (spare bonus)      
++   score += rolls.get(4); // roll 5  
++   score += rolls.get(5); // roll 6 (spare)  
++   score += rolls.get(6); // roll 7 (spare bonus)  
   
     // frame 4
--	score += 4; // roll 7  
--	score += 3; // roll 8     
-+	score += rolls.get(6); // roll 7  
-+	score += rolls.get(7); // roll 8  
+-   score += 4; // roll 7  
+-   score += 3; // roll 8     
++   score += rolls.get(6); // roll 7  
++   score += rolls.get(7); // roll 8  
   
     // frame 5
--	score += 4; // roll 9  
--	score += 4; // roll 10    
-+	score += rolls.get(8); // roll 9  
-+	score += rolls.get(9); // roll 10  
+-   score += 4; // roll 9  
+-   score += 4; // roll 10    
++   score += rolls.get(8); // roll 9  
++   score += rolls.get(9); // roll 10  
   
     // frame 6
--	score += 5; // roll 11  
--	score += 2; // roll 12          
-+   score += rolls.get(10); // roll 11  
-+	score += rolls.get(11); // roll 12  
+-   score += 5; // roll 11  
+-   score += 2; // roll 12          
++     score += rolls.get(10); // roll 11  
++   score += rolls.get(11); // roll 12  
   
     // frame 7
--	score += 6; // roll 13  
--	score += 4; // roll 14 (spare) 
--	score += 10; // roll 15 (spare bonus)       
-+   score += rolls.get(12); // roll 13  
-+	score += rolls.get(13); // roll 14 (spare)  
-+	score += rolls.get(14); // roll 15 (spare bonus)    
+-   score += 6; // roll 13  
+-   score += 4; // roll 14 (spare) 
+-   score += 10; // roll 15 (spare bonus)       
++     score += rolls.get(12); // roll 13  
++   score += rolls.get(13); // roll 14 (spare)  
++   score += rolls.get(14); // roll 15 (spare bonus)    
   
     // frame 8
--	score += 10; // roll 15 (strike)  
--	score += 8; // roll 16 (strike bonus)  
--	score += 0; // roll 17 (strike bonus)      
-+	score += rolls.get(14); // roll 15 (strike)  
-+	score += rolls.get(15); // roll 16 (strike bonus)  
-+	score += rolls.get(16); // roll 17 (strike bonus)  
+-   score += 10; // roll 15 (strike)  
+-   score += 8; // roll 16 (strike bonus)  
+-   score += 0; // roll 17 (strike bonus)      
++   score += rolls.get(14); // roll 15 (strike)  
++   score += rolls.get(15); // roll 16 (strike bonus)  
++   score += rolls.get(16); // roll 17 (strike bonus)  
   
   
     // frame 9
--	score += 8; // roll 16  
--	score += 0; // roll 17      
-+	score += rolls.get(15); // roll 16  
-+	score += rolls.get(16); // roll 17  
+-   score += 8; // roll 16  
+-   score += 0; // roll 17      
++   score += rolls.get(15); // roll 16  
++   score += rolls.get(16); // roll 17  
   
   
     // frame 10
--	score += 10; // roll 18 (strike)  
--	score += 8; // roll 19 (strike bonus)  
--	score += 1; // roll 20 (strike bonus)-   
-+	score += rolls.get(17); // roll 18 (strike)  
-+	score += rolls.get(18); // roll 19 (strike bonus)  
-+	score += rolls.get(19); // roll 20 (strike bonus)  
+-   score += 10; // roll 18 (strike)  
+-   score += 8; // roll 19 (strike bonus)  
+-   score += 1; // roll 20 (strike bonus)-   
++   score += rolls.get(17); // roll 18 (strike)  
++   score += rolls.get(18); // roll 19 (strike bonus)  
++   score += rolls.get(19); // roll 20 (strike bonus)  
   
     return score;  
 }
@@ -485,62 +485,62 @@ public int score() {
 +   int frameIndex = 0;  
   
     // frame 1  
--	score += rolls.get(0); // roll 1
--	score += rolls.get(0 + 1); // roll 2
+-   score += rolls.get(0); // roll 1
+-   score += rolls.get(0 + 1); // roll 2
 +   frameIndex = 0;  
 +   score += rolls.get(frameIndex); // roll 1  
 +   score += rolls.get(frameIndex + 1); // roll 2  
   
     // frame 2   
--	score += rolls.get(2); // roll 3
--	score += rolls.get(2 + 1); // roll 4
+-   score += rolls.get(2); // roll 3
+-   score += rolls.get(2 + 1); // roll 4
 +   frameIndex = 2;  
 +   score += rolls.get(frameIndex); // roll 3  
 +   score += rolls.get(frameIndex + 1); // roll 4  
   
     // frame 3
--	score += rolls.get(4); // roll 5
--	score += rolls.get(4 + 1); // roll 6 (spare)
--	score += rolls.get(4 + 2); // roll 7 (spare bonus)    
+-   score += rolls.get(4); // roll 5
+-   score += rolls.get(4 + 1); // roll 6 (spare)
+-   score += rolls.get(4 + 2); // roll 7 (spare bonus)    
 +   frameIndex = 4;  
 +   score += rolls.get(frameIndex); // roll 5  
 +   score += rolls.get(frameIndex + 1); // roll 6 (spare)  
 +   score += rolls.get(frameIndex + 2); // roll 7 (spare bonus)  
   
     // frame 4    
--	score += rolls.get(6); // roll 7
--	score += rolls.get(6 + 1); // roll 8    
+-   score += rolls.get(6); // roll 7
+-   score += rolls.get(6 + 1); // roll 8    
 +   frameIndex = 6;  
 +   score += rolls.get(frameIndex); // roll 7  
 +   score += rolls.get(frameIndex + 1); // roll 8  
   
     // frame 5    
--	score += rolls.get(8); // roll 9
--	score += rolls.get(8 + 1); // roll 10    
+-   score += rolls.get(8); // roll 9
+-   score += rolls.get(8 + 1); // roll 10    
 +   frameIndex = 8;  
 +   score += rolls.get(frameIndex); // roll 9  
 +   score += rolls.get(frameIndex + 1); // roll 10  
   
     // frame 6    
--	score += rolls.get(10); // roll 11
--	score += rolls.get(10 + 1); // roll 12
+-   score += rolls.get(10); // roll 11
+-   score += rolls.get(10 + 1); // roll 12
 +   frameIndex = 10;  
 +   score += rolls.get(frameIndex); // roll 11  
 +   score += rolls.get(frameIndex + 1); // roll 12  
   
     // frame 7    
--	score += rolls.get(12); // roll 13
--	score += rolls.get(12 + 1); // roll 14
--	score += rolls.get(12 + 2); // roll 15    
+-   score += rolls.get(12); // roll 13
+-   score += rolls.get(12 + 1); // roll 14
+-   score += rolls.get(12 + 2); // roll 15    
 +   frameIndex = 12;  
 +   score += rolls.get(frameIndex); // roll 13  
 +   score += rolls.get(frameIndex + 1); // roll 14  
 +   score += rolls.get(frameIndex + 2); // roll 15  
   
     // frame 8   
--	score += rolls.get(14); // roll 15 (strike)
--	score += rolls.get(14 + 1); // roll 16 (strike bonus)
--	score += rolls.get(14 + 2); // roll 17 (strike bonus)
+-   score += rolls.get(14); // roll 15 (strike)
+-   score += rolls.get(14 + 1); // roll 16 (strike bonus)
+-   score += rolls.get(14 + 2); // roll 17 (strike bonus)
 +   frameIndex = 14;  
 +   score += rolls.get(frameIndex); // roll 15 (strike)  
 +   score += rolls.get(frameIndex + 1); // roll 16 (strike bonus)  
@@ -548,17 +548,17 @@ public int score() {
   
   
     // frame 9    
--	score += rolls.get(15); // roll 16
--	score += rolls.get(15 + 1); // roll 17    
+-   score += rolls.get(15); // roll 16
+-   score += rolls.get(15 + 1); // roll 17    
 +   frameIndex = 15;  
 +   score += rolls.get(frameIndex); // roll 16  
 +   score += rolls.get(frameIndex + 1); // roll 17  
   
   
     // frame 10    
--	score += rolls.get(17); // roll 18 (strike)
--	score += rolls.get(17 + 1); // roll 19 (strike bonus)
--	score += rolls.get(17 + 2); // roll 20 (strike bonus)
+-   score += rolls.get(17); // roll 18 (strike)
+-   score += rolls.get(17 + 1); // roll 19 (strike bonus)
+-   score += rolls.get(17 + 2); // roll 20 (strike bonus)
 +   frameIndex = 17;  
 +   score += rolls.get(frameIndex); // roll 18 (strike)  
 +   score += rolls.get(frameIndex + 1); // roll 19 (strike bonus)  
@@ -603,7 +603,7 @@ public int score() {
     // frame 4    
 -   frameIndex = 6;  
 +   frameIndex = 4 + 2;  
-	score += rolls.get(frameIndex); // roll 7  
+    score += rolls.get(frameIndex); // roll 7  
     score += rolls.get(frameIndex + 1); // roll 8  
   
     // frame 5    
@@ -679,7 +679,7 @@ public int score() {
     // frame 4    
 -   frameIndex = 4 + 2;  
 +   frameIndex = frameIndex + 2;  
-	score += rolls.get(frameIndex); // roll 7  
+    score += rolls.get(frameIndex); // roll 7  
     score += rolls.get(frameIndex + 1); // roll 8  
   
     // frame 5    
@@ -733,76 +733,76 @@ public int score() {
 La notion de bonus apparaît lorsqu'on a un *strike* (les deux prochains lancers sont ajoutés en bonus) ou lors d'un *spare* (le prochain lancer est ajouté en bonus). On va donc faire un extract variable sur ce calcul pour faire apparaître le concept.
 
 ```diff
-    public int score() {
-	int score = 0;
-	int frameIndex = 0;
-+	int bonus = 0;
+public int score() {
+    int score = 0;
+    int frameIndex = 0;
++   int bonus = 0;
+    
+    // frame 1
+    frameIndex = 0;
+    score += rolls.get(frameIndex); // roll 1
+    score += rolls.get(frameIndex + 1); // roll 2
 
-	// frame 1
-	frameIndex = 0;
-	score += rolls.get(frameIndex); // roll 1
-	score += rolls.get(frameIndex + 1); // roll 2
+    // frame 2
+    frameIndex = frameIndex + 2;
+    score += rolls.get(frameIndex); // roll 3
+    score += rolls.get(frameIndex + 1); // roll 4
 
-	// frame 2
-	frameIndex = frameIndex + 2;
-	score += rolls.get(frameIndex); // roll 3
-	score += rolls.get(frameIndex + 1); // roll 4
+    // frame 3
+    frameIndex = frameIndex + 2;
+    score += rolls.get(frameIndex); // roll 5
+    score += rolls.get(frameIndex + 1); // roll 6 (spare)
+    bonus = rolls.get(frameIndex + 2); // roll 7 (spare bonus)
+    score += bonus;
 
-	// frame 3
-	frameIndex = frameIndex + 2;
-	score += rolls.get(frameIndex); // roll 5
-	score += rolls.get(frameIndex + 1); // roll 6 (spare)
-	bonus = rolls.get(frameIndex + 2); // roll 7 (spare bonus)
-	score += bonus;
+    // frame 4
+    frameIndex = frameIndex + 2;
+    score += rolls.get(frameIndex); // roll 7
+    score += rolls.get(frameIndex + 1); // roll 8
 
-	// frame 4
-	frameIndex = frameIndex + 2;
-	score += rolls.get(frameIndex); // roll 7
-	score += rolls.get(frameIndex + 1); // roll 8
+    // frame 5
+    frameIndex = frameIndex + 2;
+    score += rolls.get(frameIndex); // roll 9
+    score += rolls.get(frameIndex + 1); // roll 10
 
-	// frame 5
-	frameIndex = frameIndex + 2;
-	score += rolls.get(frameIndex); // roll 9
-	score += rolls.get(frameIndex + 1); // roll 10
+    // frame 6
+    frameIndex = frameIndex + 2;
+    score += rolls.get(frameIndex); // roll 11
+    score += rolls.get(frameIndex + 1); // roll 12
 
-	// frame 6
-	frameIndex = frameIndex + 2;
-	score += rolls.get(frameIndex); // roll 11
-	score += rolls.get(frameIndex + 1); // roll 12
+    // frame 7
+    frameIndex = frameIndex + 2;
+    score += rolls.get(frameIndex); // roll 13
+    score += rolls.get(frameIndex + 1); // roll 14 (spare)
+-   score += rolls.get(frameIndex + 2); // roll 15 (spare bonus)
++   bonus = rolls.get(frameIndex + 2); // roll 15 (spare bonus)
++   score += bonus;
 
-	// frame 7
-	frameIndex = frameIndex + 2;
-	score += rolls.get(frameIndex); // roll 13
-	score += rolls.get(frameIndex + 1); // roll 14 (spare)
--	score += rolls.get(frameIndex + 2); // roll 15 (spare bonus)
-+	bonus = rolls.get(frameIndex + 2); // roll 15 (spare bonus)
-+	score += bonus;
+    // frame 8
+    frameIndex = frameIndex + 2;
+    score += rolls.get(frameIndex); // roll 15 (strike)
+-   score += rolls.get(frameIndex + 1); // roll 16 (strike bonus)
+-   score += rolls.get(frameIndex + 2); // roll 17 (strike bonus)
++   bonus = rolls.get(frameIndex + 1); // roll 16 (strike bonus)
++   bonus += rolls.get(frameIndex + 2); // roll 17 (strike bonus)
++   score += bonus;
 
-	// frame 8
-	frameIndex = frameIndex + 2;
-	score += rolls.get(frameIndex); // roll 15 (strike)
--	score += rolls.get(frameIndex + 1); // roll 16 (strike bonus)
--	score += rolls.get(frameIndex + 2); // roll 17 (strike bonus)
-+	bonus = rolls.get(frameIndex + 1); // roll 16 (strike bonus)
-+	bonus += rolls.get(frameIndex + 2); // roll 17 (strike bonus)
-+	score += bonus;
-
-	// frame 9
-	frameIndex = frameIndex + 1;
-	score += rolls.get(frameIndex); // roll 16
-	score += rolls.get(frameIndex + 1); // roll 17
+    // frame 9
+    frameIndex = frameIndex + 1;
+    score += rolls.get(frameIndex); // roll 16
+     score += rolls.get(frameIndex + 1); // roll 17
 
 
-	// frame 10
-	frameIndex = frameIndex + 2;
-	score += rolls.get(frameIndex); // roll 18 (strike)
--	score += rolls.get(frameIndex + 1); // roll 19 (strike bonus)
--	score += rolls.get(frameIndex + 2); // roll 20 (strike bonus)
-+	bonus = rolls.get(frameIndex + 1); // roll 19 (strike bonus)
-+	bonus += rolls.get(frameIndex + 2); // roll 20 (strike bonus)
-+	score += bonus;
+    // frame 10
+    frameIndex = frameIndex + 2;
+    score += rolls.get(frameIndex); // roll 18 (strike)
+-   score += rolls.get(frameIndex + 1); // roll 19 (strike bonus)
+-   score += rolls.get(frameIndex + 2); // roll 20 (strike bonus)
++   bonus = rolls.get(frameIndex + 1); // roll 19 (strike bonus)
++   bonus += rolls.get(frameIndex + 2); // roll 20 (strike bonus)
++   score += bonus;
 
-	return score;
+   return score;
 }
 ```
 
@@ -823,15 +823,15 @@ En effet, nous avons un concept qui n'apparait que dans certains cas. Ce concept
     frameIndex = 0;
     score += rolls.get(frameIndex); // roll 1
     score += rolls.get(frameIndex + 1); // roll 2
-+	bonus = 0;
-+	score += bonus;
++   bonus = 0;
++   score += bonus;
 
     // frame 2
     frameIndex = frameIndex + 2;
     score += rolls.get(frameIndex); // roll 3
     score += rolls.get(frameIndex + 1); // roll 4
-+	bonus = 0;
-+	score += bonus;
++   bonus = 0;
++   score += bonus;
 
     // frame 3
     frameIndex = frameIndex + 2;
@@ -844,22 +844,22 @@ En effet, nous avons un concept qui n'apparait que dans certains cas. Ce concept
     frameIndex = frameIndex + 2;
     score += rolls.get(frameIndex); // roll 7
     score += rolls.get(frameIndex + 1); // roll 8
-+	bonus = 0;
-+	score += bonus;
++   bonus = 0;
++   score += bonus;
 
     // frame 5
     frameIndex = frameIndex + 2;
     score += rolls.get(frameIndex); // roll 9
     score += rolls.get(frameIndex + 1); // roll 10
-+	bonus = 0;
-+	score += bonus;
++   bonus = 0;
++   score += bonus;
 
     // frame 6
     frameIndex = frameIndex + 2;
     score += rolls.get(frameIndex); // roll 11
     score += rolls.get(frameIndex + 1); // roll 12
-+	bonus = 0;
-+	score += bonus;
++   bonus = 0;
++   score += bonus;
 
     // frame 7
     frameIndex = frameIndex + 2;
@@ -879,8 +879,8 @@ En effet, nous avons un concept qui n'apparait que dans certains cas. Ce concept
     frameIndex = frameIndex + 1;
     score += rolls.get(frameIndex); // roll 16
     score += rolls.get(frameIndex + 1); // roll 17
-+	bonus = 0;
-+	score += bonus;
++   bonus = 0;
++   score += bonus;
 
 
     // frame 10
@@ -1242,13 +1242,13 @@ Mettons en évidence le concept de score lié à la frame :
 ```diff
 
 public int score() {
-	int score = 0;
-	int frameIndex = 0;
-	int bonus = 0;
+    int score = 0;
+    int frameIndex = 0;
+    int bonus = 0;
 +   int frameScore = 0;
 
-        // frame 1
-        frameIndex = 0;
+    // frame 1
+    frameIndex = 0;
 
 +   frameScore = rolls.get(frameIndex); // roll 1
 +   frameScore += rolls.get(frameIndex + 1); // roll 2
@@ -1320,7 +1320,7 @@ public int score() {
 
     // frame 8
     frameIndex = frameIndex + 2;
-+	frameScore = rolls.get(frameIndex); // roll 15 (strike)
++       frameScore = rolls.get(frameIndex); // roll 15 (strike)
 -   score += rolls.get(frameIndex); // roll 15 (strike)
     bonus = calculateFrameBonus(frameIndex);
 +   score += frameScore + bonus;
@@ -2207,7 +2207,8 @@ public class Bowling {
             bonus += rolls.get(frameIndex + 2);  
         } else if (isSpare(frameIndex))  
             bonus = rolls.get(frameIndex + 2);  
-        else            bonus = 0;  
+        else
+            bonus = 0;  
         return bonus;  
     }  
   
