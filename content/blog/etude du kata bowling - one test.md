@@ -167,15 +167,15 @@ public int score() {
 }
 ```
 
->Dev : Tu as toujours ce 117...<br>
->Moi : C'est vrai, mais comment arrive-t-on à ce résultat ?<br>
->Dev : Il faut ajouter le résultat du premier lancer puis du second ....<br>
->Moi : C'est vrai, mais ton niveau d'abstraction est trop haut, c'est trop tôt pour en parler<br>
->Dev : ???<br>
->Moi : Le résultat du premier lancer, c'est 3 et le second, c'est 4<br>
->Dev ???????<br>
->Moi : 117, c'est égal à 3 + 4 + 6 + ... + 10 + 8 + 1<br>
->Dev : ?????????????????????<br>
+>Dev : Tu as toujours ce 117...
+>Moi : C'est vrai, mais comment arrive-t-on à ce résultat ?
+>Dev : Il faut ajouter le résultat du premier lancer puis du second ....
+>Moi : C'est vrai, mais ton niveau d'abstraction est trop haut, c'est trop tôt pour en parler
+>Dev : ???  
+>Moi : Le résultat du premier lancer, c'est 3 et le second, c'est 4  
+>Dev ???????  
+>Moi : 117, c'est égal à 3 + 4 + 6 + ... + 10 + 8 + 1  
+>Dev : ?????????????????????  
 >Moi : Oui, pour calculer le score, il faut connaître les règles du bowling et savoir faire le calcul à la main
 
 
@@ -285,11 +285,11 @@ public int score() {
 En séparant les différents lancers, nous faisons apparaître la notion de *frame*, l'un des concepts du bowling. Nous introduisons aussi la notion de strike et de spare ainsi que les bonus respectif.
 
 ## Clarifions un peu plus
-> Dev : tu veux encore clarifier ?
-> Moi : oui, mais cette fois, c'est pour enlever de la duplication
-> Dev : de la duplication ??
-> Moi : oui, ces nombres : 3, 4, 6, etc... on les retrouve aussi dans le test 
-> Dev : ah oui, c'est vrai... et je suppose que ce sont les mêmes concepts ?
+> Dev : tu veux encore clarifier ?  
+> Moi : oui, mais cette fois, c'est pour enlever de la duplication  
+> Dev : de la duplication ??  
+> Moi : oui, ces nombres : 3, 4, 6, etc... on les retrouve aussi dans le test   
+> Dev : ah oui, c'est vrai... et je suppose que ce sont les mêmes concepts ?  
 > Moi : oui, chaque nombre représente le nombre de quilles tombées lors d'un lancer.
 
 Allons chercher ces lancers. Ils sont définis dans le test et sont introduits dans notre classe via la méthode `roll`.
@@ -403,10 +403,10 @@ public int score() {
 }
 ```
 
->Dev : Et maintenant ? On fait quoi ?
->Moi : On continue d'enlever la duplication ! 
->Dev : À part le rolls.get, je n'en vois pas...
->Moi : C'est pourquoi nous allons la mettre en évidence
+>Dev : Et maintenant ? On fait quoi ?  
+>Moi : On continue d'enlever la duplication !   
+>Dev : À part le rolls.get, je n'en vois pas...  
+>Moi : C'est pourquoi nous allons la mettre en évidence  
 
 Pour mettre en évidence la duplication, il faut se servir de son instinct. Il n'y a pas de règle permettant d'y arriver, mais je te propose ça : 
 
@@ -569,12 +569,12 @@ public int score() {
 }
 ```
 
->Dev : Ah oui ! Je la vois maintenant. On fait une boucle ?
->Moi : Ton instinct te dit qu'il y a une boucle, mais c'est encore trop tôt.
->Dev : Pourquoi ? Les blocs se ressemblent !
->Moi : Ils se ressemblent, mais ils ne sont pas identiques. Il faut continuer à clarifier.
->Dev : Qu'est-ce qu'on fait alors ?
->Moi : Ce que l'on fait depuis le début, on clarifie puis on met en évidence la duplication.
+>Dev : Ah oui ! Je la vois maintenant. On fait une boucle ?  
+>Moi : Ton instinct te dit qu'il y a une boucle, mais c'est encore trop tôt.  
+>Dev : Pourquoi ? Les blocs se ressemblent !  
+>Moi : Ils se ressemblent, mais ils ne sont pas identiques. Il faut continuer à clarifier.  
+>Dev : Qu'est-ce qu'on fait alors ?  
+>Moi : Ce que l'on fait depuis le début, on clarifie puis on met en évidence la duplication.  
 
 Effectivement, il est trop tôt pour introduire une boucle. Clarifions le concept de `frameIndex` : 
 
@@ -728,7 +728,7 @@ public int score() {
 }
 ```
 
-> Dev : Et ensuite ?
+> Dev : Et ensuite ?  
 > Moi : On va continuer de clarifier en introduisant la notion de bonus. On va de nouveau utiliser le refactoring Extract variable.
 
 La notion de bonus apparaît lorsqu'on a un *strike* (les deux prochains lancers sont ajoutés en bonus) ou lors d'un *spare* (le prochain lancer est ajouté en bonus). On va donc faire un extract variable sur ce calcul pour faire apparaître le concept.
@@ -807,9 +807,9 @@ public int score() {
 }
 ```
 
-> Dev : C'est bien beau ce concept de bonus, mais on ne les voit pas dans tous les blocs !
-> Moi : Et donc ?
-> Dev : Les blocs se ressemblent moins après ta modification !
+> Dev : C'est bien beau ce concept de bonus, mais on ne les voit pas dans tous les blocs !  
+> Moi : Et donc ?  
+> Dev : Les blocs se ressemblent moins après ta modification !  
 > Moi : Tu as tout à fait raison, mais rien ne nous interdit d'introduire la notion de bonus pour les frames standard
 
 En effet, nous avons un concept qui n'apparait que dans certains cas. Ce concept est assez simple et peut-être représenté dans notre algorithme. 
@@ -895,14 +895,14 @@ En effet, nous avons un concept qui n'apparait que dans certains cas. Ce concept
 }
 ```
 
-> Dev : Génial ! Dans chaque bloc, on a une ligne qui se ressemble. Mais le bonus se calcule toujours différement...
-> Moi : C'est vrai, après la clarification, mettons en évidence la duplication
-> Dev : Pas facile...
-> Moi : Dans quel cas le bonus est équivalent au prochain lancer ?
-> Dev : Lorsqu'on fait un spare
-> Moi : Et dans quel cas le bonus vaut les deux prochains lancers ?
-> Dev : Lors d'un strike !
-> Moi : Et pour un bonus de zéro ?
+> Dev : Génial ! Dans chaque bloc, on a une ligne qui se ressemble. Mais le bonus se calcule toujours différement...  
+> Moi : C'est vrai, après la clarification, mettons en évidence la duplication  
+> Dev : Pas facile...  
+> Moi : Dans quel cas le bonus est équivalent au prochain lancer ?  
+> Dev : Lorsqu'on fait un spare  
+> Moi : Et dans quel cas le bonus vaut les deux prochains lancers ?  
+> Dev : Lors d'un strike !  
+> Moi : Et pour un bonus de zéro ?  
 > Dev : Dans les autres cas !
 
 Pour détecter un *strike*, il faut vérifier la somme du premier lancer. S'il vaut `10`, c'en est un. Pour un *spare*, c'est la somme des deux lancers qui doit valoir `10`. Dans les autres cas, on n'a pas de bonus (ou un bonus qui vaut `0`).
@@ -1060,10 +1060,10 @@ public int score() {
 }
 ```
 
-> Dev : Le code est beaucoup plus lourd comme ça...
-> Moi : C'est vrai. On peut le simplfiier en ajoutant une abstraction sur le calcul du bonus.
-> Dev : Comment peut-on faire ça ?
-> Moi : C'est simple, avec le refactoring extract method.
+> Dev : Le code est beaucoup plus lourd comme ça...  
+> Moi : C'est vrai. On peut le simplfiier en ajoutant une abstraction sur le calcul du bonus.  
+> Dev : Comment peut-on faire ça ?  
+> Moi : C'est simple, avec le refactoring extract method.  
 
 Nous sommes assez avancés pour extraire le concept de calcul de bonus. Pour cela, nous allons faire un [[wiki/extract method|extract method]]. Cela consiste à créer une fonction à partir d'un bloc de code.
 
@@ -1228,11 +1228,11 @@ public int score() {
 +}
 ```
 
-> Dev : 70 lignes de moins dans la fonction `score` !
-> Moi : Et ce n'est que le début.
-> Dev : Je pense qu'on va faire la même chose pour le calcul du score sans le bonus.
-> Moi : Bingo, on va encore perdre des lignes, mais que doit-on faire d'abord ?
-> Dev : Mettre en évidence le concept puis la duplication.
+> Dev : 70 lignes de moins dans la fonction `score` !  
+> Moi : Et ce n'est que le début.  
+> Dev : Je pense qu'on va faire la même chose pour le calcul du score sans le bonus.  
+> Moi : Bingo, on va encore perdre des lignes, mais que doit-on faire d'abord ?  
+> Dev : Mettre en évidence le concept puis la duplication.  
 
 Le calcul du score (sans le bonus) peut se faire de plusieurs manières différentes. J'ai choisi l'approche de faire le moins de modification possible dans le code actuel (pour les *strikes* et les *spares*, il aurait été possible de calculer directement 10).
 
@@ -1638,9 +1638,9 @@ public int score() {
 
 ```
 
-> Dev : Il reste encore un concept, l'indice de la prochaine frame. C'est ça ?
-> Moi : Tout à fait. Tu commences à comprendre :)
-> Dev : Alors, le concept existe déjà, on va donc mettre en évidence la duplication puis la supprimer avec un extract method.
+> Dev : Il reste encore un concept, l'indice de la prochaine frame. C'est ça ?  
+> Moi : Tout à fait. Tu commences à comprendre :)  
+> Dev : Alors, le concept existe déjà, on va donc mettre en évidence la duplication puis la supprimer avec un extract method.  
 > Moi : Bingo ! 
 
 Voilà la mise en évidence : 
@@ -1893,14 +1893,14 @@ public int score() {
 +}
 ```
 
-> Dev : Et maintenant, la boucle !!!!!
-> Moi : Presque, il y a encore une chose qui ne colle pas.
-> Dev : ???
-> Moi : Tous les blocs de codes sont identiques, sauf pour le frame 1
-> Dev : Oui, c'est vrai, on n'a qu'à faire un cas particulier pour ce bloc.
-> Moi : Ou alors, on l'aligne avec les autres 
-> Dev : ???
-> Moi : Tu vas voir
+> Dev : Et maintenant, la boucle !!!!!  
+> Moi : Presque, il y a encore une chose qui ne colle pas.  
+> Dev : ???  
+> Moi : Tous les blocs de codes sont identiques, sauf pour le frame 1  
+> Dev : Oui, c'est vrai, on n'a qu'à faire un cas particulier pour ce bloc.  
+> Moi : Ou alors, on l'aligne avec les autres   
+> Dev : ???  
+> Moi : Tu vas voir  
 
 Pour rendre le code identique, on supprime tout simplement l'initialisation de `frameIndex` qui est déjà fait (on aurait pu la supprimer depuis longtemps).
 
@@ -1989,7 +1989,7 @@ public int score() {
 }
 ```
 
-> Dev : On peut enfin passer à la boucle ?
+> Dev : On peut enfin passer à la boucle ?  
 > Moi : Ouiiiii ! Tous nos blocs sont identiques.
 
 Notre code traite 10 frames. On va donc utiliser un compteur qui va jusqu'à 10 : 
@@ -2223,3 +2223,9 @@ public class Bowling {
 }
 ```
 
+## Conclusion
+J'ai forcé la démonstration de la méthode en ne faisant qu'un seul test. J'ai mis de côté TDD pour me concentrer seulement sur le refactoring.
+
+Bien sûr, cette méthode doit être couplée à TDD et il faut écrire les tests au fur et à mesure. Elle ne fonctionne pas dans tous les cas, mais tricher permet parfois d'aller beaucoup plus vite.
+
+Merci de m'avoir lu jusqu'au bout ![]()
