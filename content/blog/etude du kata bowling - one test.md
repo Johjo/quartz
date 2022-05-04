@@ -167,15 +167,15 @@ public int score() {
 }
 ```
 
->Dev : Tu as toujours ce 117...
->Moi : C'est vrai, mais comment arrive-t-on à ce résultat ?
->Dev : Il faut ajouter le résultat du premier lancer puis du second ....
->Moi : C'est vrai, mais ton niveau d'abstraction est trop haut, c'est trop tôt pour en parler
->Dev : ???
->Moi : Le résultat du premier lancer, c'est 3 et le second, c'est 4
->Dev ???????
->Moi : 117, c'est égal à 3 + 4 + 6 + ... + 10 + 8 + 1
->Dev : ?????????????????????
+>Dev : Tu as toujours ce 117...<br>
+>Moi : C'est vrai, mais comment arrive-t-on à ce résultat ?<br>
+>Dev : Il faut ajouter le résultat du premier lancer puis du second ....<br>
+>Moi : C'est vrai, mais ton niveau d'abstraction est trop haut, c'est trop tôt pour en parler<br>
+>Dev : ???<br>
+>Moi : Le résultat du premier lancer, c'est 3 et le second, c'est 4<br>
+>Dev ???????<br>
+>Moi : 117, c'est égal à 3 + 4 + 6 + ... + 10 + 8 + 1<br>
+>Dev : ?????????????????????<br>
 >Moi : Oui, pour calculer le score, il faut connaître les règles du bowling et savoir faire le calcul à la main
 
 
