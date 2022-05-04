@@ -149,11 +149,11 @@ On passe de l'étape *RED* à l'étape *GREEN* en 2 secondes. Voilà, nous venon
 À partir de maintenant, nos tests doivent toujours passer. Nous entrons dans la phase du *REFACTORING*. Et nous n'en ressortirons pas tant que notre algo ne sera pas terminé.
 
 ## Clarifions... Quoi ? Comment ?
-> Dev : C'est bien beau ce 117, mais je ne vois pas d'algo là-dedans
-> Moi : C'est vrai, mais pourtant, l'algo est là, mais tu ne le vois pas encore
-> Dev : ???
-> Moi : Petite question, c'est quoi ce 117 ?
-> Dev : 117 ? C'est le score total de ma partie de bowling...
+> Dev : C'est bien beau ce 117, mais je ne vois pas d'algo là-dedans 
+> Moi : C'est vrai, mais pourtant, l'algo est là, mais tu ne le vois pas encore 
+> Dev : ??? 
+> Moi : Petite question, c'est quoi ce 117 ? 
+> Dev : 117 ? C'est le score total de ma partie de bowling... 
 
 Bingo ! Nous venons d'attaquer la phase de **clarification** qui est une étape de la phase de *REFACTORING*. Nous sommes en train de parler du **QUOI**. Et cela nous permet d'introduire un nouveau concept : le score total de la partie (bon, je sais, la méthode s'appelle score, c'était facile...). 
 
