@@ -1,0 +1,284 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=description content="Dans cette étude de kata, nous allons étudier [[wiki/gilded rose|gilded rose]]. Je vais te montrer comment mettre en place très rapidement un test de caractérisation avc un golden master et le résoudre encore plus rapidement grâce à une astuce de refactoring."><title>etude du kata gilded rose - golden master</title><meta name=viewport content="width=device-width,initial-scale=1"><link rel="shortcut icon" type=image/png href=https://www.ytreza.dev/icon.png><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Source+Sans+Pro:wght@400;600;700&family=Fira+Code:wght@400;700&display=swap" rel=stylesheet><link href=https://www.ytreza.dev/styles.43355a9a8dd6bd19e4e06361fef53dca.min.css rel=stylesheet><script src=https://www.ytreza.dev/js/darkmode.46b07878b7f5d9e26ad7a3c40f8a0605.min.js></script>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css integrity=sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs crossorigin=anonymous><script defer src=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js integrity=sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx crossorigin=anonymous></script>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js integrity=sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR crossorigin=anonymous></script>
+<script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1}],throwOnError:!1})})</script><script>const BASE_URL="https://www.ytreza.dev",fetchData=Promise.all([fetch("https://www.ytreza.dev/indices/linkIndex.82266a23e1f2022d4556ae99a1ca59bc.min.json").then(e=>e.json()).then(e=>({index:e.index,links:e.links})),fetch("https://www.ytreza.dev/indices/contentIndex.a62cafa92aa4761f3995b5e091f0dda3.min.json").then(e=>e.json())]).then(([{index:e,links:t},n])=>({index:e,links:t,content:n}))</script></head><body><div id=search-container><div id=search-space><input autocomplete=off id=search-bar name=search type=text aria-label=Search placeholder="Search for something..."><div id=results-container></div></div></div><script src=https://cdn.jsdelivr.net/npm/flexsearch@0.7.21/dist/flexsearch.bundle.js integrity="sha256-i3A0NZGkhsKjVMzFxv3ksk0DZh3aXqu0l49Bbh0MdjE=" crossorigin=anonymous defer></script>
+<script defer src=https://www.ytreza.dev/js/search.bc849b857f2c1b822264d40635bb67b6.min.js></script><div class=singlePage><header><h1 id=page-title><a href=https://www.ytreza.dev>Wiki ytreza.dev</a></h1><svg tabindex="0" id="search-icon" aria-labelledby="title desc" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title id="title">Search Icon</title><desc id="desc">Icon to open search</desc><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"/><circle cx="8" cy="8" r="7"/></g></svg><div class=spacer></div><div class=darkmode><input class=toggle id=darkmode-toggle type=checkbox tabindex=-1>
+<label id=toggle-label-light for=darkmode-toggle tabindex=-1><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="dayIcon" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35"><title>Light Mode</title><path d="M6 17.5C6 16.672 5.328 16 4.5 16h-3C.672 16 0 16.672.0 17.5S.672 19 1.5 19h3C5.328 19 6 18.328 6 17.5zM7.5 26c-.414.0-.789.168-1.061.439l-2 2C4.168 28.711 4 29.086 4 29.5 4 30.328 4.671 31 5.5 31c.414.0.789-.168 1.06-.44l2-2C8.832 28.289 9 27.914 9 27.5 9 26.672 8.329 26 7.5 26zm10-20C18.329 6 19 5.328 19 4.5v-3C19 .672 18.329.0 17.5.0S16 .672 16 1.5v3C16 5.328 16.671 6 17.5 6zm10 3c.414.0.789-.168 1.06-.439l2-2C30.832 6.289 31 5.914 31 5.5 31 4.672 30.329 4 29.5 4c-.414.0-.789.168-1.061.44l-2 2C26.168 6.711 26 7.086 26 7.5 26 8.328 26.671 9 27.5 9zM6.439 8.561C6.711 8.832 7.086 9 7.5 9 8.328 9 9 8.328 9 7.5c0-.414-.168-.789-.439-1.061l-2-2C6.289 4.168 5.914 4 5.5 4 4.672 4 4 4.672 4 5.5c0 .414.168.789.439 1.06l2 2.001zM33.5 16h-3c-.828.0-1.5.672-1.5 1.5s.672 1.5 1.5 1.5h3c.828.0 1.5-.672 1.5-1.5S34.328 16 33.5 16zM28.561 26.439C28.289 26.168 27.914 26 27.5 26c-.828.0-1.5.672-1.5 1.5.0.414.168.789.439 1.06l2 2C28.711 30.832 29.086 31 29.5 31c.828.0 1.5-.672 1.5-1.5.0-.414-.168-.789-.439-1.061l-2-2zM17.5 29c-.829.0-1.5.672-1.5 1.5v3c0 .828.671 1.5 1.5 1.5s1.5-.672 1.5-1.5v-3C19 29.672 18.329 29 17.5 29zm0-22C11.71 7 7 11.71 7 17.5S11.71 28 17.5 28 28 23.29 28 17.5 23.29 7 17.5 7zm0 18c-4.136.0-7.5-3.364-7.5-7.5s3.364-7.5 7.5-7.5 7.5 3.364 7.5 7.5S21.636 25 17.5 25z"/></svg></label><label id=toggle-label-dark for=darkmode-toggle tabindex=-1><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="nightIcon" viewBox="0 0 100 100" style="enable-background='new 0 0 100 100'"><title>Dark Mode</title><path d="M96.76 66.458c-.853-.852-2.15-1.064-3.23-.534-6.063 2.991-12.858 4.571-19.655 4.571C62.022 70.495 50.88 65.88 42.5 57.5 29.043 44.043 25.658 23.536 34.076 6.47c.532-1.08.318-2.379-.534-3.23-.851-.852-2.15-1.064-3.23-.534-4.918 2.427-9.375 5.619-13.246 9.491-9.447 9.447-14.65 22.008-14.65 35.369.0 13.36 5.203 25.921 14.65 35.368s22.008 14.65 35.368 14.65c13.361.0 25.921-5.203 35.369-14.65 3.872-3.871 7.064-8.328 9.491-13.246C97.826 68.608 97.611 67.309 96.76 66.458z"/></svg></label></div></header><article><h1>etude du kata gilded rose - golden master</h1><p class=meta>Last updated May 11, 2022</p><ul class=tags><li><a href=https://www.ytreza.dev/tags/%C3%A9tude-de-kata/>Étude de kata</a></li><li><a href=https://www.ytreza.dev/tags/refactoring/>Refactoring</a></li><li><a href=https://www.ytreza.dev/tags/golden-master/>Golden master</a></li><li><a href=https://www.ytreza.dev/tags/approval-testing/>Approval testing</a></li></ul><aside class=mainTOC><details><summary>Table of Contents</summary><nav id=TableOfContents><ol><li><a href=#le-code-initial>Le code initial</a></li><li><a href=#mise-en-place-du-golden-master>Mise en place du golden master</a><ol><li><a href=#le-code-coverage>Le code coverage</a></li></ol></li><li><a href=#reference>Reference</a></li></ol></nav></details></aside><p>Dans cette étude de kata, nous allons étudier <a href=/wiki/gilded-rose rel=noopener class=internal-link data-src=/wiki/gilded-rose>gilded rose</a>. Je vais te montrer comment mettre en place très rapidement un test de caractérisation avc un golden master et le résoudre encore plus rapidement grâce à une astuce de refactoring.</p><h2 id=le-code-initial>Le code initial</h2><p>Voici le code sur lequel on va travailler :</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span><span class=lnt>54
+</span><span class=lnt>55
+</span><span class=lnt>56
+</span><span class=lnt>57
+</span><span class=lnt>58
+</span><span class=lnt>59
+</span><span class=lnt>60
+</span><span class=lnt>61
+</span><span class=lnt>62
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=kn>package</span> <span class=nn>com.gildedrose</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=kd>class</span> <span class=nc>GildedRose</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>    <span class=n>Item</span><span class=o>[]</span> <span class=n>items</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=nf>GildedRose</span><span class=o>(</span><span class=n>Item</span><span class=o>[]</span> <span class=n>items</span><span class=o>)</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>this</span><span class=o>.</span><span class=na>items</span> <span class=o>=</span> <span class=n>items</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>    <span class=o>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=kt>void</span> <span class=nf>updateQuality</span><span class=o>()</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>        <span class=k>for</span> <span class=o>(</span><span class=kt>int</span> <span class=n>i</span> <span class=o>=</span> <span class=n>0</span><span class=o>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=n>items</span><span class=o>.</span><span class=na>length</span><span class=o>;</span> <span class=n>i</span><span class=o>++)</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>            <span class=k>if</span> <span class=o>(!</span><span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>name</span><span class=o>.</span><span class=na>equals</span><span class=o>(</span><span class=s>&#34;Aged Brie&#34;</span><span class=o>)</span>
+</span></span><span class=line><span class=cl>                    <span class=o>&amp;&amp;</span> <span class=o>!</span><span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>name</span><span class=o>.</span><span class=na>equals</span><span class=o>(</span><span class=s>&#34;Backstage passes to a TAFKAL80ETC concert&#34;</span><span class=o>))</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>                <span class=k>if</span> <span class=o>(</span><span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>&gt;</span> <span class=n>0</span><span class=o>)</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>                    <span class=k>if</span> <span class=o>(!</span><span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>name</span><span class=o>.</span><span class=na>equals</span><span class=o>(</span><span class=s>&#34;Sulfuras, Hand of Ragnaros&#34;</span><span class=o>))</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>                        <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>=</span> <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>-</span> <span class=n>1</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>                    <span class=o>}</span>
+</span></span><span class=line><span class=cl>                <span class=o>}</span>
+</span></span><span class=line><span class=cl>            <span class=o>}</span> <span class=k>else</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>                <span class=k>if</span> <span class=o>(</span><span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>&lt;</span> <span class=n>50</span><span class=o>)</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>                    <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>=</span> <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>+</span> <span class=n>1</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    <span class=k>if</span> <span class=o>(</span><span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>name</span><span class=o>.</span><span class=na>equals</span><span class=o>(</span><span class=s>&#34;Backstage passes to a TAFKAL80ETC concert&#34;</span><span class=o>))</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>                        <span class=k>if</span> <span class=o>(</span><span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>sellIn</span> <span class=o>&lt;</span> <span class=n>11</span><span class=o>)</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>                            <span class=k>if</span> <span class=o>(</span><span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>&lt;</span> <span class=n>50</span><span class=o>)</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>                                <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>=</span> <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>+</span> <span class=n>1</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>                            <span class=o>}</span>
+</span></span><span class=line><span class=cl>                        <span class=o>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                        <span class=k>if</span> <span class=o>(</span><span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>sellIn</span> <span class=o>&lt;</span> <span class=n>6</span><span class=o>)</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>                            <span class=k>if</span> <span class=o>(</span><span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>&lt;</span> <span class=n>50</span><span class=o>)</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>                                <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>=</span> <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>+</span> <span class=n>1</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>                            <span class=o>}</span>
+</span></span><span class=line><span class=cl>                        <span class=o>}</span>
+</span></span><span class=line><span class=cl>                    <span class=o>}</span>
+</span></span><span class=line><span class=cl>                <span class=o>}</span>
+</span></span><span class=line><span class=cl>            <span class=o>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>            <span class=k>if</span> <span class=o>(!</span><span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>name</span><span class=o>.</span><span class=na>equals</span><span class=o>(</span><span class=s>&#34;Sulfuras, Hand of Ragnaros&#34;</span><span class=o>))</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>                <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>sellIn</span> <span class=o>=</span> <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>sellIn</span> <span class=o>-</span> <span class=n>1</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>            <span class=o>}</span>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>            <span class=k>if</span> <span class=o>(</span><span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>sellIn</span> <span class=o>&lt;</span> <span class=n>0</span><span class=o>)</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>                <span class=k>if</span> <span class=o>(!</span><span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>name</span><span class=o>.</span><span class=na>equals</span><span class=o>(</span><span class=s>&#34;Aged Brie&#34;</span><span class=o>))</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>                    <span class=k>if</span> <span class=o>(!</span><span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>name</span><span class=o>.</span><span class=na>equals</span><span class=o>(</span><span class=s>&#34;Backstage passes to a TAFKAL80ETC concert&#34;</span><span class=o>))</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>                        <span class=k>if</span> <span class=o>(</span><span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>&gt;</span> <span class=n>0</span><span class=o>)</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>                            <span class=k>if</span> <span class=o>(!</span><span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>name</span><span class=o>.</span><span class=na>equals</span><span class=o>(</span><span class=s>&#34;Sulfuras, Hand of Ragnaros&#34;</span><span class=o>))</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>                                <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>=</span> <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>-</span> <span class=n>1</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>                            <span class=o>}</span>
+</span></span><span class=line><span class=cl>                        <span class=o>}</span>
+</span></span><span class=line><span class=cl>                    <span class=o>}</span> <span class=k>else</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>                        <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>=</span> <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>-</span> <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>                    <span class=o>}</span>
+</span></span><span class=line><span class=cl>                <span class=o>}</span> <span class=k>else</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>                    <span class=k>if</span> <span class=o>(</span><span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>&lt;</span> <span class=n>50</span><span class=o>)</span> <span class=o>{</span>
+</span></span><span class=line><span class=cl>                        <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>=</span> <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>+</span> <span class=n>1</span><span class=o>;</span>
+</span></span><span class=line><span class=cl>                    <span class=o>}</span>
+</span></span><span class=line><span class=cl>                <span class=o>}</span>
+</span></span><span class=line><span class=cl>            <span class=o>}</span>
+</span></span><span class=line><span class=cl>        <span class=o>}</span>
+</span></span><span class=line><span class=cl>    <span class=o>}</span>
+</span></span><span class=line><span class=cl><span class=o>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>Charmant, n&rsquo;est-ce pas ? On peut trouver le projet complet sur
+<a href=https://github.com/emilybache/GildedRose-Refactoring-Kata rel=noopener>le github d&rsquo;Emily Bache</a>.</p><p>Après l&rsquo;avoir récupéré, je t&rsquo;invite à l&rsquo;étudier. Il y a la classe <code>GildedRose</code> qui contient la méthode ci-dessus. Il y a aussi un test unitaire <code>GildedRoseTest.java</code> qui ne sert pas à grand chose, si ce n&rsquo;est avoir un point de départ.</p><p>Il y a aussi un fichier <code>TexttestFixture.java</code> que j&rsquo;utilisais pour mes précédents <em>golden master</em>.</p><h2 id=mise-en-place-du-golden-master>Mise en place du golden master</h2><p>Le <a class="internal-link broken">golden master</a> nous permet de mettre en place très simplement un test qui va nous permettre de refactorer le code tranquillement. Il s&rsquo;agit tout simplement de stocker dans un fichier la sortie créée par une fonctionnalité existante et de vérifier qu&rsquo;on génère toujours la même sortie.</p><p>Je vais recycler le test foo qui est fourni dans le projet pour mettre en place ce <em>golden master</em>. Pour être honnête, je n&rsquo;ai pas pris le temps (j&rsquo;ai oublié :p) de renommer le test automatique.</p><p>On crée notre golden master dans une simple chaîne de caractère et on utilise la librairie <a href=/wiki/ApprovalTests rel=noopener class=internal-link data-src=/wiki/ApprovalTests>ApprovalTests</a> pour le valider. On en profite pour supprimer le <code>assertEquals</code> qui ne servait à rien :</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-diff data-lang=diff><span class=line><span class=cl>     @Test
+</span></span><span class=line><span class=cl>     void foo() {
+</span></span><span class=line><span class=cl><span class=gi>+        StringBuilder golden_master = new StringBuilder();
+</span></span></span><span class=line><span class=cl><span class=gi></span>
+</span></span><span class=line><span class=cl>         Item[] items = new Item[] { new Item(&#34;foo&#34;, 0, 0) };
+</span></span><span class=line><span class=cl>         GildedRose app = new GildedRose(items);
+</span></span><span class=line><span class=cl>         app.updateQuality();
+</span></span><span class=line><span class=cl><span class=gd>-        assertEquals(&#34;fixme&#34;, app.items[0].name);
+</span></span></span><span class=line><span class=cl><span class=gd></span><span class=gi>+
+</span></span></span><span class=line><span class=cl><span class=gi>+        golden_master.append(items[0].toString() + &#34;\n&#34;);
+</span></span></span><span class=line><span class=cl><span class=gi>+
+</span></span></span><span class=line><span class=cl><span class=gi>+        Approvals.verify(golden_master.toString());
+</span></span></span><span class=line><span class=cl><span class=gi>+
+</span></span></span><span class=line><span class=cl><span class=gi></span>     }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl> }
+</span></span></code></pre></td></tr></table></div></div><p>Après avoir exécuté ce test, un outil de comparaison s&rsquo;ouvre (Winmerge dans mon cas) pour indiquer que le golden master généré ne correspond pas au golden master de référence. C&rsquo;est normal. Cette référence va évoluer au fil du temps jusqu&rsquo;à ce qu&rsquo;elle soit suffisante pour nous servir de test de non-regresssion.</p><h3 id=le-code-coverage>Le code coverage</h3><blockquote><p>Novice : Est-ce que le test est terminé ?<br>Expert : Non, le test doit couvrir l&rsquo;intégralité de la fonctionnalité<br>Novice : Comment savoir si c&rsquo;est le cas ?<br>Expert : On ne peut jamais en être sûr, mais il y a un outil qui va nous aider.<br>Novice : Lequel ?
+Expert : Le code coverage !</p></blockquote><p>La couverture de code (ou code coverage) nous indique le pourcentage de code exécuté lors de la dernière exécution. Elle nous indique aussi les lignes qui ont (ou n&rsquo;ont pas) été exécutées.</p><p>Je considère le code coverage (ou couverture de code) comme un outil. Je pense que ce n&rsquo;est pas une métrique fiable, mais elle peut nous guider pour la mise en place de nos tests.</p><p>Actuellement, ma couverture de code est de 42%. Je vais compléter mon test pour essayer de couvrir un peu plus.</p><p>Pour cela, j&rsquo;analyse le code qui a été couvert et celui qui ne l&rsquo;a pas été. Ce qui donne ça :</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=kd>public</span> <span class=kt>void</span> <span class=nf>updateQuality</span><span class=o>()</span> <span class=o>{</span>   
+</span></span><span class=line><span class=cl>    <span class=k>for</span> <span class=o>(</span><span class=kt>int</span> <span class=n>i</span> <span class=o>=</span> <span class=n>0</span><span class=o>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=n>items</span><span class=o>.</span><span class=na>length</span><span class=o>;</span> <span class=n>i</span><span class=o>++)</span> <span class=o>{</span>  
+</span></span><span class=line><span class=cl>        <span class=k>if</span> <span class=o>(!</span><span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>name</span><span class=o>.</span><span class=na>equals</span><span class=o>(</span><span class=s>&#34;Aged Brie&#34;</span><span class=o>)</span>  
+</span></span><span class=line><span class=cl>                <span class=o>&amp;&amp;</span> <span class=o>!</span><span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>name</span><span class=o>.</span><span class=na>equals</span><span class=o>(</span><span class=s>&#34;Backstage passes to a TAFKAL80ETC concert&#34;</span><span class=o>))</span> <span class=o>{</span>  
+</span></span><span class=line><span class=cl>            <span class=k>if</span> <span class=o>(</span><span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>&gt;</span> <span class=n>0</span><span class=o>)</span> <span class=o>{</span>  
+</span></span><span class=line><span class=cl>            
+</span></span><span class=line><span class=cl>            <span class=c1>// le code ci-dessous n&#39;a pas été couvert
+</span></span></span><span class=line><span class=cl><span class=c1></span>                <span class=k>if</span> <span class=o>(!</span><span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>name</span><span class=o>.</span><span class=na>equals</span><span class=o>(</span><span class=s>&#34;Sulfuras, Hand of Ragnaros&#34;</span><span class=o>))</span> <span class=o>{</span>  
+</span></span><span class=line><span class=cl>                    <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>=</span> <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>-</span> <span class=n>1</span><span class=o>;</span>  
+</span></span><span class=line><span class=cl>                <span class=o>}</span>  
+</span></span><span class=line><span class=cl>            <span class=o>}</span>
+</span></span><span class=line><span class=cl>		<span class=o>...</span>        
+</span></span></code></pre></td></tr></table></div></div><p>Je ne suis pas rentré dans la condition à cause de l&rsquo;attribut <code>quality</code> de mon item. Je constate que c&rsquo;est un critère que je peux faire évoluer dans mon test. Je vais m&rsquo;en servir pour augmenter la couverture de code.</p><p>J&rsquo;analyse l&rsquo;utilisation de cet attribut et je constate qu&rsquo;on l&rsquo;utilise souvent dans des conditions. Cet attribut semble être borné par les valeurs <code>0</code> et <code>50</code>. Je vais manipuler cet attribut comme une entrée de ma fonctionnalité (j&rsquo;y ai accès) et le faire varier pour voir ce qu&rsquo;il se passe. Pour être plus prudent, je vais augmenter les bornes et les passer de <code>-50</code> à <code>100</code>.</p><p>Je vais évaluer chacune de ces évolutions et mémoriser la sortie dans mon golden master. Ce qui donne le code suivant :</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-diff data-lang=diff><span class=line><span class=cl>    @Test
+</span></span><span class=line><span class=cl>    void foo() {
+</span></span><span class=line><span class=cl>        StringBuilder golden_master = new StringBuilder();
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=gi>+       for (int quality = -50; quality &lt; 100; quality++) {
+</span></span></span><span class=line><span class=cl><span class=gi>+           Item[] items = new Item[] { new Item(&#34;foo&#34;, 0, quality) };
+</span></span></span><span class=line><span class=cl><span class=gi></span><span class=gd>-           Item[] items = new Item[] { new Item(&#34;foo&#34;, 0, 0) };
+</span></span></span><span class=line><span class=cl><span class=gd></span>            GildedRose app = new GildedRose(items);            
+</span></span><span class=line><span class=cl>            app.updateQuality();
+</span></span><span class=line><span class=cl>            golden_master.append(items[0].toString() + &#34;\n&#34;);
+</span></span><span class=line><span class=cl><span class=gi>+       }
+</span></span></span><span class=line><span class=cl><span class=gi></span>        Approvals.verify(golden_master.toString()); 
+</span></span><span class=line><span class=cl>    }
+</span></span></code></pre></td></tr></table></div></div><p>La couverture de code a augmenté à 63%</p><p>Si l&rsquo;on étudie le code, on constate que l&rsquo;on bloque sur le nom d&rsquo;un des items. Nous ne passons pas dans le code de l&rsquo;item <code>AgedBrie</code>.</p><p>On va donc faire la même chose que précédemment, nous allons étudier le champ des possibles pour l&rsquo;attribut <code>name</code>. On constate que l&rsquo;on vérifie 3 valeurs dans le code :</p><ul><li><code>"Aged Brie"</code></li><li><code>"Backstage passes to a TAFKAL80ETC concert"</code></li><li><code>"Sulfuras, Hand of Ragnaros"</code></li></ul><p>Et si l&rsquo;on ajoute notre premier item <code>foo</code> (je sais, on aurait pu utiliser un nom plus orienté métier), cela nous fait au moins 4 valeurs à tester :</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-diff data-lang=diff><span class=line><span class=cl>    @Test
+</span></span><span class=line><span class=cl>    void foo() {
+</span></span><span class=line><span class=cl>        StringBuilder golden_master = new StringBuilder();
+</span></span><span class=line><span class=cl><span class=gi>+       String names[] = new String[] { &#34;Foo&#34;, &#34;Aged Brie&#34;, &#34;Sulfuras, Hand of Ragnaros&#34;, &#34;Backstage passes to a TAFKAL80ETC concert&#34; };
+</span></span></span><span class=line><span class=cl><span class=gi></span>
+</span></span><span class=line><span class=cl><span class=gi>+       for (String name: names) {
+</span></span></span><span class=line><span class=cl><span class=gi></span>            for (int quality = -50; quality &lt; 100; quality++) {
+</span></span><span class=line><span class=cl><span class=gi>+               Item[] items = new Item[] { new Item(name, 0, quality) };
+</span></span></span><span class=line><span class=cl><span class=gi></span><span class=gd>-               Item[] items = new Item[] { new Item(&#34;foo&#34;, 0, quality) };
+</span></span></span><span class=line><span class=cl><span class=gd></span>                GildedRose app = new GildedRose(items);
+</span></span><span class=line><span class=cl>                app.updateQuality();
+</span></span><span class=line><span class=cl>                golden_master.append(items[0].toString() + &#34;\n&#34;);
+</span></span><span class=line><span class=cl>            }
+</span></span><span class=line><span class=cl><span class=gi>+       }
+</span></span></span><span class=line><span class=cl><span class=gi></span>        Approvals.verify(golden_master.toString());
+</span></span><span class=line><span class=cl>    }
+</span></span></code></pre></td></tr></table></div></div><blockquote><p>Novice : Et voilà, notre code coverage est passé à 100% ! Place au refactoring !<br>Expert : Oula, il y a encore des points à vérifier.<br>Novice : ???<br>Expert : Oui, un code coverage de 100% ne nous garantit pas que l&rsquo;on passe partout.<br>Novice : ???</p></blockquote><p>Effectivement, le code coverage est passé à 100 %. Mais cela ne veut pas dire que notre test est terminé. Nous allons devoir utiliser l&rsquo;expérience et l&rsquo;intuition pour vérifier cela.</p><p>Lorsqu&rsquo;on analyse le code, on constate qu&rsquo;il y a un attribut <code>sellIn</code> qui est utilisé lui aussi dans des conditions. Si l&rsquo;on vérifie, on constate que l&rsquo;utilisation de cet attribut est bornée entre 0 et 11. Nous allons donc partir sur des valeurs entre -20 et 20.</p><p>Ce qui donne ça :</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-diff data-lang=diff><span class=line><span class=cl>    @Test
+</span></span><span class=line><span class=cl>    void foo() {
+</span></span><span class=line><span class=cl>        StringBuilder golden_master = new StringBuilder();
+</span></span><span class=line><span class=cl>        String names[] = new String[] { &#34;Foo&#34;, &#34;Aged Brie&#34;, &#34;Sulfuras, Hand of Ragnaros&#34;, &#34;Backstage passes to a TAFKAL80ETC concert&#34; };
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>        for (String name: names) {
+</span></span><span class=line><span class=cl><span class=gi>+           for (int sellIn = -20; sellIn &lt; 20; sellIn++) {
+</span></span></span><span class=line><span class=cl><span class=gi></span>                for (int quality = -50; quality &lt; 100; quality++) {
+</span></span><span class=line><span class=cl><span class=gi>+                   Item[] items = new Item[] { new Item(name, sellIn, quality) };
+</span></span></span><span class=line><span class=cl><span class=gi></span><span class=gd>-                   Item[] items = new Item[] { new Item(name, 0, quality) };
+</span></span></span><span class=line><span class=cl><span class=gd></span>                    GildedRose app = new GildedRose(items);
+</span></span><span class=line><span class=cl>                    app.updateQuality();
+</span></span><span class=line><span class=cl>                    golden_master.append(items[0].toString() + &#34;\n&#34;);
+</span></span><span class=line><span class=cl>                }
+</span></span><span class=line><span class=cl><span class=gi>+           }
+</span></span></span><span class=line><span class=cl><span class=gi></span>        }
+</span></span><span class=line><span class=cl>        Approvals.verify(golden_master.toString());
+</span></span><span class=line><span class=cl>    }
+</span></span></code></pre></td></tr></table></div></div><p>Et voilà, avec ce test, notre code est bien couvert. Nous allons pouvoir commencer le refactoring.</p><p>Je te propose de lire cela dans la seconde partie.</p><p>Merci d&rsquo;avoir pris le temps de me lire.</p><h2 id=reference>Reference</h2><p><a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fwww.ytreza.dev%2fblog%2fetude-du-kata-gilded-rose-golden-master%2f &title=etude%20du%20kata%20gilded%20rose%20-%20golden%20master &summary=Dans%20cette%20%c3%a9tude%20de%20kata%2c%20nous%20allons%20%c3%a9tudier%20%5b%5bwiki%2fgilded%20rose%7cgilded%20rose%5d%5d.%20Je%20vais%20te%20montrer%20comment%20mettre%20en%20place%20tr%c3%a8s%20rapidement%20un%20test%20de%20caract%c3%a9risation%20avc%20un%20golden%20master%20et%20le%20r%c3%a9soudre%20encore%20plus%20rapidement%20gr%c3%a2ce%20%c3%a0%20une%20astuce%20de%20refactoring.&source=LinkedIn">Partager sur linkedin</a></p></article><div id=disqus_thread></div><script type=application/javascript>window.disqus_config=function(){},function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById("disqus_thread").innerHTML="Disqus comments not available by default when the website is previewed locally.";return}var t=document,e=t.createElement("script");e.async=!0,e.src="//www-ytreza-dev.disqus.com/embed.js",e.setAttribute("data-timestamp",+new Date),(t.head||t.body).appendChild(e)}()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript><a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a><hr><div class=page-end><div class=backlinks-container><h3>Backlinks</h3><ul class=backlinks><li>No backlinks found</li></ul></div><div><script src=https://cdn.jsdelivr.net/npm/d3@6.7.0/dist/d3.min.js integrity="sha256-+7jaYCp29O1JusNWHaYtgUn6EhuP0VaFuswhNV06MyI=" crossorigin=anonymous></script><h3>Interactive Graph</h3><div id=graph-container></div><style>:root{--g-node:var(--secondary);--g-node-active:var(--primary);--g-node-inactive:var(--visited);--g-link:var(--outlinegray);--g-link-active:#5a7282}</style><script src=https://www.ytreza.dev/js/graph.27e8521c25c27c79dea35f434c486167.js></script>
+<script>drawGraph("https://www.ytreza.dev/blog/etude-du-kata-gilded-rose-golden-master","https://www.ytreza.dev",[{"/moc":"#4388cc"}],-1,!0,!1,!0)</script></div></div><div id=contact_buttons><footer><p>Made by Jonathan LAURENT using <a href=https://github.com/jackyzha0/quartz>Quartz</a>, © 2022</p><ul><li><a href=/>Home</a></li><li><a href=https://twitter.com/Johjo07>Twitter</a></li></ul></footer></div><script src=https://www.ytreza.dev/js/popover.e57188d2e4c06b0654e020b3a734bb62.min.js></script>
+<script>initPopover("https://www.ytreza.dev")</script></div></body></html>
