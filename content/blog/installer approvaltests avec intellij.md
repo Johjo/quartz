@@ -1,5 +1,5 @@
 ---
-title: "installer approvaltests avec intellij"
+title: "Installer approvaltests avec intellij"
 date: "2022-05-07T22:47:23+02:00"
 tags:
 - golden-master
