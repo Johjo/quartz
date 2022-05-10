@@ -7,7 +7,7 @@ tags:
 - maven
 - java
 ---
-[[wiki/ApprovalsTests|ApprovalsTests]] est une librairie qui permet de simplifier la création de [[wiki/golden master|golden master]]. On s'en sert pour mettre en place des tests de caractérisation.
+[[wiki/ApprovalTests|ApprovalTests]] est une librairie qui permet de simplifier la création de [[wiki/golden master|golden master]]. On s'en sert pour mettre en place des tests de caractérisation.
 
 J'ai plusieurs fois galéré pour ajouter cette librairie dans intellij. Je pense que cela fait partie de l'utilisation standard, mais il est probable que d'autres personnes perdent du temps à trouver la réponse.
 
