@@ -119,7 +119,7 @@ Après avoir exécuté ce test, un outil de comparaison s'ouvre (Winmerge dans m
 > Expert : Non, le test doit couvrir l'intégralité de la fonctionnalité  
 > Novice : Comment savoir si c'est le cas ?  
 > Expert : On ne peut jamais en être sûr, mais il y a un outil qui va nous aider.  
-> Novice : Lequel ? 
+> Novice : Lequel ?   
 > Expert : Le code coverage !
 
 La couverture de code (ou code coverage) nous indique le pourcentage de code exécuté lors de la dernière exécution. Elle nous indique aussi les lignes qui ont (ou n'ont pas) été exécutées.
@@ -236,4 +236,3 @@ Je te propose de lire cela dans la seconde partie.
 
 Merci d'avoir pris le temps de me lire.
 
-## Reference
