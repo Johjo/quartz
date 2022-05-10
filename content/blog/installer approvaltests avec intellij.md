@@ -23,7 +23,7 @@ Dans un environnement **maven**, il faut procéder comme cela :
 </dependency>
 ```
 
-2. Dans intellij, recharger le projet (clic droit sur le fichier `pom.xml`).
+2. Dans intellij, recharger le projet (clic droit sur le fichier `pom.xml` puis menu `maven/reload project`).
 
 3. Installer un outil de comparaison. Sous Windows, j'utilise [Winmerge](https://winmerge.org/?lang=fr)
 

@@ -1,55 +1,16 @@
 ---
 title: "etude du kata gilded rose - switch"
-date: "2022-05-06T16:32:50+02:00"
+date: "2022-05-11T00:44:16+02:00"
 draft: true
 tags:
-- étude-de-kata
-- refactoring
-- golden-master
+- no-tag
 ---
 
-Dans cette étude de kata, nous allons étudier [[wiki/gilded rose|gilded rose]].
 
 
-
-```diff
-    @Test
-     void foo() {
-+        StringBuilder golden_master = new StringBuilder();
-+
-         Item[] items = new Item[] { new Item("foo", 0, 0) };
-         GildedRose app = new GildedRose(items);
-         app.updateQuality();
--        assertEquals("fixme", app.items[0].name);
-+
-+        golden_master.append(items[0].toString());
-+
-+        Approvals.verify(golden_master.toString());
-+
-     }
-
- }
-
-```
+--------------
 
 
-```diff
-     void foo() {
-         StringBuilder golden_master = new StringBuilder();
-
-
-+        for (int quality = -50; quality < 100; quality++) {
-+            Item[] items = new Item[] { new Item("foo", 0, quality) };
--            Item[] items = new Item[] { new Item("foo", 0, 0) };
-             GildedRose app = new GildedRose(items);
-             app.updateQuality();
- 
-			 golden_master.append(items[0].toString());
-+        }
-
-         Approvals.verify(golden_master.toString());
-}
-```
 
 ```diff
 
@@ -356,6 +317,7 @@ public void updateQuality() {
 }
 
 ```
+
 
 
 ## Reference
