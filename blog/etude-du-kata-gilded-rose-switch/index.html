@@ -1,0 +1,2193 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><meta name=description content="Parfois, il suffit d&rsquo;une simple astuce pour faire en quelques minutes un travail qui peut prendre plusieurs heures. C&rsquo;est pourquoi il est primordial de s&rsquo;exercer en permanence pour découvrir ses astuces et pouvoir les réutiliser le moment opportun."><title>etude du kata gilded rose - switch</title><meta name=viewport content="width=device-width,initial-scale=1"><link rel="shortcut icon" type=image/png href=https://www.ytreza.dev/icon.png><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Source+Sans+Pro:wght@400;600;700&family=Fira+Code:wght@400;700&display=swap" rel=stylesheet><link href=https://www.ytreza.dev/styles.43355a9a8dd6bd19e4e06361fef53dca.min.css rel=stylesheet><script src=https://www.ytreza.dev/js/darkmode.46b07878b7f5d9e26ad7a3c40f8a0605.min.js></script>
+<link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css integrity=sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs crossorigin=anonymous><script defer src=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js integrity=sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx crossorigin=anonymous></script>
+<script defer src=https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js integrity=sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR crossorigin=anonymous></script>
+<script>document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1}],throwOnError:!1})})</script><script>const BASE_URL="https://www.ytreza.dev",fetchData=Promise.all([fetch("https://www.ytreza.dev/indices/linkIndex.fd6793fb0322c7fc46fbab99521de2d7.min.json").then(e=>e.json()).then(e=>({index:e.index,links:e.links})),fetch("https://www.ytreza.dev/indices/contentIndex.55d6d85cfc0154b83438ae4dceabe07f.min.json").then(e=>e.json())]).then(([{index:e,links:t},n])=>({index:e,links:t,content:n}))</script></head><body><div id=search-container><div id=search-space><input autocomplete=off id=search-bar name=search type=text aria-label=Search placeholder="Search for something..."><div id=results-container></div></div></div><script src=https://cdn.jsdelivr.net/npm/flexsearch@0.7.21/dist/flexsearch.bundle.js integrity="sha256-i3A0NZGkhsKjVMzFxv3ksk0DZh3aXqu0l49Bbh0MdjE=" crossorigin=anonymous defer></script>
+<script defer src=https://www.ytreza.dev/js/search.bc849b857f2c1b822264d40635bb67b6.min.js></script><div class=singlePage><header><h1 id=page-title><a href=https://www.ytreza.dev>Wiki ytreza.dev</a></h1><svg tabindex="0" id="search-icon" aria-labelledby="title desc" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title id="title">Search Icon</title><desc id="desc">Icon to open search</desc><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"/><circle cx="8" cy="8" r="7"/></g></svg><div class=spacer></div><div class=darkmode><input class=toggle id=darkmode-toggle type=checkbox tabindex=-1>
+<label id=toggle-label-light for=darkmode-toggle tabindex=-1><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="dayIcon" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35"><title>Light Mode</title><path d="M6 17.5C6 16.672 5.328 16 4.5 16h-3C.672 16 0 16.672.0 17.5S.672 19 1.5 19h3C5.328 19 6 18.328 6 17.5zM7.5 26c-.414.0-.789.168-1.061.439l-2 2C4.168 28.711 4 29.086 4 29.5 4 30.328 4.671 31 5.5 31c.414.0.789-.168 1.06-.44l2-2C8.832 28.289 9 27.914 9 27.5 9 26.672 8.329 26 7.5 26zm10-20C18.329 6 19 5.328 19 4.5v-3C19 .672 18.329.0 17.5.0S16 .672 16 1.5v3C16 5.328 16.671 6 17.5 6zm10 3c.414.0.789-.168 1.06-.439l2-2C30.832 6.289 31 5.914 31 5.5 31 4.672 30.329 4 29.5 4c-.414.0-.789.168-1.061.44l-2 2C26.168 6.711 26 7.086 26 7.5 26 8.328 26.671 9 27.5 9zM6.439 8.561C6.711 8.832 7.086 9 7.5 9 8.328 9 9 8.328 9 7.5c0-.414-.168-.789-.439-1.061l-2-2C6.289 4.168 5.914 4 5.5 4 4.672 4 4 4.672 4 5.5c0 .414.168.789.439 1.06l2 2.001zM33.5 16h-3c-.828.0-1.5.672-1.5 1.5s.672 1.5 1.5 1.5h3c.828.0 1.5-.672 1.5-1.5S34.328 16 33.5 16zM28.561 26.439C28.289 26.168 27.914 26 27.5 26c-.828.0-1.5.672-1.5 1.5.0.414.168.789.439 1.06l2 2C28.711 30.832 29.086 31 29.5 31c.828.0 1.5-.672 1.5-1.5.0-.414-.168-.789-.439-1.061l-2-2zM17.5 29c-.829.0-1.5.672-1.5 1.5v3c0 .828.671 1.5 1.5 1.5s1.5-.672 1.5-1.5v-3C19 29.672 18.329 29 17.5 29zm0-22C11.71 7 7 11.71 7 17.5S11.71 28 17.5 28 28 23.29 28 17.5 23.29 7 17.5 7zm0 18c-4.136.0-7.5-3.364-7.5-7.5s3.364-7.5 7.5-7.5 7.5 3.364 7.5 7.5S21.636 25 17.5 25z"/></svg></label><label id=toggle-label-dark for=darkmode-toggle tabindex=-1><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="nightIcon" viewBox="0 0 100 100" style="enable-background='new 0 0 100 100'"><title>Dark Mode</title><path d="M96.76 66.458c-.853-.852-2.15-1.064-3.23-.534-6.063 2.991-12.858 4.571-19.655 4.571C62.022 70.495 50.88 65.88 42.5 57.5 29.043 44.043 25.658 23.536 34.076 6.47c.532-1.08.318-2.379-.534-3.23-.851-.852-2.15-1.064-3.23-.534-4.918 2.427-9.375 5.619-13.246 9.491-9.447 9.447-14.65 22.008-14.65 35.369.0 13.36 5.203 25.921 14.65 35.368s22.008 14.65 35.368 14.65c13.361.0 25.921-5.203 35.369-14.65 3.872-3.871 7.064-8.328 9.491-13.246C97.826 68.608 97.611 67.309 96.76 66.458z"/></svg></label></div></header><article><h1>etude du kata gilded rose - switch</h1><p class=meta>Last updated May 11, 2022</p><ul class=tags><li><a href=https://www.ytreza.dev/tags/%C3%A9tude-de-kata/>Étude de kata</a></li><li><a href=https://www.ytreza.dev/tags/refactoring/>Refactoring</a></li></ul><aside class=mainTOC><details><summary>Table of Contents</summary><nav id=TableOfContents><ol><li><a href=#tldr>tl;dr</a></li><li><a href=#le-code-initial>Le code initial</a></li><li><a href=#rushons-le-kata>Rushons le kata</a><ol><li><a href=#case-aged-brie>case &ldquo;Aged Brie&rdquo;</a></li><li><a href=#case-backstage-passes-to-a-tafkal80etc-concert>case &ldquo;Backstage passes to a TAFKAL80ETC concert&rdquo;</a></li><li><a href=#case-sulfuras-hand-of-ragnaros>case &ldquo;Sulfuras, Hand of Ragnaros&rdquo;</a></li><li><a href=#default-case->default case :</a></li></ol></li><li><a href=#conclusion>Conclusion</a></li><li><a href=#reference>Reference</a></li></ol></nav></details></aside><p>Parfois, il suffit d&rsquo;une simple astuce pour faire en quelques minutes un travail qui peut prendre plusieurs heures. C&rsquo;est pourquoi il est primordial de s&rsquo;exercer en permanence pour découvrir ses astuces et pouvoir les réutiliser le moment opportun.</p><p>Ici, nous allons rusher le kata <a href=/wiki/gilded-rose rel=noopener class=internal-link data-src=/wiki/gilded-rose>gilded rose</a>. La technique que je vais utiliser est très intéressante, mais fait perdre tout son intérêt à ce kata. Je t&rsquo;invite donc à exécuter ce kata de deux manières, avec celle que tu vas découvrir ici et la manière plus traditionnelle.</p><p>Cette étude est la suite de l&rsquo;article <a href=/blog/etude-du-kata-gilded-rose-golden-master rel=noopener class=internal-link data-src=/blog/etude-du-kata-gilded-rose-golden-master>etude du kata gilded rose - golden master</a>. Si tu ne l&rsquo;as pas déjà lu, je te recommande de commencer par là. En effet, il faut pouvoir lancer des tests automatiques pour commencer le refactoring.</p><h2 id=tldr>tl;dr</h2><p>Le <code>switch</code> et le code coverage permette de faire ce kata en un temps record. Le switch permet de dupliquer le code pour chaque item en fonction de son nom puis le code coverage permet de supprimer le code que l&rsquo;on n&rsquo;utilise pas en fonction de l&rsquo;item.</p><h2 id=le-code-initial>Le code initial</h2><p>Voici le code initial du <a href=/wiki/gilded-rose rel=noopener class=internal-link data-src=/wiki/gilded-rose>gilded rose</a> que l&rsquo;on doit retravailler :</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span><span class=lnt>54
+</span><span class=lnt>55
+</span><span class=lnt>56
+</span><span class=lnt>57
+</span><span class=lnt>58
+</span><span class=lnt>59
+</span><span class=lnt>60
+</span><span class=lnt>61
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=kn>package</span> <span class=nn>com.gildedrose</span><span class=o>;</span>  
+</span></span><span class=line><span class=cl>  
+</span></span><span class=line><span class=cl><span class=kd>class</span> <span class=nc>GildedRose</span> <span class=o>{</span>  
+</span></span><span class=line><span class=cl>    <span class=n>Item</span><span class=o>[]</span> <span class=n>items</span><span class=o>;</span>  
+</span></span><span class=line><span class=cl>  
+</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=nf>GildedRose</span><span class=o>(</span><span class=n>Item</span><span class=o>[]</span> <span class=n>items</span><span class=o>)</span> <span class=o>{</span>  
+</span></span><span class=line><span class=cl>        <span class=k>this</span><span class=o>.</span><span class=na>items</span> <span class=o>=</span> <span class=n>items</span><span class=o>;</span>  
+</span></span><span class=line><span class=cl>    <span class=o>}</span>  
+</span></span><span class=line><span class=cl>  
+</span></span><span class=line><span class=cl>    <span class=kd>public</span> <span class=kt>void</span> <span class=nf>updateQuality</span><span class=o>()</span> <span class=o>{</span>  
+</span></span><span class=line><span class=cl>        <span class=k>for</span> <span class=o>(</span><span class=kt>int</span> <span class=n>i</span> <span class=o>=</span> <span class=n>0</span><span class=o>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=n>items</span><span class=o>.</span><span class=na>length</span><span class=o>;</span> <span class=n>i</span><span class=o>++)</span> <span class=o>{</span>  
+</span></span><span class=line><span class=cl>            <span class=k>if</span> <span class=o>(!</span><span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>name</span><span class=o>.</span><span class=na>equals</span><span class=o>(</span><span class=s>&#34;Aged Brie&#34;</span><span class=o>)</span> <span class=o>&amp;&amp;</span> <span class=o>!</span><span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>name</span><span class=o>.</span><span class=na>equals</span><span class=o>(</span><span class=s>&#34;Backstage passes to a TAFKAL80ETC concert&#34;</span><span class=o>))</span> <span class=o>{</span>  
+</span></span><span class=line><span class=cl>                <span class=k>if</span> <span class=o>(</span><span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>&gt;</span> <span class=n>0</span><span class=o>)</span> <span class=o>{</span>  
+</span></span><span class=line><span class=cl>                    <span class=k>if</span> <span class=o>(!</span><span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>name</span><span class=o>.</span><span class=na>equals</span><span class=o>(</span><span class=s>&#34;Sulfuras, Hand of Ragnaros&#34;</span><span class=o>))</span> <span class=o>{</span>  
+</span></span><span class=line><span class=cl>                        <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>=</span> <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>-</span> <span class=n>1</span><span class=o>;</span>  
+</span></span><span class=line><span class=cl>                    <span class=o>}</span>  
+</span></span><span class=line><span class=cl>                <span class=o>}</span>  
+</span></span><span class=line><span class=cl>            <span class=o>}</span> <span class=k>else</span> <span class=o>{</span>  
+</span></span><span class=line><span class=cl>                <span class=k>if</span> <span class=o>(</span><span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>&lt;</span> <span class=n>50</span><span class=o>)</span> <span class=o>{</span>  
+</span></span><span class=line><span class=cl>                    <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>=</span> <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>+</span> <span class=n>1</span><span class=o>;</span>  
+</span></span><span class=line><span class=cl>  
+</span></span><span class=line><span class=cl>                    <span class=k>if</span> <span class=o>(</span><span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>name</span><span class=o>.</span><span class=na>equals</span><span class=o>(</span><span class=s>&#34;Backstage passes to a TAFKAL80ETC concert&#34;</span><span class=o>))</span> <span class=o>{</span>  
+</span></span><span class=line><span class=cl>                        <span class=k>if</span> <span class=o>(</span><span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>sellIn</span> <span class=o>&lt;</span> <span class=n>11</span><span class=o>)</span> <span class=o>{</span>  
+</span></span><span class=line><span class=cl>                            <span class=k>if</span> <span class=o>(</span><span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>&lt;</span> <span class=n>50</span><span class=o>)</span> <span class=o>{</span>  
+</span></span><span class=line><span class=cl>                                <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>=</span> <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>+</span> <span class=n>1</span><span class=o>;</span>  
+</span></span><span class=line><span class=cl>                            <span class=o>}</span>  
+</span></span><span class=line><span class=cl>                        <span class=o>}</span>  
+</span></span><span class=line><span class=cl>  
+</span></span><span class=line><span class=cl>                        <span class=k>if</span> <span class=o>(</span><span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>sellIn</span> <span class=o>&lt;</span> <span class=n>6</span><span class=o>)</span> <span class=o>{</span>  
+</span></span><span class=line><span class=cl>                            <span class=k>if</span> <span class=o>(</span><span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>&lt;</span> <span class=n>50</span><span class=o>)</span> <span class=o>{</span>  
+</span></span><span class=line><span class=cl>                                <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>=</span> <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>+</span> <span class=n>1</span><span class=o>;</span>  
+</span></span><span class=line><span class=cl>                            <span class=o>}</span>  
+</span></span><span class=line><span class=cl>                        <span class=o>}</span>  
+</span></span><span class=line><span class=cl>                    <span class=o>}</span>  
+</span></span><span class=line><span class=cl>                <span class=o>}</span>  
+</span></span><span class=line><span class=cl>            <span class=o>}</span>  
+</span></span><span class=line><span class=cl>  
+</span></span><span class=line><span class=cl>            <span class=k>if</span> <span class=o>(!</span><span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>name</span><span class=o>.</span><span class=na>equals</span><span class=o>(</span><span class=s>&#34;Sulfuras, Hand of Ragnaros&#34;</span><span class=o>))</span> <span class=o>{</span>  
+</span></span><span class=line><span class=cl>                <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>sellIn</span> <span class=o>=</span> <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>sellIn</span> <span class=o>-</span> <span class=n>1</span><span class=o>;</span>  
+</span></span><span class=line><span class=cl>            <span class=o>}</span>  
+</span></span><span class=line><span class=cl>  
+</span></span><span class=line><span class=cl>            <span class=k>if</span> <span class=o>(</span><span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>sellIn</span> <span class=o>&lt;</span> <span class=n>0</span><span class=o>)</span> <span class=o>{</span>  
+</span></span><span class=line><span class=cl>                <span class=k>if</span> <span class=o>(!</span><span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>name</span><span class=o>.</span><span class=na>equals</span><span class=o>(</span><span class=s>&#34;Aged Brie&#34;</span><span class=o>))</span> <span class=o>{</span>  
+</span></span><span class=line><span class=cl>                    <span class=k>if</span> <span class=o>(!</span><span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>name</span><span class=o>.</span><span class=na>equals</span><span class=o>(</span><span class=s>&#34;Backstage passes to a TAFKAL80ETC concert&#34;</span><span class=o>))</span> <span class=o>{</span>  
+</span></span><span class=line><span class=cl>                        <span class=k>if</span> <span class=o>(</span><span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>&gt;</span> <span class=n>0</span><span class=o>)</span> <span class=o>{</span>  
+</span></span><span class=line><span class=cl>                            <span class=k>if</span> <span class=o>(!</span><span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>name</span><span class=o>.</span><span class=na>equals</span><span class=o>(</span><span class=s>&#34;Sulfuras, Hand of Ragnaros&#34;</span><span class=o>))</span> <span class=o>{</span>  
+</span></span><span class=line><span class=cl>                                <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>=</span> <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>-</span> <span class=n>1</span><span class=o>;</span>  
+</span></span><span class=line><span class=cl>                            <span class=o>}</span>  
+</span></span><span class=line><span class=cl>                        <span class=o>}</span>  
+</span></span><span class=line><span class=cl>                    <span class=o>}</span> <span class=k>else</span> <span class=o>{</span>  
+</span></span><span class=line><span class=cl>                        <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>=</span> <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>-</span> <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span><span class=o>;</span>  
+</span></span><span class=line><span class=cl>                    <span class=o>}</span>  
+</span></span><span class=line><span class=cl>                <span class=o>}</span> <span class=k>else</span> <span class=o>{</span>  
+</span></span><span class=line><span class=cl>                    <span class=k>if</span> <span class=o>(</span><span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>&lt;</span> <span class=n>50</span><span class=o>)</span> <span class=o>{</span>  
+</span></span><span class=line><span class=cl>                        <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>=</span> <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>+</span> <span class=n>1</span><span class=o>;</span>  
+</span></span><span class=line><span class=cl>                    <span class=o>}</span>  
+</span></span><span class=line><span class=cl>                <span class=o>}</span>  
+</span></span><span class=line><span class=cl>            <span class=o>}</span>  
+</span></span><span class=line><span class=cl>        <span class=o>}</span>  
+</span></span><span class=line><span class=cl>    <span class=o>}</span>  
+</span></span><span class=line><span class=cl><span class=o>}</span>
+</span></span></code></pre></td></tr></table></div></div><h2 id=rushons-le-kata>Rushons le kata</h2><p>La technique que je vais employer fonctionne pour une bonne raison. Il n&rsquo;y a pas d&rsquo;effet de bord dans le code actuel, si ce n&rsquo;est modifier les attributs <code>quality</code> ou <code>sellIn</code>.</p><blockquote><ul><li>Novice : Je ne vois pas comment tu vas faire pour nettoyer ce code en quelques minutes</li><li>Expert : Pour cela, on va utiliser un mot clé du langage. Il n&rsquo;existe pas dans tous les langages, mais il est facile à remplacer si besoin</li><li>Novice : Et c&rsquo;est quoi ce mot clé ???</li><li>Expert : Le switch, et s&rsquo;il n&rsquo;existe pas, plusieurs if imbriqué</li><li>Novice : ???</li><li>Expert : Tu vas voir !</li></ul></blockquote><p>Oui, nous allons utiliser un <code>switch</code> pour régler ce kata. Cela est possible parce qu&rsquo;il y a un élément qui intervient énormément dans les règles métiers du gilded rose, mais qui ne change jamais pour un item donné. C&rsquo;est l&rsquo;attribut <code>name</code>.</p><p>Voyons la mise en place du switch :</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span><span class=lnt>54
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-diff data-lang=diff><span class=line><span class=cl>public void updateQuality() {
+</span></span><span class=line><span class=cl>        for (int i = 0; i &lt; items.length; i++) {
+</span></span><span class=line><span class=cl><span class=gi>+           switch (items[i].name) {
+</span></span></span><span class=line><span class=cl><span class=gi>+               default:
+</span></span></span><span class=line><span class=cl><span class=gi></span>                    if (!items[i].name.equals(&#34;Aged Brie&#34;) &amp;&amp; !items[i].name.equals(&#34;Backstage passes to a TAFKAL80ETC concert&#34;)) {
+</span></span><span class=line><span class=cl>                        if (items[i].quality &gt; 0) {
+</span></span><span class=line><span class=cl>                            if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span><span class=line><span class=cl>                                items[i].quality = items[i].quality - 1;
+</span></span><span class=line><span class=cl>                            }
+</span></span><span class=line><span class=cl>                        }
+</span></span><span class=line><span class=cl>                    } else {
+</span></span><span class=line><span class=cl>                        if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                            items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                            if (items[i].name.equals(&#34;Backstage passes to a TAFKAL80ETC concert&#34;)) {
+</span></span><span class=line><span class=cl>                                if (items[i].sellIn &lt; 11) {
+</span></span><span class=line><span class=cl>                                    if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                                        items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>                                    }
+</span></span><span class=line><span class=cl>                                }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                                if (items[i].sellIn &lt; 6) {
+</span></span><span class=line><span class=cl>                                    if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                                        items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>                                    }
+</span></span><span class=line><span class=cl>                                }
+</span></span><span class=line><span class=cl>                            }
+</span></span><span class=line><span class=cl>                        }
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span><span class=line><span class=cl>                        items[i].sellIn = items[i].sellIn - 1;
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    if (items[i].sellIn &lt; 0) {
+</span></span><span class=line><span class=cl>                        if (!items[i].name.equals(&#34;Aged Brie&#34;)) {
+</span></span><span class=line><span class=cl>                            if (!items[i].name.equals(&#34;Backstage passes to a TAFKAL80ETC concert&#34;)) {
+</span></span><span class=line><span class=cl>                                if (items[i].quality &gt; 0) {
+</span></span><span class=line><span class=cl>                                    if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span><span class=line><span class=cl>                                        items[i].quality = items[i].quality - 1;
+</span></span><span class=line><span class=cl>                                    }
+</span></span><span class=line><span class=cl>                                }
+</span></span><span class=line><span class=cl>                            } else {
+</span></span><span class=line><span class=cl>                                items[i].quality = items[i].quality - items[i].quality;
+</span></span><span class=line><span class=cl>                            }
+</span></span><span class=line><span class=cl>                        } else {
+</span></span><span class=line><span class=cl>                            if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                                items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>                            }
+</span></span><span class=line><span class=cl>                        }
+</span></span><span class=line><span class=cl><span class=gi>+                   }
+</span></span></span><span class=line><span class=cl><span class=gi></span>            }
+</span></span><span class=line><span class=cl>        }
+</span></span><span class=line><span class=cl>    }
+</span></span></code></pre></td></tr></table></div></div><h3 id=case-aged-brie>case &ldquo;Aged Brie&rdquo;</h3><p>Puis nous dupliquons le code de cette manière.</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>  1
+</span><span class=lnt>  2
+</span><span class=lnt>  3
+</span><span class=lnt>  4
+</span><span class=lnt>  5
+</span><span class=lnt>  6
+</span><span class=lnt>  7
+</span><span class=lnt>  8
+</span><span class=lnt>  9
+</span><span class=lnt> 10
+</span><span class=lnt> 11
+</span><span class=lnt> 12
+</span><span class=lnt> 13
+</span><span class=lnt> 14
+</span><span class=lnt> 15
+</span><span class=lnt> 16
+</span><span class=lnt> 17
+</span><span class=lnt> 18
+</span><span class=lnt> 19
+</span><span class=lnt> 20
+</span><span class=lnt> 21
+</span><span class=lnt> 22
+</span><span class=lnt> 23
+</span><span class=lnt> 24
+</span><span class=lnt> 25
+</span><span class=lnt> 26
+</span><span class=lnt> 27
+</span><span class=lnt> 28
+</span><span class=lnt> 29
+</span><span class=lnt> 30
+</span><span class=lnt> 31
+</span><span class=lnt> 32
+</span><span class=lnt> 33
+</span><span class=lnt> 34
+</span><span class=lnt> 35
+</span><span class=lnt> 36
+</span><span class=lnt> 37
+</span><span class=lnt> 38
+</span><span class=lnt> 39
+</span><span class=lnt> 40
+</span><span class=lnt> 41
+</span><span class=lnt> 42
+</span><span class=lnt> 43
+</span><span class=lnt> 44
+</span><span class=lnt> 45
+</span><span class=lnt> 46
+</span><span class=lnt> 47
+</span><span class=lnt> 48
+</span><span class=lnt> 49
+</span><span class=lnt> 50
+</span><span class=lnt> 51
+</span><span class=lnt> 52
+</span><span class=lnt> 53
+</span><span class=lnt> 54
+</span><span class=lnt> 55
+</span><span class=lnt> 56
+</span><span class=lnt> 57
+</span><span class=lnt> 58
+</span><span class=lnt> 59
+</span><span class=lnt> 60
+</span><span class=lnt> 61
+</span><span class=lnt> 62
+</span><span class=lnt> 63
+</span><span class=lnt> 64
+</span><span class=lnt> 65
+</span><span class=lnt> 66
+</span><span class=lnt> 67
+</span><span class=lnt> 68
+</span><span class=lnt> 69
+</span><span class=lnt> 70
+</span><span class=lnt> 71
+</span><span class=lnt> 72
+</span><span class=lnt> 73
+</span><span class=lnt> 74
+</span><span class=lnt> 75
+</span><span class=lnt> 76
+</span><span class=lnt> 77
+</span><span class=lnt> 78
+</span><span class=lnt> 79
+</span><span class=lnt> 80
+</span><span class=lnt> 81
+</span><span class=lnt> 82
+</span><span class=lnt> 83
+</span><span class=lnt> 84
+</span><span class=lnt> 85
+</span><span class=lnt> 86
+</span><span class=lnt> 87
+</span><span class=lnt> 88
+</span><span class=lnt> 89
+</span><span class=lnt> 90
+</span><span class=lnt> 91
+</span><span class=lnt> 92
+</span><span class=lnt> 93
+</span><span class=lnt> 94
+</span><span class=lnt> 95
+</span><span class=lnt> 96
+</span><span class=lnt> 97
+</span><span class=lnt> 98
+</span><span class=lnt> 99
+</span><span class=lnt>100
+</span><span class=lnt>101
+</span><span class=lnt>102
+</span><span class=lnt>103
+</span><span class=lnt>104
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-diff data-lang=diff><span class=line><span class=cl>public void updateQuality() {
+</span></span><span class=line><span class=cl>        for (int i = 0; i &lt; items.length; i++) {
+</span></span><span class=line><span class=cl>            switch (items[i].name) {
+</span></span><span class=line><span class=cl><span class=gi>+               case &#34;Aged Brie&#34;:
+</span></span></span><span class=line><span class=cl><span class=gi>+                   if (!items[i].name.equals(&#34;Aged Brie&#34;) &amp;&amp; !items[i].name.equals(&#34;Backstage passes to a TAFKAL80ETC concert&#34;)) {
+</span></span></span><span class=line><span class=cl><span class=gi>+                       if (items[i].quality &gt; 0) {
+</span></span></span><span class=line><span class=cl><span class=gi>+                           if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span></span><span class=line><span class=cl><span class=gi>+                               items[i].quality = items[i].quality - 1;
+</span></span></span><span class=line><span class=cl><span class=gi>+                           }
+</span></span></span><span class=line><span class=cl><span class=gi>+                       }
+</span></span></span><span class=line><span class=cl><span class=gi>+                   } else {
+</span></span></span><span class=line><span class=cl><span class=gi>+                       if (items[i].quality &lt; 50) {
+</span></span></span><span class=line><span class=cl><span class=gi>+                           items[i].quality = items[i].quality + 1;
+</span></span></span><span class=line><span class=cl><span class=gi>+
+</span></span></span><span class=line><span class=cl><span class=gi>+                           if (items[i].name.equals(&#34;Backstage passes to a TAFKAL80ETC concert&#34;)) {
+</span></span></span><span class=line><span class=cl><span class=gi>+                               if (items[i].sellIn &lt; 11) {
+</span></span></span><span class=line><span class=cl><span class=gi>+                                   if (items[i].quality &lt; 50) {
+</span></span></span><span class=line><span class=cl><span class=gi>+                                       items[i].quality = items[i].quality + 1;
+</span></span></span><span class=line><span class=cl><span class=gi>+                                   }
+</span></span></span><span class=line><span class=cl><span class=gi>+                               }
+</span></span></span><span class=line><span class=cl><span class=gi>+
+</span></span></span><span class=line><span class=cl><span class=gi>+                               if (items[i].sellIn &lt; 6) {
+</span></span></span><span class=line><span class=cl><span class=gi>+                                   if (items[i].quality &lt; 50) {
+</span></span></span><span class=line><span class=cl><span class=gi>+                                       items[i].quality = items[i].quality + 1;
+</span></span></span><span class=line><span class=cl><span class=gi>+                                   }
+</span></span></span><span class=line><span class=cl><span class=gi>+                               }
+</span></span></span><span class=line><span class=cl><span class=gi>+                           }
+</span></span></span><span class=line><span class=cl><span class=gi>+                       }
+</span></span></span><span class=line><span class=cl><span class=gi>+                   }
+</span></span></span><span class=line><span class=cl><span class=gi>+
+</span></span></span><span class=line><span class=cl><span class=gi>+                   if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span></span><span class=line><span class=cl><span class=gi>+                       items[i].sellIn = items[i].sellIn - 1;
+</span></span></span><span class=line><span class=cl><span class=gi>+                   }
+</span></span></span><span class=line><span class=cl><span class=gi>+
+</span></span></span><span class=line><span class=cl><span class=gi>+                   if (items[i].sellIn &lt; 0) {
+</span></span></span><span class=line><span class=cl><span class=gi>+                       if (!items[i].name.equals(&#34;Aged Brie&#34;)) {
+</span></span></span><span class=line><span class=cl><span class=gi>+                           if (!items[i].name.equals(&#34;Backstage passes to a TAFKAL80ETC concert&#34;)) {
+</span></span></span><span class=line><span class=cl><span class=gi>+                               if (items[i].quality &gt; 0) {
+</span></span></span><span class=line><span class=cl><span class=gi>+                                   if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span></span><span class=line><span class=cl><span class=gi>+                                       items[i].quality = items[i].quality - 1;
+</span></span></span><span class=line><span class=cl><span class=gi>+                                   }
+</span></span></span><span class=line><span class=cl><span class=gi>+                               }
+</span></span></span><span class=line><span class=cl><span class=gi>+                           } else {
+</span></span></span><span class=line><span class=cl><span class=gi>+                               items[i].quality = items[i].quality - items[i].quality;
+</span></span></span><span class=line><span class=cl><span class=gi>+                           }
+</span></span></span><span class=line><span class=cl><span class=gi>+                       } else {
+</span></span></span><span class=line><span class=cl><span class=gi>+                           if (items[i].quality &lt; 50) {
+</span></span></span><span class=line><span class=cl><span class=gi>+                               items[i].quality = items[i].quality + 1;
+</span></span></span><span class=line><span class=cl><span class=gi>+                           }
+</span></span></span><span class=line><span class=cl><span class=gi>+                       }
+</span></span></span><span class=line><span class=cl><span class=gi>+                   }
+</span></span></span><span class=line><span class=cl><span class=gi>+
+</span></span></span><span class=line><span class=cl><span class=gi>+                   break;
+</span></span></span><span class=line><span class=cl><span class=gi></span>                default:
+</span></span><span class=line><span class=cl>                    if (!items[i].name.equals(&#34;Aged Brie&#34;) &amp;&amp; !items[i].name.equals(&#34;Backstage passes to a TAFKAL80ETC concert&#34;)) {
+</span></span><span class=line><span class=cl>                        if (items[i].quality &gt; 0) {
+</span></span><span class=line><span class=cl>                            if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span><span class=line><span class=cl>                                items[i].quality = items[i].quality - 1;
+</span></span><span class=line><span class=cl>                            }
+</span></span><span class=line><span class=cl>                        }
+</span></span><span class=line><span class=cl>                    } else {
+</span></span><span class=line><span class=cl>                        if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                            items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                            if (items[i].name.equals(&#34;Backstage passes to a TAFKAL80ETC concert&#34;)) {
+</span></span><span class=line><span class=cl>                                if (items[i].sellIn &lt; 11) {
+</span></span><span class=line><span class=cl>                                    if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                                        items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>                                    }
+</span></span><span class=line><span class=cl>                                }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                                if (items[i].sellIn &lt; 6) {
+</span></span><span class=line><span class=cl>                                    if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                                        items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>                                    }
+</span></span><span class=line><span class=cl>                                }
+</span></span><span class=line><span class=cl>                            }
+</span></span><span class=line><span class=cl>                        }
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span><span class=line><span class=cl>                        items[i].sellIn = items[i].sellIn - 1;
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    if (items[i].sellIn &lt; 0) {
+</span></span><span class=line><span class=cl>                        if (!items[i].name.equals(&#34;Aged Brie&#34;)) {
+</span></span><span class=line><span class=cl>                            if (!items[i].name.equals(&#34;Backstage passes to a TAFKAL80ETC concert&#34;)) {
+</span></span><span class=line><span class=cl>                                if (items[i].quality &gt; 0) {
+</span></span><span class=line><span class=cl>                                    if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span><span class=line><span class=cl>                                        items[i].quality = items[i].quality - 1;
+</span></span><span class=line><span class=cl>                                    }
+</span></span><span class=line><span class=cl>                                }
+</span></span><span class=line><span class=cl>                            } else {
+</span></span><span class=line><span class=cl>                                items[i].quality = items[i].quality - items[i].quality;
+</span></span><span class=line><span class=cl>                            }
+</span></span><span class=line><span class=cl>                        } else {
+</span></span><span class=line><span class=cl>                            if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                                items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>                            }
+</span></span><span class=line><span class=cl>                        }
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>            }
+</span></span><span class=line><span class=cl>        }
+</span></span><span class=line><span class=cl>    }
+</span></span></code></pre></td></tr></table></div></div><blockquote><ul><li>Novice : Bravo ! Tu as deux fois plus de code maintenant. Que comptes-tu faire ?</li><li>Expert : Je vais tout simplement reexécuter mon test avec le code coverage</li><li>Novice : Le code coverage ?</li><li>Expert : Mais oui, souviens-toi, on en a parlé dans la partie précédente</li><li>Novice : Et qu&rsquo;est-ce que ça va faire ?</li><li>Expert : De la magie !</li></ul></blockquote><p>J&rsquo;ai oublié de le préciser, nous allons utiliser le code coverage pour réaliser ce kata. Grâce à cela, plus besoin de réfléchir, c&rsquo;est le test qui le fait pour nous.</p><p>Donc, nous lançons le test avec le code coverage et nous constatons que certaines lignes ne sont pas exécutées dans le premier cas, comme dans le cas par défaut. Nous les supprimons. Dans le diff suivant, toutes les lignes supprimées correspondent aux lignes qui n&rsquo;ont pas été exécutées :</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>  1
+</span><span class=lnt>  2
+</span><span class=lnt>  3
+</span><span class=lnt>  4
+</span><span class=lnt>  5
+</span><span class=lnt>  6
+</span><span class=lnt>  7
+</span><span class=lnt>  8
+</span><span class=lnt>  9
+</span><span class=lnt> 10
+</span><span class=lnt> 11
+</span><span class=lnt> 12
+</span><span class=lnt> 13
+</span><span class=lnt> 14
+</span><span class=lnt> 15
+</span><span class=lnt> 16
+</span><span class=lnt> 17
+</span><span class=lnt> 18
+</span><span class=lnt> 19
+</span><span class=lnt> 20
+</span><span class=lnt> 21
+</span><span class=lnt> 22
+</span><span class=lnt> 23
+</span><span class=lnt> 24
+</span><span class=lnt> 25
+</span><span class=lnt> 26
+</span><span class=lnt> 27
+</span><span class=lnt> 28
+</span><span class=lnt> 29
+</span><span class=lnt> 30
+</span><span class=lnt> 31
+</span><span class=lnt> 32
+</span><span class=lnt> 33
+</span><span class=lnt> 34
+</span><span class=lnt> 35
+</span><span class=lnt> 36
+</span><span class=lnt> 37
+</span><span class=lnt> 38
+</span><span class=lnt> 39
+</span><span class=lnt> 40
+</span><span class=lnt> 41
+</span><span class=lnt> 42
+</span><span class=lnt> 43
+</span><span class=lnt> 44
+</span><span class=lnt> 45
+</span><span class=lnt> 46
+</span><span class=lnt> 47
+</span><span class=lnt> 48
+</span><span class=lnt> 49
+</span><span class=lnt> 50
+</span><span class=lnt> 51
+</span><span class=lnt> 52
+</span><span class=lnt> 53
+</span><span class=lnt> 54
+</span><span class=lnt> 55
+</span><span class=lnt> 56
+</span><span class=lnt> 57
+</span><span class=lnt> 58
+</span><span class=lnt> 59
+</span><span class=lnt> 60
+</span><span class=lnt> 61
+</span><span class=lnt> 62
+</span><span class=lnt> 63
+</span><span class=lnt> 64
+</span><span class=lnt> 65
+</span><span class=lnt> 66
+</span><span class=lnt> 67
+</span><span class=lnt> 68
+</span><span class=lnt> 69
+</span><span class=lnt> 70
+</span><span class=lnt> 71
+</span><span class=lnt> 72
+</span><span class=lnt> 73
+</span><span class=lnt> 74
+</span><span class=lnt> 75
+</span><span class=lnt> 76
+</span><span class=lnt> 77
+</span><span class=lnt> 78
+</span><span class=lnt> 79
+</span><span class=lnt> 80
+</span><span class=lnt> 81
+</span><span class=lnt> 82
+</span><span class=lnt> 83
+</span><span class=lnt> 84
+</span><span class=lnt> 85
+</span><span class=lnt> 86
+</span><span class=lnt> 87
+</span><span class=lnt> 88
+</span><span class=lnt> 89
+</span><span class=lnt> 90
+</span><span class=lnt> 91
+</span><span class=lnt> 92
+</span><span class=lnt> 93
+</span><span class=lnt> 94
+</span><span class=lnt> 95
+</span><span class=lnt> 96
+</span><span class=lnt> 97
+</span><span class=lnt> 98
+</span><span class=lnt> 99
+</span><span class=lnt>100
+</span><span class=lnt>101
+</span><span class=lnt>102
+</span><span class=lnt>103
+</span><span class=lnt>104
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-diff data-lang=diff><span class=line><span class=cl>public void updateQuality() {
+</span></span><span class=line><span class=cl>        for (int i = 0; i &lt; items.length; i++) {
+</span></span><span class=line><span class=cl>            switch (items[i].name) {
+</span></span><span class=line><span class=cl>                case &#34;Aged Brie&#34;:
+</span></span><span class=line><span class=cl>                    if (!items[i].name.equals(&#34;Aged Brie&#34;) &amp;&amp; !items[i].name.equals(&#34;Backstage passes to a TAFKAL80ETC concert&#34;)) {
+</span></span><span class=line><span class=cl><span class=gd>-                       if (items[i].quality &gt; 0) {
+</span></span></span><span class=line><span class=cl><span class=gd>-                           if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span></span><span class=line><span class=cl><span class=gd>-                               items[i].quality = items[i].quality - 1;
+</span></span></span><span class=line><span class=cl><span class=gd>-                           }
+</span></span></span><span class=line><span class=cl><span class=gd>-                       }
+</span></span></span><span class=line><span class=cl><span class=gd></span>                    } else {
+</span></span><span class=line><span class=cl>                        if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                            items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                            if (items[i].name.equals(&#34;Backstage passes to a TAFKAL80ETC concert&#34;)) {
+</span></span><span class=line><span class=cl><span class=gd>-                               if (items[i].sellIn &lt; 11) {
+</span></span></span><span class=line><span class=cl><span class=gd>-                                   if (items[i].quality &lt; 50) {
+</span></span></span><span class=line><span class=cl><span class=gd>-                                       items[i].quality = items[i].quality + 1;
+</span></span></span><span class=line><span class=cl><span class=gd>-                                   }
+</span></span></span><span class=line><span class=cl><span class=gd>-                               }
+</span></span></span><span class=line><span class=cl><span class=gd>-
+</span></span></span><span class=line><span class=cl><span class=gd>-                               if (items[i].sellIn &lt; 6) {
+</span></span></span><span class=line><span class=cl><span class=gd>-                                   if (items[i].quality &lt; 50) {
+</span></span></span><span class=line><span class=cl><span class=gd>-                                       items[i].quality = items[i].quality + 1;
+</span></span></span><span class=line><span class=cl><span class=gd>-                                   }
+</span></span></span><span class=line><span class=cl><span class=gd>-                               }
+</span></span></span><span class=line><span class=cl><span class=gd></span>                            }
+</span></span><span class=line><span class=cl>                        }
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span><span class=line><span class=cl>                        items[i].sellIn = items[i].sellIn - 1;
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    if (items[i].sellIn &lt; 0) {
+</span></span><span class=line><span class=cl>                        if (!items[i].name.equals(&#34;Aged Brie&#34;)) {
+</span></span><span class=line><span class=cl><span class=gd>-                           if (!items[i].name.equals(&#34;Backstage passes to a TAFKAL80ETC concert&#34;)) {
+</span></span></span><span class=line><span class=cl><span class=gd>-                               if (items[i].quality &gt; 0) {
+</span></span></span><span class=line><span class=cl><span class=gd>-                                   if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span></span><span class=line><span class=cl><span class=gd>-                                       items[i].quality = items[i].quality - 1;
+</span></span></span><span class=line><span class=cl><span class=gd>-                                   }
+</span></span></span><span class=line><span class=cl><span class=gd>-                               }
+</span></span></span><span class=line><span class=cl><span class=gd>-                           } else {
+</span></span></span><span class=line><span class=cl><span class=gd>-                               items[i].quality = items[i].quality - items[i].quality;
+</span></span></span><span class=line><span class=cl><span class=gd>-                           }
+</span></span></span><span class=line><span class=cl><span class=gd></span>                        } else {
+</span></span><span class=line><span class=cl>                            if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                                items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>                            }
+</span></span><span class=line><span class=cl>                        }
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    break;
+</span></span><span class=line><span class=cl>                default:
+</span></span><span class=line><span class=cl>                    if (!items[i].name.equals(&#34;Aged Brie&#34;) &amp;&amp; !items[i].name.equals(&#34;Backstage passes to a TAFKAL80ETC concert&#34;)) {
+</span></span><span class=line><span class=cl>                        if (items[i].quality &gt; 0) {
+</span></span><span class=line><span class=cl>                            if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span><span class=line><span class=cl>                                items[i].quality = items[i].quality - 1;
+</span></span><span class=line><span class=cl>                            }
+</span></span><span class=line><span class=cl>                        }
+</span></span><span class=line><span class=cl>                    } else {
+</span></span><span class=line><span class=cl>                        if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                            items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                            if (items[i].name.equals(&#34;Backstage passes to a TAFKAL80ETC concert&#34;)) {
+</span></span><span class=line><span class=cl>                                if (items[i].sellIn &lt; 11) {
+</span></span><span class=line><span class=cl>                                    if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                                        items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>                                    }
+</span></span><span class=line><span class=cl>                                }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                                if (items[i].sellIn &lt; 6) {
+</span></span><span class=line><span class=cl>                                    if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                                        items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>                                    }
+</span></span><span class=line><span class=cl>                                }
+</span></span><span class=line><span class=cl>                            }
+</span></span><span class=line><span class=cl>                        }
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span><span class=line><span class=cl>                        items[i].sellIn = items[i].sellIn - 1;
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    if (items[i].sellIn &lt; 0) {
+</span></span><span class=line><span class=cl>                        if (!items[i].name.equals(&#34;Aged Brie&#34;)) {
+</span></span><span class=line><span class=cl>                            if (!items[i].name.equals(&#34;Backstage passes to a TAFKAL80ETC concert&#34;)) {
+</span></span><span class=line><span class=cl>                                if (items[i].quality &gt; 0) {
+</span></span><span class=line><span class=cl>                                    if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span><span class=line><span class=cl>                                        items[i].quality = items[i].quality - 1;
+</span></span><span class=line><span class=cl>                                    }
+</span></span><span class=line><span class=cl>                                }
+</span></span><span class=line><span class=cl>                            } else {
+</span></span><span class=line><span class=cl>                                items[i].quality = items[i].quality - items[i].quality;
+</span></span><span class=line><span class=cl>                            }
+</span></span><span class=line><span class=cl>                        } else {
+</span></span><span class=line><span class=cl><span class=gd>-                           if (items[i].quality &lt; 50) {
+</span></span></span><span class=line><span class=cl><span class=gd>-                               items[i].quality = items[i].quality + 1;
+</span></span></span><span class=line><span class=cl><span class=gd>-                           }
+</span></span></span><span class=line><span class=cl><span class=gd></span>                        }
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>            }
+</span></span><span class=line><span class=cl>        }
+</span></span><span class=line><span class=cl>    }
+</span></span></code></pre></td></tr></table></div></div><p>Suite à cela, nous nous retrouvons avec des blocs <code>if / else</code> vides. Si malgré le test, nous ne rentrons jamais dans un bloc <code>if</code> ou dans un bloc <code>else</code>, cela signifie que la condition est respectivement soit toujours fause, soit toujours vrai. Nous pouvons donc supprimer le bloc correspondant. C&rsquo;est simple parce que c&rsquo;est le bloc vide qu&rsquo;il faut supprimer.</p><p>Petit exemple avec le premier bloc :</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span><span class=lnt>54
+</span><span class=lnt>55
+</span><span class=lnt>56
+</span><span class=lnt>57
+</span><span class=lnt>58
+</span><span class=lnt>59
+</span><span class=lnt>60
+</span><span class=lnt>61
+</span><span class=lnt>62
+</span><span class=lnt>63
+</span><span class=lnt>64
+</span><span class=lnt>65
+</span><span class=lnt>66
+</span><span class=lnt>67
+</span><span class=lnt>68
+</span><span class=lnt>69
+</span><span class=lnt>70
+</span><span class=lnt>71
+</span><span class=lnt>72
+</span><span class=lnt>73
+</span><span class=lnt>74
+</span><span class=lnt>75
+</span><span class=lnt>76
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-diff data-lang=diff><span class=line><span class=cl>public void updateQuality() {
+</span></span><span class=line><span class=cl>        for (int i = 0; i &lt; items.length; i++) {
+</span></span><span class=line><span class=cl>            switch (items[i].name) {
+</span></span><span class=line><span class=cl>                case &#34;Aged Brie&#34;:
+</span></span><span class=line><span class=cl><span class=gd>-                   if (!items[i].name.equals(&#34;Aged Brie&#34;) &amp;&amp; !items[i].name.equals(&#34;Backstage passes to a TAFKAL80ETC concert&#34;)) {
+</span></span></span><span class=line><span class=cl><span class=gd>-                   } else {
+</span></span></span><span class=line><span class=cl><span class=gd></span>                        if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                            items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                            if (items[i].name.equals(&#34;Backstage passes to a TAFKAL80ETC concert&#34;)) {
+</span></span><span class=line><span class=cl><span class=gd>-                           }
+</span></span></span><span class=line><span class=cl><span class=gd></span>                        }
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span><span class=line><span class=cl>                        items[i].sellIn = items[i].sellIn - 1;
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    if (items[i].sellIn &lt; 0) {
+</span></span><span class=line><span class=cl>                        if (!items[i].name.equals(&#34;Aged Brie&#34;)) {
+</span></span><span class=line><span class=cl>                        } else {
+</span></span><span class=line><span class=cl>                            if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                                items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>                            }
+</span></span><span class=line><span class=cl>                        }
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    break;
+</span></span><span class=line><span class=cl>                default:
+</span></span><span class=line><span class=cl>                    if (!items[i].name.equals(&#34;Aged Brie&#34;) &amp;&amp; !items[i].name.equals(&#34;Backstage passes to a TAFKAL80ETC concert&#34;)) {
+</span></span><span class=line><span class=cl>                        if (items[i].quality &gt; 0) {
+</span></span><span class=line><span class=cl>                            if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span><span class=line><span class=cl>                                items[i].quality = items[i].quality - 1;
+</span></span><span class=line><span class=cl>                            }
+</span></span><span class=line><span class=cl>                        }
+</span></span><span class=line><span class=cl>                    } else {
+</span></span><span class=line><span class=cl>                        if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                            items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                            if (items[i].name.equals(&#34;Backstage passes to a TAFKAL80ETC concert&#34;)) {
+</span></span><span class=line><span class=cl>                                if (items[i].sellIn &lt; 11) {
+</span></span><span class=line><span class=cl>                                    if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                                        items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>                                    }
+</span></span><span class=line><span class=cl>                                }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                                if (items[i].sellIn &lt; 6) {
+</span></span><span class=line><span class=cl>                                    if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                                        items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>                                    }
+</span></span><span class=line><span class=cl>                                }
+</span></span><span class=line><span class=cl>                            }
+</span></span><span class=line><span class=cl>                        }
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span><span class=line><span class=cl>                        items[i].sellIn = items[i].sellIn - 1;
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    if (items[i].sellIn &lt; 0) {
+</span></span><span class=line><span class=cl>                        if (!items[i].name.equals(&#34;Aged Brie&#34;)) {
+</span></span><span class=line><span class=cl>                            if (!items[i].name.equals(&#34;Backstage passes to a TAFKAL80ETC concert&#34;)) {
+</span></span><span class=line><span class=cl>                                if (items[i].quality &gt; 0) {
+</span></span><span class=line><span class=cl>                                    if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span><span class=line><span class=cl>                                        items[i].quality = items[i].quality - 1;
+</span></span><span class=line><span class=cl>                                    }
+</span></span><span class=line><span class=cl>                                }
+</span></span><span class=line><span class=cl>                            } else {
+</span></span><span class=line><span class=cl>                                items[i].quality = items[i].quality - items[i].quality;
+</span></span><span class=line><span class=cl>                            }
+</span></span><span class=line><span class=cl>                        } else {
+</span></span><span class=line><span class=cl>                        }
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>            }
+</span></span><span class=line><span class=cl>        }
+</span></span><span class=line><span class=cl>    }
+</span></span></code></pre></td></tr></table></div></div><p>Je vais un peu plus vite en supprimant tous les blocs vides :</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span><span class=lnt>54
+</span><span class=lnt>55
+</span><span class=lnt>56
+</span><span class=lnt>57
+</span><span class=lnt>58
+</span><span class=lnt>59
+</span><span class=lnt>60
+</span><span class=lnt>61
+</span><span class=lnt>62
+</span><span class=lnt>63
+</span><span class=lnt>64
+</span><span class=lnt>65
+</span><span class=lnt>66
+</span><span class=lnt>67
+</span><span class=lnt>68
+</span><span class=lnt>69
+</span><span class=lnt>70
+</span><span class=lnt>71
+</span><span class=lnt>72
+</span><span class=lnt>73
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-diff data-lang=diff><span class=line><span class=cl>public void updateQuality() {
+</span></span><span class=line><span class=cl>        for (int i = 0; i &lt; items.length; i++) {
+</span></span><span class=line><span class=cl>            switch (items[i].name) {
+</span></span><span class=line><span class=cl>                case &#34;Aged Brie&#34;:
+</span></span><span class=line><span class=cl>                    if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                        items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl><span class=gd>-
+</span></span></span><span class=line><span class=cl><span class=gd>-                       if (items[i].name.equals(&#34;Backstage passes to a TAFKAL80ETC concert&#34;)) {
+</span></span></span><span class=line><span class=cl><span class=gd>-                       }
+</span></span></span><span class=line><span class=cl><span class=gd></span>                    }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span><span class=line><span class=cl>                        items[i].sellIn = items[i].sellIn - 1;
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    if (items[i].sellIn &lt; 0) {
+</span></span><span class=line><span class=cl><span class=gd>-                       if (!items[i].name.equals(&#34;Aged Brie&#34;)) {
+</span></span></span><span class=line><span class=cl><span class=gd>-                       } else {
+</span></span></span><span class=line><span class=cl><span class=gd></span>                            if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                                items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>                            }
+</span></span><span class=line><span class=cl>                        }
+</span></span><span class=line><span class=cl><span class=gd>-                   }
+</span></span></span><span class=line><span class=cl><span class=gd></span>
+</span></span><span class=line><span class=cl>                    break;
+</span></span><span class=line><span class=cl>                default:
+</span></span><span class=line><span class=cl>                    if (!items[i].name.equals(&#34;Aged Brie&#34;) &amp;&amp; !items[i].name.equals(&#34;Backstage passes to a TAFKAL80ETC concert&#34;)) {
+</span></span><span class=line><span class=cl>                        if (items[i].quality &gt; 0) {
+</span></span><span class=line><span class=cl>                            if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span><span class=line><span class=cl>                                items[i].quality = items[i].quality - 1;
+</span></span><span class=line><span class=cl>                            }
+</span></span><span class=line><span class=cl>                        }
+</span></span><span class=line><span class=cl>                    } else {
+</span></span><span class=line><span class=cl>                        if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                            items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                            if (items[i].name.equals(&#34;Backstage passes to a TAFKAL80ETC concert&#34;)) {
+</span></span><span class=line><span class=cl>                                if (items[i].sellIn &lt; 11) {
+</span></span><span class=line><span class=cl>                                    if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                                        items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>                                    }
+</span></span><span class=line><span class=cl>                                }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                                if (items[i].sellIn &lt; 6) {
+</span></span><span class=line><span class=cl>                                    if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                                        items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>                                    }
+</span></span><span class=line><span class=cl>                                }
+</span></span><span class=line><span class=cl>                            }
+</span></span><span class=line><span class=cl>                        }
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span><span class=line><span class=cl>                        items[i].sellIn = items[i].sellIn - 1;
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    if (items[i].sellIn &lt; 0) {
+</span></span><span class=line><span class=cl>                        if (!items[i].name.equals(&#34;Aged Brie&#34;)) {
+</span></span><span class=line><span class=cl>                            if (!items[i].name.equals(&#34;Backstage passes to a TAFKAL80ETC concert&#34;)) {
+</span></span><span class=line><span class=cl>                                if (items[i].quality &gt; 0) {
+</span></span><span class=line><span class=cl>                                    if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span><span class=line><span class=cl>                                        items[i].quality = items[i].quality - 1;
+</span></span><span class=line><span class=cl>                                    }
+</span></span><span class=line><span class=cl>                                }
+</span></span><span class=line><span class=cl>                            } else {
+</span></span><span class=line><span class=cl>                                items[i].quality = items[i].quality - items[i].quality;
+</span></span><span class=line><span class=cl>                            }
+</span></span><span class=line><span class=cl><span class=gd>-                       } else {
+</span></span></span><span class=line><span class=cl><span class=gd></span>                        }
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>            }
+</span></span><span class=line><span class=cl>        }
+</span></span><span class=line><span class=cl>    }
+</span></span></code></pre></td></tr></table></div></div><p>Enfin, il nous reste un bloc dans lequel on vérifie si l&rsquo;attribut <code>name</code> est différent de <code>"Sulfuras, Hand of Ragnaros"</code>. Nous sommes sûrs de travailler avec un <code>"Aged Brie"</code>. La condition est toujours vrai dans ce bloc <code>case</code>, nous pouvons donc la supprimer (mais on garde le code à l&rsquo;intérieur) :</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span><span class=lnt>54
+</span><span class=lnt>55
+</span><span class=lnt>56
+</span><span class=lnt>57
+</span><span class=lnt>58
+</span><span class=lnt>59
+</span><span class=lnt>60
+</span><span class=lnt>61
+</span><span class=lnt>62
+</span><span class=lnt>63
+</span><span class=lnt>64
+</span><span class=lnt>65
+</span><span class=lnt>66
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-diff data-lang=diff><span class=line><span class=cl>public void updateQuality() {
+</span></span><span class=line><span class=cl>        for (int i = 0; i &lt; items.length; i++) {
+</span></span><span class=line><span class=cl>            switch (items[i].name) {
+</span></span><span class=line><span class=cl>                case &#34;Aged Brie&#34;:
+</span></span><span class=line><span class=cl>                    if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                        items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=gd>-                   if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span></span><span class=line><span class=cl><span class=gd></span>                        items[i].sellIn = items[i].sellIn - 1;
+</span></span><span class=line><span class=cl><span class=gd>-                   }
+</span></span></span><span class=line><span class=cl><span class=gd></span>
+</span></span><span class=line><span class=cl>                    if (items[i].sellIn &lt; 0) {
+</span></span><span class=line><span class=cl>                        if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                            items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>                        }
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    break;
+</span></span><span class=line><span class=cl>                default:
+</span></span><span class=line><span class=cl>                    if (!items[i].name.equals(&#34;Aged Brie&#34;) &amp;&amp; !items[i].name.equals(&#34;Backstage passes to a TAFKAL80ETC concert&#34;)) {
+</span></span><span class=line><span class=cl>                        if (items[i].quality &gt; 0) {
+</span></span><span class=line><span class=cl>                            if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span><span class=line><span class=cl>                                items[i].quality = items[i].quality - 1;
+</span></span><span class=line><span class=cl>                            }
+</span></span><span class=line><span class=cl>                        }
+</span></span><span class=line><span class=cl>                    } else {
+</span></span><span class=line><span class=cl>                        if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                            items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                            if (items[i].name.equals(&#34;Backstage passes to a TAFKAL80ETC concert&#34;)) {
+</span></span><span class=line><span class=cl>                                if (items[i].sellIn &lt; 11) {
+</span></span><span class=line><span class=cl>                                    if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                                        items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>                                    }
+</span></span><span class=line><span class=cl>                                }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                                if (items[i].sellIn &lt; 6) {
+</span></span><span class=line><span class=cl>                                    if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                                        items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>                                    }
+</span></span><span class=line><span class=cl>                                }
+</span></span><span class=line><span class=cl>                            }
+</span></span><span class=line><span class=cl>                        }
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span><span class=line><span class=cl>                        items[i].sellIn = items[i].sellIn - 1;
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    if (items[i].sellIn &lt; 0) {
+</span></span><span class=line><span class=cl>                        if (!items[i].name.equals(&#34;Aged Brie&#34;)) {
+</span></span><span class=line><span class=cl>                            if (!items[i].name.equals(&#34;Backstage passes to a TAFKAL80ETC concert&#34;)) {
+</span></span><span class=line><span class=cl>                                if (items[i].quality &gt; 0) {
+</span></span><span class=line><span class=cl>                                    if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span><span class=line><span class=cl>                                        items[i].quality = items[i].quality - 1;
+</span></span><span class=line><span class=cl>                                    }
+</span></span><span class=line><span class=cl>                                }
+</span></span><span class=line><span class=cl>                            } else {
+</span></span><span class=line><span class=cl>                                items[i].quality = items[i].quality - items[i].quality;
+</span></span><span class=line><span class=cl>                            }
+</span></span><span class=line><span class=cl>                        }
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>            }
+</span></span><span class=line><span class=cl>        }
+</span></span><span class=line><span class=cl>    }
+</span></span></code></pre></td></tr></table></div></div><h3 id=case-backstage-passes-to-a-tafkal80etc-concert>case &ldquo;Backstage passes to a TAFKAL80ETC concert&rdquo;</h3><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>  1
+</span><span class=lnt>  2
+</span><span class=lnt>  3
+</span><span class=lnt>  4
+</span><span class=lnt>  5
+</span><span class=lnt>  6
+</span><span class=lnt>  7
+</span><span class=lnt>  8
+</span><span class=lnt>  9
+</span><span class=lnt> 10
+</span><span class=lnt> 11
+</span><span class=lnt> 12
+</span><span class=lnt> 13
+</span><span class=lnt> 14
+</span><span class=lnt> 15
+</span><span class=lnt> 16
+</span><span class=lnt> 17
+</span><span class=lnt> 18
+</span><span class=lnt> 19
+</span><span class=lnt> 20
+</span><span class=lnt> 21
+</span><span class=lnt> 22
+</span><span class=lnt> 23
+</span><span class=lnt> 24
+</span><span class=lnt> 25
+</span><span class=lnt> 26
+</span><span class=lnt> 27
+</span><span class=lnt> 28
+</span><span class=lnt> 29
+</span><span class=lnt> 30
+</span><span class=lnt> 31
+</span><span class=lnt> 32
+</span><span class=lnt> 33
+</span><span class=lnt> 34
+</span><span class=lnt> 35
+</span><span class=lnt> 36
+</span><span class=lnt> 37
+</span><span class=lnt> 38
+</span><span class=lnt> 39
+</span><span class=lnt> 40
+</span><span class=lnt> 41
+</span><span class=lnt> 42
+</span><span class=lnt> 43
+</span><span class=lnt> 44
+</span><span class=lnt> 45
+</span><span class=lnt> 46
+</span><span class=lnt> 47
+</span><span class=lnt> 48
+</span><span class=lnt> 49
+</span><span class=lnt> 50
+</span><span class=lnt> 51
+</span><span class=lnt> 52
+</span><span class=lnt> 53
+</span><span class=lnt> 54
+</span><span class=lnt> 55
+</span><span class=lnt> 56
+</span><span class=lnt> 57
+</span><span class=lnt> 58
+</span><span class=lnt> 59
+</span><span class=lnt> 60
+</span><span class=lnt> 61
+</span><span class=lnt> 62
+</span><span class=lnt> 63
+</span><span class=lnt> 64
+</span><span class=lnt> 65
+</span><span class=lnt> 66
+</span><span class=lnt> 67
+</span><span class=lnt> 68
+</span><span class=lnt> 69
+</span><span class=lnt> 70
+</span><span class=lnt> 71
+</span><span class=lnt> 72
+</span><span class=lnt> 73
+</span><span class=lnt> 74
+</span><span class=lnt> 75
+</span><span class=lnt> 76
+</span><span class=lnt> 77
+</span><span class=lnt> 78
+</span><span class=lnt> 79
+</span><span class=lnt> 80
+</span><span class=lnt> 81
+</span><span class=lnt> 82
+</span><span class=lnt> 83
+</span><span class=lnt> 84
+</span><span class=lnt> 85
+</span><span class=lnt> 86
+</span><span class=lnt> 87
+</span><span class=lnt> 88
+</span><span class=lnt> 89
+</span><span class=lnt> 90
+</span><span class=lnt> 91
+</span><span class=lnt> 92
+</span><span class=lnt> 93
+</span><span class=lnt> 94
+</span><span class=lnt> 95
+</span><span class=lnt> 96
+</span><span class=lnt> 97
+</span><span class=lnt> 98
+</span><span class=lnt> 99
+</span><span class=lnt>100
+</span><span class=lnt>101
+</span><span class=lnt>102
+</span><span class=lnt>103
+</span><span class=lnt>104
+</span><span class=lnt>105
+</span><span class=lnt>106
+</span><span class=lnt>107
+</span><span class=lnt>108
+</span><span class=lnt>109
+</span><span class=lnt>110
+</span><span class=lnt>111
+</span><span class=lnt>112
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-diff data-lang=diff><span class=line><span class=cl>public void updateQuality() {
+</span></span><span class=line><span class=cl>        for (int i = 0; i &lt; items.length; i++) {
+</span></span><span class=line><span class=cl>            switch (items[i].name) {
+</span></span><span class=line><span class=cl>                case &#34;Aged Brie&#34;:
+</span></span><span class=line><span class=cl>                    if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                        items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    items[i].sellIn = items[i].sellIn - 1;
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    if (items[i].sellIn &lt; 0) {
+</span></span><span class=line><span class=cl>                        if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                            items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>                        }
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    break;
+</span></span><span class=line><span class=cl><span class=gi>+
+</span></span></span><span class=line><span class=cl><span class=gi>+               case &#34;Backstage passes to a TAFKAL80ETC concert&#34;:
+</span></span></span><span class=line><span class=cl><span class=gi>+                   if (!items[i].name.equals(&#34;Aged Brie&#34;) &amp;&amp; !items[i].name.equals(&#34;Backstage passes to a TAFKAL80ETC concert&#34;)) {
+</span></span></span><span class=line><span class=cl><span class=gi>+                       if (items[i].quality &gt; 0) {
+</span></span></span><span class=line><span class=cl><span class=gi>+                           if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span></span><span class=line><span class=cl><span class=gi>+                               items[i].quality = items[i].quality - 1;
+</span></span></span><span class=line><span class=cl><span class=gi>+                           }
+</span></span></span><span class=line><span class=cl><span class=gi>+                       }
+</span></span></span><span class=line><span class=cl><span class=gi>+                   } else {
+</span></span></span><span class=line><span class=cl><span class=gi>+                       if (items[i].quality &lt; 50) {
+</span></span></span><span class=line><span class=cl><span class=gi>+                           items[i].quality = items[i].quality + 1;
+</span></span></span><span class=line><span class=cl><span class=gi>+
+</span></span></span><span class=line><span class=cl><span class=gi>+                           if (items[i].name.equals(&#34;Backstage passes to a TAFKAL80ETC concert&#34;)) {
+</span></span></span><span class=line><span class=cl><span class=gi>+                               if (items[i].sellIn &lt; 11) {
+</span></span></span><span class=line><span class=cl><span class=gi>+                                   if (items[i].quality &lt; 50) {
+</span></span></span><span class=line><span class=cl><span class=gi>+                                       items[i].quality = items[i].quality + 1;
+</span></span></span><span class=line><span class=cl><span class=gi>+                                   }
+</span></span></span><span class=line><span class=cl><span class=gi>+                               }
+</span></span></span><span class=line><span class=cl><span class=gi>+
+</span></span></span><span class=line><span class=cl><span class=gi>+                               if (items[i].sellIn &lt; 6) {
+</span></span></span><span class=line><span class=cl><span class=gi>+                                   if (items[i].quality &lt; 50) {
+</span></span></span><span class=line><span class=cl><span class=gi>+                                       items[i].quality = items[i].quality + 1;
+</span></span></span><span class=line><span class=cl><span class=gi>+                                   }
+</span></span></span><span class=line><span class=cl><span class=gi>+                               }
+</span></span></span><span class=line><span class=cl><span class=gi>+                           }
+</span></span></span><span class=line><span class=cl><span class=gi>+                       }
+</span></span></span><span class=line><span class=cl><span class=gi>+                   }
+</span></span></span><span class=line><span class=cl><span class=gi>+
+</span></span></span><span class=line><span class=cl><span class=gi>+                   if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span></span><span class=line><span class=cl><span class=gi>+                       items[i].sellIn = items[i].sellIn - 1;
+</span></span></span><span class=line><span class=cl><span class=gi>+                   }
+</span></span></span><span class=line><span class=cl><span class=gi>+
+</span></span></span><span class=line><span class=cl><span class=gi>+                   if (items[i].sellIn &lt; 0) {
+</span></span></span><span class=line><span class=cl><span class=gi>+                       if (!items[i].name.equals(&#34;Aged Brie&#34;)) {
+</span></span></span><span class=line><span class=cl><span class=gi>+                           if (!items[i].name.equals(&#34;Backstage passes to a TAFKAL80ETC concert&#34;)) {
+</span></span></span><span class=line><span class=cl><span class=gi>+                               if (items[i].quality &gt; 0) {
+</span></span></span><span class=line><span class=cl><span class=gi>+                                   if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span></span><span class=line><span class=cl><span class=gi>+                                       items[i].quality = items[i].quality - 1;
+</span></span></span><span class=line><span class=cl><span class=gi>+                                   }
+</span></span></span><span class=line><span class=cl><span class=gi>+                               }
+</span></span></span><span class=line><span class=cl><span class=gi>+                           } else {
+</span></span></span><span class=line><span class=cl><span class=gi>+                               items[i].quality = items[i].quality - items[i].quality;
+</span></span></span><span class=line><span class=cl><span class=gi>+                           }
+</span></span></span><span class=line><span class=cl><span class=gi>+                       }
+</span></span></span><span class=line><span class=cl><span class=gi>+                   }
+</span></span></span><span class=line><span class=cl><span class=gi>+
+</span></span></span><span class=line><span class=cl><span class=gi>+                   break;
+</span></span></span><span class=line><span class=cl><span class=gi>+
+</span></span></span><span class=line><span class=cl><span class=gi></span>                default:
+</span></span><span class=line><span class=cl>                    if (!items[i].name.equals(&#34;Aged Brie&#34;) &amp;&amp; !items[i].name.equals(&#34;Backstage passes to a TAFKAL80ETC concert&#34;)) {
+</span></span><span class=line><span class=cl>                        if (items[i].quality &gt; 0) {
+</span></span><span class=line><span class=cl>                            if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span><span class=line><span class=cl>                                items[i].quality = items[i].quality - 1;
+</span></span><span class=line><span class=cl>                            }
+</span></span><span class=line><span class=cl>                        }
+</span></span><span class=line><span class=cl>                    } else {
+</span></span><span class=line><span class=cl>                        if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                            items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                            if (items[i].name.equals(&#34;Backstage passes to a TAFKAL80ETC concert&#34;)) {
+</span></span><span class=line><span class=cl>                                if (items[i].sellIn &lt; 11) {
+</span></span><span class=line><span class=cl>                                    if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                                        items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>                                    }
+</span></span><span class=line><span class=cl>                                }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                                if (items[i].sellIn &lt; 6) {
+</span></span><span class=line><span class=cl>                                    if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                                        items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>                                    }
+</span></span><span class=line><span class=cl>                                }
+</span></span><span class=line><span class=cl>                            }
+</span></span><span class=line><span class=cl>                        }
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span><span class=line><span class=cl>                        items[i].sellIn = items[i].sellIn - 1;
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    if (items[i].sellIn &lt; 0) {
+</span></span><span class=line><span class=cl>                        if (!items[i].name.equals(&#34;Aged Brie&#34;)) {
+</span></span><span class=line><span class=cl>                            if (!items[i].name.equals(&#34;Backstage passes to a TAFKAL80ETC concert&#34;)) {
+</span></span><span class=line><span class=cl>                                if (items[i].quality &gt; 0) {
+</span></span><span class=line><span class=cl>                                    if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span><span class=line><span class=cl>                                        items[i].quality = items[i].quality - 1;
+</span></span><span class=line><span class=cl>                                    }
+</span></span><span class=line><span class=cl>                                }
+</span></span><span class=line><span class=cl>                            } else {
+</span></span><span class=line><span class=cl>                                items[i].quality = items[i].quality - items[i].quality;
+</span></span><span class=line><span class=cl>                            }
+</span></span><span class=line><span class=cl>                        }
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>            }
+</span></span><span class=line><span class=cl>        }
+</span></span><span class=line><span class=cl>    }
+</span></span></code></pre></td></tr></table></div></div><p>Puis nous relançons les tests avec le code coverage, nous supprimons le code mort, nous supprimons les blocs de code <code>if / else</code> qui sont forcément faux (ou vrai).</p><p>Ce qui donne :</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt>  1
+</span><span class=lnt>  2
+</span><span class=lnt>  3
+</span><span class=lnt>  4
+</span><span class=lnt>  5
+</span><span class=lnt>  6
+</span><span class=lnt>  7
+</span><span class=lnt>  8
+</span><span class=lnt>  9
+</span><span class=lnt> 10
+</span><span class=lnt> 11
+</span><span class=lnt> 12
+</span><span class=lnt> 13
+</span><span class=lnt> 14
+</span><span class=lnt> 15
+</span><span class=lnt> 16
+</span><span class=lnt> 17
+</span><span class=lnt> 18
+</span><span class=lnt> 19
+</span><span class=lnt> 20
+</span><span class=lnt> 21
+</span><span class=lnt> 22
+</span><span class=lnt> 23
+</span><span class=lnt> 24
+</span><span class=lnt> 25
+</span><span class=lnt> 26
+</span><span class=lnt> 27
+</span><span class=lnt> 28
+</span><span class=lnt> 29
+</span><span class=lnt> 30
+</span><span class=lnt> 31
+</span><span class=lnt> 32
+</span><span class=lnt> 33
+</span><span class=lnt> 34
+</span><span class=lnt> 35
+</span><span class=lnt> 36
+</span><span class=lnt> 37
+</span><span class=lnt> 38
+</span><span class=lnt> 39
+</span><span class=lnt> 40
+</span><span class=lnt> 41
+</span><span class=lnt> 42
+</span><span class=lnt> 43
+</span><span class=lnt> 44
+</span><span class=lnt> 45
+</span><span class=lnt> 46
+</span><span class=lnt> 47
+</span><span class=lnt> 48
+</span><span class=lnt> 49
+</span><span class=lnt> 50
+</span><span class=lnt> 51
+</span><span class=lnt> 52
+</span><span class=lnt> 53
+</span><span class=lnt> 54
+</span><span class=lnt> 55
+</span><span class=lnt> 56
+</span><span class=lnt> 57
+</span><span class=lnt> 58
+</span><span class=lnt> 59
+</span><span class=lnt> 60
+</span><span class=lnt> 61
+</span><span class=lnt> 62
+</span><span class=lnt> 63
+</span><span class=lnt> 64
+</span><span class=lnt> 65
+</span><span class=lnt> 66
+</span><span class=lnt> 67
+</span><span class=lnt> 68
+</span><span class=lnt> 69
+</span><span class=lnt> 70
+</span><span class=lnt> 71
+</span><span class=lnt> 72
+</span><span class=lnt> 73
+</span><span class=lnt> 74
+</span><span class=lnt> 75
+</span><span class=lnt> 76
+</span><span class=lnt> 77
+</span><span class=lnt> 78
+</span><span class=lnt> 79
+</span><span class=lnt> 80
+</span><span class=lnt> 81
+</span><span class=lnt> 82
+</span><span class=lnt> 83
+</span><span class=lnt> 84
+</span><span class=lnt> 85
+</span><span class=lnt> 86
+</span><span class=lnt> 87
+</span><span class=lnt> 88
+</span><span class=lnt> 89
+</span><span class=lnt> 90
+</span><span class=lnt> 91
+</span><span class=lnt> 92
+</span><span class=lnt> 93
+</span><span class=lnt> 94
+</span><span class=lnt> 95
+</span><span class=lnt> 96
+</span><span class=lnt> 97
+</span><span class=lnt> 98
+</span><span class=lnt> 99
+</span><span class=lnt>100
+</span><span class=lnt>101
+</span><span class=lnt>102
+</span><span class=lnt>103
+</span><span class=lnt>104
+</span><span class=lnt>105
+</span><span class=lnt>106
+</span><span class=lnt>107
+</span><span class=lnt>108
+</span><span class=lnt>109
+</span><span class=lnt>110
+</span><span class=lnt>111
+</span><span class=lnt>112
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-diff data-lang=diff><span class=line><span class=cl>public void updateQuality() {
+</span></span><span class=line><span class=cl>        for (int i = 0; i &lt; items.length; i++) {
+</span></span><span class=line><span class=cl>            switch (items[i].name) {
+</span></span><span class=line><span class=cl>                case &#34;Aged Brie&#34;:
+</span></span><span class=line><span class=cl>                    if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                        items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    items[i].sellIn = items[i].sellIn - 1;
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    if (items[i].sellIn &lt; 0) {
+</span></span><span class=line><span class=cl>                        if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                            items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>                        }
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    break;
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                case &#34;Backstage passes to a TAFKAL80ETC concert&#34;:
+</span></span><span class=line><span class=cl><span class=gd>-                   if (!items[i].name.equals(&#34;Aged Brie&#34;) &amp;&amp; !items[i].name.equals(&#34;Backstage passes to a TAFKAL80ETC concert&#34;)) {
+</span></span></span><span class=line><span class=cl><span class=gd>-                       if (items[i].quality &gt; 0) {
+</span></span></span><span class=line><span class=cl><span class=gd>-                           if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span></span><span class=line><span class=cl><span class=gd>-                               items[i].quality = items[i].quality - 1;
+</span></span></span><span class=line><span class=cl><span class=gd>-                           }
+</span></span></span><span class=line><span class=cl><span class=gd>-                       }
+</span></span></span><span class=line><span class=cl><span class=gd>-                   } else {
+</span></span></span><span class=line><span class=cl><span class=gd></span>                        if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                            items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl><span class=gd>-                           if (items[i].name.equals(&#34;Backstage passes to a TAFKAL80ETC concert&#34;)) {
+</span></span></span><span class=line><span class=cl><span class=gd></span>                                if (items[i].sellIn &lt; 11) {
+</span></span><span class=line><span class=cl>                                    if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                                        items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>                                    }
+</span></span><span class=line><span class=cl>                                }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                                if (items[i].sellIn &lt; 6) {
+</span></span><span class=line><span class=cl>                                    if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                                        items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>                                    }
+</span></span><span class=line><span class=cl>                                }
+</span></span><span class=line><span class=cl>                            }
+</span></span><span class=line><span class=cl><span class=gd>-                       }
+</span></span></span><span class=line><span class=cl><span class=gd>-                   }
+</span></span></span><span class=line><span class=cl><span class=gd></span>
+</span></span><span class=line><span class=cl><span class=gd>-                   if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span></span><span class=line><span class=cl><span class=gd></span>                        items[i].sellIn = items[i].sellIn - 1;
+</span></span><span class=line><span class=cl><span class=gd>-                   }
+</span></span></span><span class=line><span class=cl><span class=gd></span>
+</span></span><span class=line><span class=cl>                    if (items[i].sellIn &lt; 0) {
+</span></span><span class=line><span class=cl><span class=gd>-                       if (!items[i].name.equals(&#34;Aged Brie&#34;)) {
+</span></span></span><span class=line><span class=cl><span class=gd>-                           if (!items[i].name.equals(&#34;Backstage passes to a TAFKAL80ETC concert&#34;)) {
+</span></span></span><span class=line><span class=cl><span class=gd>-                               if (items[i].quality &gt; 0) {
+</span></span></span><span class=line><span class=cl><span class=gd>-                                   if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span></span><span class=line><span class=cl><span class=gd>-                                       items[i].quality = items[i].quality - 1;
+</span></span></span><span class=line><span class=cl><span class=gd>-                                   }
+</span></span></span><span class=line><span class=cl><span class=gd>-                               }
+</span></span></span><span class=line><span class=cl><span class=gd>-                           } else {
+</span></span></span><span class=line><span class=cl><span class=gd></span>                                items[i].quality = items[i].quality - items[i].quality;
+</span></span><span class=line><span class=cl>                            }
+</span></span><span class=line><span class=cl><span class=gd>-                       }
+</span></span></span><span class=line><span class=cl><span class=gd>-                   }
+</span></span></span><span class=line><span class=cl><span class=gd></span>
+</span></span><span class=line><span class=cl>                    break;
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                default:
+</span></span><span class=line><span class=cl>                    if (!items[i].name.equals(&#34;Aged Brie&#34;) &amp;&amp; !items[i].name.equals(&#34;Backstage passes to a TAFKAL80ETC concert&#34;)) {
+</span></span><span class=line><span class=cl>                        if (items[i].quality &gt; 0) {
+</span></span><span class=line><span class=cl>                            if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span><span class=line><span class=cl>                                items[i].quality = items[i].quality - 1;
+</span></span><span class=line><span class=cl>                            }
+</span></span><span class=line><span class=cl>                        }
+</span></span><span class=line><span class=cl><span class=gd>-                   } else {
+</span></span></span><span class=line><span class=cl><span class=gd>-                       if (items[i].quality &lt; 50) {
+</span></span></span><span class=line><span class=cl><span class=gd>-                           items[i].quality = items[i].quality + 1;
+</span></span></span><span class=line><span class=cl><span class=gd>-
+</span></span></span><span class=line><span class=cl><span class=gd>-                           if (items[i].name.equals(&#34;Backstage passes to a TAFKAL80ETC concert&#34;)) {
+</span></span></span><span class=line><span class=cl><span class=gd>-                               if (items[i].sellIn &lt; 11) {
+</span></span></span><span class=line><span class=cl><span class=gd>-                                   if (items[i].quality &lt; 50) {
+</span></span></span><span class=line><span class=cl><span class=gd>-                                       items[i].quality = items[i].quality + 1;
+</span></span></span><span class=line><span class=cl><span class=gd>-                                   }
+</span></span></span><span class=line><span class=cl><span class=gd>-                               }
+</span></span></span><span class=line><span class=cl><span class=gd>-
+</span></span></span><span class=line><span class=cl><span class=gd>-                               if (items[i].sellIn &lt; 6) {
+</span></span></span><span class=line><span class=cl><span class=gd>-                                   if (items[i].quality &lt; 50) {
+</span></span></span><span class=line><span class=cl><span class=gd>-                                       items[i].quality = items[i].quality + 1;
+</span></span></span><span class=line><span class=cl><span class=gd>-                                   }
+</span></span></span><span class=line><span class=cl><span class=gd>-                               }
+</span></span></span><span class=line><span class=cl><span class=gd>-                           }
+</span></span></span><span class=line><span class=cl><span class=gd>-                       }
+</span></span></span><span class=line><span class=cl><span class=gd></span>                    }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span><span class=line><span class=cl>                        items[i].sellIn = items[i].sellIn - 1;
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    if (items[i].sellIn &lt; 0) {
+</span></span><span class=line><span class=cl>                        if (!items[i].name.equals(&#34;Aged Brie&#34;)) {
+</span></span><span class=line><span class=cl>                            if (!items[i].name.equals(&#34;Backstage passes to a TAFKAL80ETC concert&#34;)) {
+</span></span><span class=line><span class=cl>                                if (items[i].quality &gt; 0) {
+</span></span><span class=line><span class=cl>                                    if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span><span class=line><span class=cl>                                        items[i].quality = items[i].quality - 1;
+</span></span><span class=line><span class=cl>                                    }
+</span></span><span class=line><span class=cl>                                }
+</span></span><span class=line><span class=cl><span class=gd>-                           } else {
+</span></span></span><span class=line><span class=cl><span class=gd>-                               items[i].quality = items[i].quality - items[i].quality;
+</span></span></span><span class=line><span class=cl><span class=gd></span>                            }
+</span></span><span class=line><span class=cl>                        }
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>            }
+</span></span><span class=line><span class=cl>        }
+</span></span><span class=line><span class=cl>    }
+</span></span></code></pre></td></tr></table></div></div><h3 id=case-sulfuras-hand-of-ragnaros>case &ldquo;Sulfuras, Hand of Ragnaros&rdquo;</h3><p>Nous faisons la même chose pour l&rsquo;item <code>Sulfuras, Hand of Ragnaros"</code> .</p><p>Duplication dans un nouveau case :</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span><span class=lnt>54
+</span><span class=lnt>55
+</span><span class=lnt>56
+</span><span class=lnt>57
+</span><span class=lnt>58
+</span><span class=lnt>59
+</span><span class=lnt>60
+</span><span class=lnt>61
+</span><span class=lnt>62
+</span><span class=lnt>63
+</span><span class=lnt>64
+</span><span class=lnt>65
+</span><span class=lnt>66
+</span><span class=lnt>67
+</span><span class=lnt>68
+</span><span class=lnt>69
+</span><span class=lnt>70
+</span><span class=lnt>71
+</span><span class=lnt>72
+</span><span class=lnt>73
+</span><span class=lnt>74
+</span><span class=lnt>75
+</span><span class=lnt>76
+</span><span class=lnt>77
+</span><span class=lnt>78
+</span><span class=lnt>79
+</span><span class=lnt>80
+</span><span class=lnt>81
+</span><span class=lnt>82
+</span><span class=lnt>83
+</span><span class=lnt>84
+</span><span class=lnt>85
+</span><span class=lnt>86
+</span><span class=lnt>87
+</span><span class=lnt>88
+</span><span class=lnt>89
+</span><span class=lnt>90
+</span><span class=lnt>91
+</span><span class=lnt>92
+</span><span class=lnt>93
+</span><span class=lnt>94
+</span><span class=lnt>95
+</span><span class=lnt>96
+</span><span class=lnt>97
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-diff data-lang=diff><span class=line><span class=cl>public void updateQuality() {
+</span></span><span class=line><span class=cl>        for (int i = 0; i &lt; items.length; i++) {
+</span></span><span class=line><span class=cl>            switch (items[i].name) {
+</span></span><span class=line><span class=cl>                case &#34;Aged Brie&#34;:
+</span></span><span class=line><span class=cl>                    if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                        items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    items[i].sellIn = items[i].sellIn - 1;
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    if (items[i].sellIn &lt; 0) {
+</span></span><span class=line><span class=cl>                        if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                            items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>                        }
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    break;
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                case &#34;Backstage passes to a TAFKAL80ETC concert&#34;:
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                        items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                        if (items[i].sellIn &lt; 11) {
+</span></span><span class=line><span class=cl>                            if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                                items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>                            }
+</span></span><span class=line><span class=cl>                        }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                        if (items[i].sellIn &lt; 6) {
+</span></span><span class=line><span class=cl>                            if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                                items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>                            }
+</span></span><span class=line><span class=cl>                        }
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    items[i].sellIn = items[i].sellIn - 1;
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    if (items[i].sellIn &lt; 0) {
+</span></span><span class=line><span class=cl>                        items[i].quality = items[i].quality - items[i].quality;
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    break;
+</span></span><span class=line><span class=cl><span class=gi>+               case &#34;Sulfuras, Hand of Ragnaros&#34;:
+</span></span></span><span class=line><span class=cl><span class=gi>+                   if (!items[i].name.equals(&#34;Aged Brie&#34;) &amp;&amp; !items[i].name.equals(&#34;Backstage passes to a TAFKAL80ETC concert&#34;)) {
+</span></span></span><span class=line><span class=cl><span class=gi>+                       if (items[i].quality &gt; 0) {
+</span></span></span><span class=line><span class=cl><span class=gi>+                           if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span></span><span class=line><span class=cl><span class=gi>+                               items[i].quality = items[i].quality - 1;
+</span></span></span><span class=line><span class=cl><span class=gi>+                           }
+</span></span></span><span class=line><span class=cl><span class=gi>+                       }
+</span></span></span><span class=line><span class=cl><span class=gi>+                   }
+</span></span></span><span class=line><span class=cl><span class=gi></span>
+</span></span><span class=line><span class=cl><span class=gi>+                   if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span></span><span class=line><span class=cl><span class=gi>+                       items[i].sellIn = items[i].sellIn - 1;
+</span></span></span><span class=line><span class=cl><span class=gi>+                   }
+</span></span></span><span class=line><span class=cl><span class=gi>+
+</span></span></span><span class=line><span class=cl><span class=gi>+                   if (items[i].sellIn &lt; 0) {
+</span></span></span><span class=line><span class=cl><span class=gi>+                       if (!items[i].name.equals(&#34;Aged Brie&#34;)) {
+</span></span></span><span class=line><span class=cl><span class=gi>+                           if (!items[i].name.equals(&#34;Backstage passes to a TAFKAL80ETC concert&#34;)) {
+</span></span></span><span class=line><span class=cl><span class=gi>+                               if (items[i].quality &gt; 0) {
+</span></span></span><span class=line><span class=cl><span class=gi>+                                   if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span></span><span class=line><span class=cl><span class=gi>+                                       items[i].quality = items[i].quality - 1;
+</span></span></span><span class=line><span class=cl><span class=gi>+                                   }
+</span></span></span><span class=line><span class=cl><span class=gi>+                               }
+</span></span></span><span class=line><span class=cl><span class=gi>+                           }
+</span></span></span><span class=line><span class=cl><span class=gi>+                       }
+</span></span></span><span class=line><span class=cl><span class=gi>+                   }
+</span></span></span><span class=line><span class=cl><span class=gi>+
+</span></span></span><span class=line><span class=cl><span class=gi>+                   break;
+</span></span></span><span class=line><span class=cl><span class=gi></span>                default:
+</span></span><span class=line><span class=cl>                    if (!items[i].name.equals(&#34;Aged Brie&#34;) &amp;&amp; !items[i].name.equals(&#34;Backstage passes to a TAFKAL80ETC concert&#34;)) {
+</span></span><span class=line><span class=cl>                        if (items[i].quality &gt; 0) {
+</span></span><span class=line><span class=cl>                            if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span><span class=line><span class=cl>                                items[i].quality = items[i].quality - 1;
+</span></span><span class=line><span class=cl>                            }
+</span></span><span class=line><span class=cl>                        }
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span><span class=line><span class=cl>                        items[i].sellIn = items[i].sellIn - 1;
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    if (items[i].sellIn &lt; 0) {
+</span></span><span class=line><span class=cl>                        if (!items[i].name.equals(&#34;Aged Brie&#34;)) {
+</span></span><span class=line><span class=cl>                            if (!items[i].name.equals(&#34;Backstage passes to a TAFKAL80ETC concert&#34;)) {
+</span></span><span class=line><span class=cl>                                if (items[i].quality &gt; 0) {
+</span></span><span class=line><span class=cl>                                    if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span><span class=line><span class=cl>                                        items[i].quality = items[i].quality - 1;
+</span></span><span class=line><span class=cl>                                    }
+</span></span><span class=line><span class=cl>                                }
+</span></span><span class=line><span class=cl>                            }
+</span></span><span class=line><span class=cl>                        }
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>            }
+</span></span><span class=line><span class=cl>        }
+</span></span><span class=line><span class=cl>    }
+</span></span></code></pre></td></tr></table></div></div><p>Puis nous supprimons le code inutile :</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span><span class=lnt>54
+</span><span class=lnt>55
+</span><span class=lnt>56
+</span><span class=lnt>57
+</span><span class=lnt>58
+</span><span class=lnt>59
+</span><span class=lnt>60
+</span><span class=lnt>61
+</span><span class=lnt>62
+</span><span class=lnt>63
+</span><span class=lnt>64
+</span><span class=lnt>65
+</span><span class=lnt>66
+</span><span class=lnt>67
+</span><span class=lnt>68
+</span><span class=lnt>69
+</span><span class=lnt>70
+</span><span class=lnt>71
+</span><span class=lnt>72
+</span><span class=lnt>73
+</span><span class=lnt>74
+</span><span class=lnt>75
+</span><span class=lnt>76
+</span><span class=lnt>77
+</span><span class=lnt>78
+</span><span class=lnt>79
+</span><span class=lnt>80
+</span><span class=lnt>81
+</span><span class=lnt>82
+</span><span class=lnt>83
+</span><span class=lnt>84
+</span><span class=lnt>85
+</span><span class=lnt>86
+</span><span class=lnt>87
+</span><span class=lnt>88
+</span><span class=lnt>89
+</span><span class=lnt>90
+</span><span class=lnt>91
+</span><span class=lnt>92
+</span><span class=lnt>93
+</span><span class=lnt>94
+</span><span class=lnt>95
+</span><span class=lnt>96
+</span><span class=lnt>97
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-diff data-lang=diff><span class=line><span class=cl>public void updateQuality() {
+</span></span><span class=line><span class=cl>        for (int i = 0; i &lt; items.length; i++) {
+</span></span><span class=line><span class=cl>            switch (items[i].name) {
+</span></span><span class=line><span class=cl>                case &#34;Aged Brie&#34;:
+</span></span><span class=line><span class=cl>                    if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                        items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    items[i].sellIn = items[i].sellIn - 1;
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    if (items[i].sellIn &lt; 0) {
+</span></span><span class=line><span class=cl>                        if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                            items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>                        }
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    break;
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                case &#34;Backstage passes to a TAFKAL80ETC concert&#34;:
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                        items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                        if (items[i].sellIn &lt; 11) {
+</span></span><span class=line><span class=cl>                            if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                                items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>                            }
+</span></span><span class=line><span class=cl>                        }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                        if (items[i].sellIn &lt; 6) {
+</span></span><span class=line><span class=cl>                            if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                                items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>                            }
+</span></span><span class=line><span class=cl>                        }
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    items[i].sellIn = items[i].sellIn - 1;
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    if (items[i].sellIn &lt; 0) {
+</span></span><span class=line><span class=cl>                        items[i].quality = items[i].quality - items[i].quality;
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    break;
+</span></span><span class=line><span class=cl>                case &#34;Sulfuras, Hand of Ragnaros&#34;:
+</span></span><span class=line><span class=cl><span class=gd>-                   if (!items[i].name.equals(&#34;Aged Brie&#34;) &amp;&amp; !items[i].name.equals(&#34;Backstage passes to a TAFKAL80ETC concert&#34;)) {
+</span></span></span><span class=line><span class=cl><span class=gd>-                       if (items[i].quality &gt; 0) {
+</span></span></span><span class=line><span class=cl><span class=gd>-                           if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span></span><span class=line><span class=cl><span class=gd>-                               items[i].quality = items[i].quality - 1;
+</span></span></span><span class=line><span class=cl><span class=gd>-                           }
+</span></span></span><span class=line><span class=cl><span class=gd>-                       }
+</span></span></span><span class=line><span class=cl><span class=gd>-                   }
+</span></span></span><span class=line><span class=cl><span class=gd>-
+</span></span></span><span class=line><span class=cl><span class=gd>-                   if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span></span><span class=line><span class=cl><span class=gd>-                       items[i].sellIn = items[i].sellIn - 1;
+</span></span></span><span class=line><span class=cl><span class=gd>-                   }
+</span></span></span><span class=line><span class=cl><span class=gd>-
+</span></span></span><span class=line><span class=cl><span class=gd>-                   if (items[i].sellIn &lt; 0) {
+</span></span></span><span class=line><span class=cl><span class=gd>-                       if (!items[i].name.equals(&#34;Aged Brie&#34;)) {
+</span></span></span><span class=line><span class=cl><span class=gd>-                           if (!items[i].name.equals(&#34;Backstage passes to a TAFKAL80ETC concert&#34;)) {
+</span></span></span><span class=line><span class=cl><span class=gd>-                               if (items[i].quality &gt; 0) {
+</span></span></span><span class=line><span class=cl><span class=gd>-                                   if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span></span><span class=line><span class=cl><span class=gd>-                                       items[i].quality = items[i].quality - 1;
+</span></span></span><span class=line><span class=cl><span class=gd>-                                   }
+</span></span></span><span class=line><span class=cl><span class=gd>-                               }
+</span></span></span><span class=line><span class=cl><span class=gd>-                           }
+</span></span></span><span class=line><span class=cl><span class=gd>-                       }
+</span></span></span><span class=line><span class=cl><span class=gd>-                   }
+</span></span></span><span class=line><span class=cl><span class=gd></span>
+</span></span><span class=line><span class=cl>                    break;
+</span></span><span class=line><span class=cl>                default:
+</span></span><span class=line><span class=cl>                    if (!items[i].name.equals(&#34;Aged Brie&#34;) &amp;&amp; !items[i].name.equals(&#34;Backstage passes to a TAFKAL80ETC concert&#34;)) {
+</span></span><span class=line><span class=cl>                        if (items[i].quality &gt; 0) {
+</span></span><span class=line><span class=cl>                            if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span><span class=line><span class=cl>                                items[i].quality = items[i].quality - 1;
+</span></span><span class=line><span class=cl>                            }
+</span></span><span class=line><span class=cl>                        }
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span><span class=line><span class=cl>                        items[i].sellIn = items[i].sellIn - 1;
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    if (items[i].sellIn &lt; 0) {
+</span></span><span class=line><span class=cl>                        if (!items[i].name.equals(&#34;Aged Brie&#34;)) {
+</span></span><span class=line><span class=cl>                            if (!items[i].name.equals(&#34;Backstage passes to a TAFKAL80ETC concert&#34;)) {
+</span></span><span class=line><span class=cl>                                if (items[i].quality &gt; 0) {
+</span></span><span class=line><span class=cl>                                    if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span><span class=line><span class=cl>                                        items[i].quality = items[i].quality - 1;
+</span></span><span class=line><span class=cl>                                    }
+</span></span><span class=line><span class=cl>                                }
+</span></span><span class=line><span class=cl>                            }
+</span></span><span class=line><span class=cl>                        }
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>            }
+</span></span><span class=line><span class=cl>        }
+</span></span><span class=line><span class=cl>    }
+</span></span></code></pre></td></tr></table></div></div><blockquote><ul><li>Novice : Il n&rsquo;y a plus de code</li><li>Expert : Effectivement, si on lit le cahier des charges, cet item ne doit jamais changer. Il n&rsquo;a donc pas de règle métier</li></ul></blockquote><h3 id=default-case->default case :</h3><p>Nous allons maintenant traiter le cas par défaut.</p><p>Nous avons géré tous les éléments ayant un nom spécifique dans le switch. Nous n&rsquo;avons plus que des éléments pour lequel le nom n&rsquo;a plus d&rsquo;importance métier. Nous allons donc supprimer toutes les conditions faisant référence au nom, tout en conservant le code des blocs <code>if</code> forcément exécutés :</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span><span class=lnt>54
+</span><span class=lnt>55
+</span><span class=lnt>56
+</span><span class=lnt>57
+</span><span class=lnt>58
+</span><span class=lnt>59
+</span><span class=lnt>60
+</span><span class=lnt>61
+</span><span class=lnt>62
+</span><span class=lnt>63
+</span><span class=lnt>64
+</span><span class=lnt>65
+</span><span class=lnt>66
+</span><span class=lnt>67
+</span><span class=lnt>68
+</span><span class=lnt>69
+</span><span class=lnt>70
+</span><span class=lnt>71
+</span><span class=lnt>72
+</span><span class=lnt>73
+</span><span class=lnt>74
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-diff data-lang=diff><span class=line><span class=cl>public void updateQuality() {
+</span></span><span class=line><span class=cl>        for (int i = 0; i &lt; items.length; i++) {
+</span></span><span class=line><span class=cl>            switch (items[i].name) {
+</span></span><span class=line><span class=cl>                case &#34;Aged Brie&#34;:
+</span></span><span class=line><span class=cl>                    if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                        items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    items[i].sellIn = items[i].sellIn - 1;
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    if (items[i].sellIn &lt; 0) {
+</span></span><span class=line><span class=cl>                        if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                            items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>                        }
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    break;
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                case &#34;Backstage passes to a TAFKAL80ETC concert&#34;:
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                        items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                        if (items[i].sellIn &lt; 11) {
+</span></span><span class=line><span class=cl>                            if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                                items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>                            }
+</span></span><span class=line><span class=cl>                        }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                        if (items[i].sellIn &lt; 6) {
+</span></span><span class=line><span class=cl>                            if (items[i].quality &lt; 50) {
+</span></span><span class=line><span class=cl>                                items[i].quality = items[i].quality + 1;
+</span></span><span class=line><span class=cl>                            }
+</span></span><span class=line><span class=cl>                        }
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    items[i].sellIn = items[i].sellIn - 1;
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    if (items[i].sellIn &lt; 0) {
+</span></span><span class=line><span class=cl>                        items[i].quality = items[i].quality - items[i].quality;
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    break;
+</span></span><span class=line><span class=cl>                case &#34;Sulfuras, Hand of Ragnaros&#34;:
+</span></span><span class=line><span class=cl>
+</span></span><span class=line><span class=cl>                    break;
+</span></span><span class=line><span class=cl>                default:
+</span></span><span class=line><span class=cl><span class=gd>-                   if (!items[i].name.equals(&#34;Aged Brie&#34;) &amp;&amp; !items[i].name.equals(&#34;Backstage passes to a TAFKAL80ETC concert&#34;)) {
+</span></span></span><span class=line><span class=cl><span class=gd></span>                        if (items[i].quality &gt; 0) {
+</span></span><span class=line><span class=cl><span class=gd>-                           if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span></span><span class=line><span class=cl><span class=gd></span>                                items[i].quality = items[i].quality - 1;
+</span></span><span class=line><span class=cl>                            }
+</span></span><span class=line><span class=cl><span class=gd>-                       }
+</span></span></span><span class=line><span class=cl><span class=gd>-                   }
+</span></span></span><span class=line><span class=cl><span class=gd></span>
+</span></span><span class=line><span class=cl><span class=gd>-                   if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span></span><span class=line><span class=cl><span class=gd></span>                        items[i].sellIn = items[i].sellIn - 1;
+</span></span><span class=line><span class=cl><span class=gd>-                   }
+</span></span></span><span class=line><span class=cl><span class=gd></span>
+</span></span><span class=line><span class=cl>                    if (items[i].sellIn &lt; 0) {
+</span></span><span class=line><span class=cl><span class=gd>-                       if (!items[i].name.equals(&#34;Aged Brie&#34;)) {
+</span></span></span><span class=line><span class=cl><span class=gd>-                           if (!items[i].name.equals(&#34;Backstage passes to a TAFKAL80ETC concert&#34;)) {
+</span></span></span><span class=line><span class=cl><span class=gd></span>                                if (items[i].quality &gt; 0) {
+</span></span><span class=line><span class=cl><span class=gd>-                                   if (!items[i].name.equals(&#34;Sulfuras, Hand of Ragnaros&#34;)) {
+</span></span></span><span class=line><span class=cl><span class=gd></span>                                        items[i].quality = items[i].quality - 1;
+</span></span><span class=line><span class=cl><span class=gd>-                                   }
+</span></span></span><span class=line><span class=cl><span class=gd>-                               }
+</span></span></span><span class=line><span class=cl><span class=gd>-                           }
+</span></span></span><span class=line><span class=cl><span class=gd></span>                        }
+</span></span><span class=line><span class=cl>                    }
+</span></span><span class=line><span class=cl>            }
+</span></span><span class=line><span class=cl>        }
+</span></span><span class=line><span class=cl>    }
+</span></span></code></pre></td></tr></table></div></div><h2 id=conclusion>Conclusion</h2><p>Voici le code final de la méthode <code>updateQuality</code> après ce refactoring :</p><div class=highlight><div class=chroma><table class=lntable><tr><td class=lntd><pre tabindex=0 class=chroma><code><span class=lnt> 1
+</span><span class=lnt> 2
+</span><span class=lnt> 3
+</span><span class=lnt> 4
+</span><span class=lnt> 5
+</span><span class=lnt> 6
+</span><span class=lnt> 7
+</span><span class=lnt> 8
+</span><span class=lnt> 9
+</span><span class=lnt>10
+</span><span class=lnt>11
+</span><span class=lnt>12
+</span><span class=lnt>13
+</span><span class=lnt>14
+</span><span class=lnt>15
+</span><span class=lnt>16
+</span><span class=lnt>17
+</span><span class=lnt>18
+</span><span class=lnt>19
+</span><span class=lnt>20
+</span><span class=lnt>21
+</span><span class=lnt>22
+</span><span class=lnt>23
+</span><span class=lnt>24
+</span><span class=lnt>25
+</span><span class=lnt>26
+</span><span class=lnt>27
+</span><span class=lnt>28
+</span><span class=lnt>29
+</span><span class=lnt>30
+</span><span class=lnt>31
+</span><span class=lnt>32
+</span><span class=lnt>33
+</span><span class=lnt>34
+</span><span class=lnt>35
+</span><span class=lnt>36
+</span><span class=lnt>37
+</span><span class=lnt>38
+</span><span class=lnt>39
+</span><span class=lnt>40
+</span><span class=lnt>41
+</span><span class=lnt>42
+</span><span class=lnt>43
+</span><span class=lnt>44
+</span><span class=lnt>45
+</span><span class=lnt>46
+</span><span class=lnt>47
+</span><span class=lnt>48
+</span><span class=lnt>49
+</span><span class=lnt>50
+</span><span class=lnt>51
+</span><span class=lnt>52
+</span><span class=lnt>53
+</span><span class=lnt>54
+</span><span class=lnt>55
+</span><span class=lnt>56
+</span><span class=lnt>57
+</span><span class=lnt>58
+</span><span class=lnt>59
+</span><span class=lnt>60
+</span><span class=lnt>61
+</span><span class=lnt>62
+</span></code></pre></td><td class=lntd><pre tabindex=0 class=chroma><code class=language-java data-lang=java><span class=line><span class=cl><span class=kd>public</span> <span class=kt>void</span> <span class=nf>updateQuality</span><span class=o>()</span> <span class=o>{</span>  
+</span></span><span class=line><span class=cl>    <span class=k>for</span> <span class=o>(</span><span class=kt>int</span> <span class=n>i</span> <span class=o>=</span> <span class=n>0</span><span class=o>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=n>items</span><span class=o>.</span><span class=na>length</span><span class=o>;</span> <span class=n>i</span><span class=o>++)</span> <span class=o>{</span>  
+</span></span><span class=line><span class=cl>        <span class=k>switch</span> <span class=o>(</span><span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>name</span><span class=o>)</span> <span class=o>{</span>  
+</span></span><span class=line><span class=cl>            <span class=k>case</span> <span class=s>&#34;Aged Brie&#34;</span><span class=o>:</span>  
+</span></span><span class=line><span class=cl>                <span class=k>if</span> <span class=o>(</span><span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>&lt;</span> <span class=n>50</span><span class=o>)</span> <span class=o>{</span>  
+</span></span><span class=line><span class=cl>                    <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>=</span> <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>+</span> <span class=n>1</span><span class=o>;</span>  
+</span></span><span class=line><span class=cl>                <span class=o>}</span>  
+</span></span><span class=line><span class=cl>  
+</span></span><span class=line><span class=cl>                <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>sellIn</span> <span class=o>=</span> <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>sellIn</span> <span class=o>-</span> <span class=n>1</span><span class=o>;</span>  
+</span></span><span class=line><span class=cl>  
+</span></span><span class=line><span class=cl>                <span class=k>if</span> <span class=o>(</span><span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>sellIn</span> <span class=o>&lt;</span> <span class=n>0</span><span class=o>)</span> <span class=o>{</span>  
+</span></span><span class=line><span class=cl>                    <span class=k>if</span> <span class=o>(</span><span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>&lt;</span> <span class=n>50</span><span class=o>)</span> <span class=o>{</span>  
+</span></span><span class=line><span class=cl>                        <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>=</span> <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>+</span> <span class=n>1</span><span class=o>;</span>  
+</span></span><span class=line><span class=cl>                    <span class=o>}</span>  
+</span></span><span class=line><span class=cl>                <span class=o>}</span>  
+</span></span><span class=line><span class=cl>  
+</span></span><span class=line><span class=cl>                <span class=k>break</span><span class=o>;</span>  
+</span></span><span class=line><span class=cl>  
+</span></span><span class=line><span class=cl>            <span class=k>case</span> <span class=s>&#34;Backstage passes to a TAFKAL80ETC concert&#34;</span><span class=o>:</span>  
+</span></span><span class=line><span class=cl>  
+</span></span><span class=line><span class=cl>                <span class=k>if</span> <span class=o>(</span><span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>&lt;</span> <span class=n>50</span><span class=o>)</span> <span class=o>{</span>  
+</span></span><span class=line><span class=cl>                    <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>=</span> <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>+</span> <span class=n>1</span><span class=o>;</span>  
+</span></span><span class=line><span class=cl>  
+</span></span><span class=line><span class=cl>  
+</span></span><span class=line><span class=cl>                    <span class=k>if</span> <span class=o>(</span><span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>sellIn</span> <span class=o>&lt;</span> <span class=n>11</span><span class=o>)</span> <span class=o>{</span>  
+</span></span><span class=line><span class=cl>                        <span class=k>if</span> <span class=o>(</span><span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>&lt;</span> <span class=n>50</span><span class=o>)</span> <span class=o>{</span>  
+</span></span><span class=line><span class=cl>                            <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>=</span> <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>+</span> <span class=n>1</span><span class=o>;</span>  
+</span></span><span class=line><span class=cl>                        <span class=o>}</span>  
+</span></span><span class=line><span class=cl>                    <span class=o>}</span>  
+</span></span><span class=line><span class=cl>  
+</span></span><span class=line><span class=cl>                    <span class=k>if</span> <span class=o>(</span><span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>sellIn</span> <span class=o>&lt;</span> <span class=n>6</span><span class=o>)</span> <span class=o>{</span>  
+</span></span><span class=line><span class=cl>                        <span class=k>if</span> <span class=o>(</span><span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>&lt;</span> <span class=n>50</span><span class=o>)</span> <span class=o>{</span>  
+</span></span><span class=line><span class=cl>                            <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>=</span> <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>+</span> <span class=n>1</span><span class=o>;</span>  
+</span></span><span class=line><span class=cl>                        <span class=o>}</span>  
+</span></span><span class=line><span class=cl>                    <span class=o>}</span>  
+</span></span><span class=line><span class=cl>                <span class=o>}</span>  
+</span></span><span class=line><span class=cl>  
+</span></span><span class=line><span class=cl>                <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>sellIn</span> <span class=o>=</span> <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>sellIn</span> <span class=o>-</span> <span class=n>1</span><span class=o>;</span>  
+</span></span><span class=line><span class=cl>  
+</span></span><span class=line><span class=cl>                <span class=k>if</span> <span class=o>(</span><span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>sellIn</span> <span class=o>&lt;</span> <span class=n>0</span><span class=o>)</span> <span class=o>{</span>  
+</span></span><span class=line><span class=cl>                    <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>=</span> <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>-</span> <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span><span class=o>;</span>  
+</span></span><span class=line><span class=cl>                <span class=o>}</span>  
+</span></span><span class=line><span class=cl>  
+</span></span><span class=line><span class=cl>                <span class=k>break</span><span class=o>;</span>  
+</span></span><span class=line><span class=cl>            <span class=k>case</span> <span class=s>&#34;Sulfuras, Hand of Ragnaros&#34;</span><span class=o>:</span>  
+</span></span><span class=line><span class=cl>  
+</span></span><span class=line><span class=cl>                <span class=k>break</span><span class=o>;</span>  
+</span></span><span class=line><span class=cl>            <span class=k>default</span><span class=o>:</span>  
+</span></span><span class=line><span class=cl>                <span class=k>if</span> <span class=o>(</span><span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>&gt;</span> <span class=n>0</span><span class=o>)</span> <span class=o>{</span>  
+</span></span><span class=line><span class=cl>                    <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>=</span> <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>-</span> <span class=n>1</span><span class=o>;</span>  
+</span></span><span class=line><span class=cl>                <span class=o>}</span>  
+</span></span><span class=line><span class=cl>  
+</span></span><span class=line><span class=cl>                <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>sellIn</span> <span class=o>=</span> <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>sellIn</span> <span class=o>-</span> <span class=n>1</span><span class=o>;</span>  
+</span></span><span class=line><span class=cl>  
+</span></span><span class=line><span class=cl>                <span class=k>if</span> <span class=o>(</span><span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>sellIn</span> <span class=o>&lt;</span> <span class=n>0</span><span class=o>)</span> <span class=o>{</span>  
+</span></span><span class=line><span class=cl>                    <span class=k>if</span> <span class=o>(</span><span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>&gt;</span> <span class=n>0</span><span class=o>)</span> <span class=o>{</span>  
+</span></span><span class=line><span class=cl>                        <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>=</span> <span class=n>items</span><span class=o>[</span><span class=n>i</span><span class=o>].</span><span class=na>quality</span> <span class=o>-</span> <span class=n>1</span><span class=o>;</span>  
+</span></span><span class=line><span class=cl>                    <span class=o>}</span>  
+</span></span><span class=line><span class=cl>                <span class=o>}</span>  
+</span></span><span class=line><span class=cl>        <span class=o>}</span>  
+</span></span><span class=line><span class=cl>    <span class=o>}</span>  
+</span></span><span class=line><span class=cl><span class=o>}</span>
+</span></span></code></pre></td></tr></table></div></div><p>Bien qu&rsquo;il y ait encore du refactoring à faire, on peut commencer à comparer les règles métiers avec le cahier des charges qui est fourni avec le projet.</p><p>Il ne faut jamais hésiter à dupliquer le code pour pouvoir le réorganiser.</p><p>Et en utilisant astucieusement le code coverage, nous pouvons gagner beaucoup de temps lors du refactoring et nettoyage de code. Pour moi, c&rsquo;est la principale utilité de cet outil.</p><p>Nous verrons dans une troisième (et dernière j&rsquo;espère) partie la suite de ce refactoring.</p><h2 id=reference>Reference</h2><p>J&rsquo;ai retrouvé d&rsquo;autres utilisateurs de cette technique dans cet article :
+<a href=http://www.arolla.fr/blog/2019/11/man-vs-legacy-gilded-rose-2/ rel=noopener>http://www.arolla.fr/blog/2019/11/man-vs-legacy-gilded-rose-2/</a></p><p><a href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2fwww.ytreza.dev%2fblog%2fetude-du-kata-gilded-rose-switch%2f &title=etude%20du%20kata%20gilded%20rose%20-%20switch &summary=Parfois%2c%20il%20suffit%20d%26amp%3brsquo%3bune%20simple%20astuce%20pour%20faire%20en%20quelques%20minutes%20un%20travail%20qui%20peut%20prendre%20plusieurs%20heures.%20C%26amp%3brsquo%3best%20pourquoi%20il%20est%20primordial%20de%20s%26amp%3brsquo%3bexercer%20en%20permanence%20pour%20d%c3%a9couvrir%20ses%20astuces%20et%20pouvoir%20les%20r%c3%a9utiliser%20le%20moment%20opportun.&source=LinkedIn">Partager sur linkedin</a></p></article><div id=disqus_thread></div><script type=application/javascript>window.disqus_config=function(){},function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById("disqus_thread").innerHTML="Disqus comments not available by default when the website is previewed locally.";return}var t=document,e=t.createElement("script");e.async=!0,e.src="//www-ytreza-dev.disqus.com/embed.js",e.setAttribute("data-timestamp",+new Date),(t.head||t.body).appendChild(e)}()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript><a href=https://disqus.com class=dsq-brlink>comments powered by <span class=logo-disqus>Disqus</span></a><hr><div class=page-end><div class=backlinks-container><h3>Backlinks</h3><ul class=backlinks><li>No backlinks found</li></ul></div><div><script src=https://cdn.jsdelivr.net/npm/d3@6.7.0/dist/d3.min.js integrity="sha256-+7jaYCp29O1JusNWHaYtgUn6EhuP0VaFuswhNV06MyI=" crossorigin=anonymous></script><h3>Interactive Graph</h3><div id=graph-container></div><style>:root{--g-node:var(--secondary);--g-node-active:var(--primary);--g-node-inactive:var(--visited);--g-link:var(--outlinegray);--g-link-active:#5a7282}</style><script src=https://www.ytreza.dev/js/graph.27e8521c25c27c79dea35f434c486167.js></script>
+<script>drawGraph("https://www.ytreza.dev/blog/etude-du-kata-gilded-rose-switch","https://www.ytreza.dev",[{"/moc":"#4388cc"}],-1,!0,!1,!0)</script></div></div><div id=contact_buttons><footer><p>Made by Jonathan LAURENT using <a href=https://github.com/jackyzha0/quartz>Quartz</a>, © 2022</p><ul><li><a href=/>Home</a></li><li><a href=https://twitter.com/Johjo07>Twitter</a></li></ul></footer></div><script src=https://www.ytreza.dev/js/popover.e57188d2e4c06b0654e020b3a734bb62.min.js></script>
+<script>initPopover("https://www.ytreza.dev")</script></div></body></html>
