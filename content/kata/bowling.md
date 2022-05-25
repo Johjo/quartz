@@ -38,9 +38,15 @@ Voici une liste d'objectifs que l'on peut se fixer lors de l'exercice. Tu peux s
 - Contrainte de vitesse
 	- en moins de 45 minutes
 	- en moins de 30 minutes
-- Effectuer un refactoring qui permette d'améliorer la lisibilité (voir l'avis d'un pair pour validation)
+- Effectuer un refactoring qui permette d'améliorer la lisibilité et d'ajouter de l'abstraction (voir l'avis d'un pair pour validation)
 
 
 ## Références
+### Internes
 - [[blog/etude du kata bowling - one test|Etude du kata bowling en un seul test]]
+
+### Externes
+- http://butunclebob.com/ArticleS.UncleBob.TheBowlingGameKata
+- https://sites.google.com/site/unclebobconsultingllc/home/articles/the-bowling-game-an-example-of-test-first-pair-programming
+
 
