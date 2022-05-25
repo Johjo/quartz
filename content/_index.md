@@ -8,6 +8,7 @@ Je m'appelle Jonathan LAURENT et je vais partager avec toi les différentes conn
 
 Tu peux voir :
 - [[/blog|mon blog]]
+- [[/kata|la liste des katas]]
 - [[/wiki|le wiki]]
 
 Si tu veux me contacter : 
