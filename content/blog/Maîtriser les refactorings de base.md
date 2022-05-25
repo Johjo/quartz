@@ -12,8 +12,8 @@ A force de pratiquer le refactoring, j'ai constaté une chose. La loi de pareto 
 Voici la liste : 
 - [[wiki/extract variable|extract variable]] / [[wiki/inline variable|inline variable]]
 - [[wiki/extract parameter|extract parameter]] / [[wiki/inline parameter|inline parameter]]
-- [[wiki/extract method|extract method]] / [[wiki/inline methode|extract method]]
-- [[wiki/extract class/extract method]]
+- [[wiki/extract method|extract method]] / [[wiki/inline methode|inline method]]
+- [[wiki/extract class|extract class]]
 
 ## Comment apprendre ces différents refactoring ?
 J'ai appris ces différents refactorings en pratiquant des [[wiki/kata|katas]] et en m'attardant sur le refactoring step by step.
