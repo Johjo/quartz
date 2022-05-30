@@ -40,6 +40,11 @@ Voici une liste d'objectifs que l'on peut se fixer lors de l'exercice. Tu peux s
 	- en moins de 30 minutes
 - Effectuer un refactoring qui permette d'améliorer la lisibilité et d'ajouter de l'abstraction (voir l'avis d'un pair pour validation)
 
+## Organisation de l'entraînement
+- Réaliser le kata sans TDD (optionnel)
+- Réaliser le kata avec TDD
+- Lire l'étude détaillée / Etudier la pratique d'autres développeurs
+- Réaliser le kata jusqu'à le maîtriser
 
 ## Références
 ### Internes

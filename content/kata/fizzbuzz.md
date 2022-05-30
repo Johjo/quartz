@@ -34,4 +34,11 @@ Voici une liste d'objectifs que l'on peut se fixer lors de l'exercice. Tu peux s
 - Effectuer un refactoring qui permette d'améliorer la lisibilité (voir l'avis d'un pair pour validation)
 - Effectuer un refactoring qui permette d'améliorer l'évolution de l'application, par exemple, en permettant d'ajouter la gestion des multiples de 7 qui doit indiquer `foo` (voir l'avis d'un pair pour validation)
 
+## Organisation de l'entraînement
+- Réaliser le kata sans TDD (optionnel)
+- Réaliser le kata avec TDD
+- Lire l'étude détaillée / Etudier la pratique d'autres développeurs
+- Réaliser le kata jusqu'à le maîtriser
+
+
 
