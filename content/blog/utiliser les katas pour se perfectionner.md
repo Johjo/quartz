@@ -1,7 +1,6 @@
 ---
 title: "Utiliser les katas pour se perfectionner"
 date: "2022-05-30T09:05:24+02:00"
-draft: true
 tags:
 - kata
 ---
