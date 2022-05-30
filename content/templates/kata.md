@@ -1,5 +1,7 @@
 ---
 title: "{{title}}"
+tags:
+- kata
 ---
 
 ## Description du kata
@@ -14,6 +16,9 @@ Vois avec un pair si ta démonstration permet de montrer que tu as compris l'exe
 ### Piste de départ
 - [ ] ...
 
+## Pour aller plus loin
+- [ ] ...
+
 ## Objectifs : 
 - [ ] ...
 
@@ -25,3 +30,11 @@ Voici une liste d'objectifs que l'on peut se fixer lors de l'exercice. Tu peux s
 	- en moins de 30 minutes
 	- en moins de 15 minutes
 - Effectuer un refactoring qui permette d'améliorer la lisibilité (voir l'avis d'un pair pour validation)
+
+## Références
+### Internes
+- Etude détaillée : en cours de réalisation
+
+### Externes
+- [ ] Mettre le lien des sites proposant le kata 
+
