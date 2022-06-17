@@ -4,4 +4,4 @@ title: "Présentation TDD"
 
 ## Reference
 
-![[TDD - présentation.odp]]
+![[ressources/TDD - présentation.odp]]
