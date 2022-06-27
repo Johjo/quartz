@@ -10,6 +10,7 @@ Tu peux voir :
 - [[/blog|mon blog]]
 - [[/kata|la liste des katas]]
 - [[/wiki|le wiki]]
+- [[dojo/présentation|Le dojo ytreza.dev]]
 
 Si tu veux me contacter : 
 - par mail : contact@ytreza.dev
