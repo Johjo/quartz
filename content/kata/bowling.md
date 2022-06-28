@@ -1,5 +1,7 @@
 ---
 title: "Bowling"
+tags:
+- kata
 ---
 
 ## Description du kata

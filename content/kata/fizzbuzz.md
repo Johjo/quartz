@@ -1,5 +1,7 @@
 ---
 title: "fizzbuzz"
+tags:
+- kata
 ---
 
 Nous souhaitons créer une application qui nous permettent de déterminer la valeur **fizzbuzz** d'un nombre. 
