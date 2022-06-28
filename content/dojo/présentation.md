@@ -7,6 +7,10 @@ title: "Dojo ytreza.dev"
 ## Session passées
 * [[dojo-session/|Liste des sessions passées]]
 - [[dojo-session/dojo-2022-06-27-12-00|Dojo du 27/06/2022 (12:00) ]]
+- [[dojo-session/dojo-2022-06-28-09-11|Dojo du 28/06/2022 (09:11) ]]
+
+
+
 
 
 Accéder au groupe : 
