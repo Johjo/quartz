@@ -370,7 +370,8 @@ A noter que dans certains cas, il peut y avoir plusieurs étapes avant de pouvoi
 
 Voici un exemple en vidéo où je mets en évidence cette technique. En fait, c'est durant cet exercice où j'ai finalisé la technique du double dragon.
 
-Je l'effectue sur le kata minesweeper en rust : https://www.youtube.com/watch?v=-VSavtR5aCY
+Je l'effectue sur le kata minesweeper en rust : [Regarder la vidéo](https://www.youtube.com/watch?v=-VSavtR5aCY)
+Le code du kata est accessible sur cyberdojo avec chaque étape ici : [accéder au code]([https://cyber-dojo.org/kata/edit/aR5mXj](https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqbngzZTBOV2cxYVlwQ0xEcVgycG40X0RhQkZDZ3xBQ3Jtc0tubWlJWVFEdU1oYUVYdFVJRDNCVjg4WnFhOEQ3Sko2VlkwdlljWnRWdUhXX1ZSeXROYzNSRlVQeW5YUUFUemlweXhINnhPM3lzb283LXlXVVpvbEEtZ1ctZmEzSmg1NUlCaml0QUhpYThwM2pqWC14NA&q=https%3A%2F%2Fcyber-dojo.org%2Fkata%2Fedit%2FaR5mXj&v=-VSavtR5aCY))
 
-TODO : faire un exemple en python
+TODO : faire un exemple plus simple en python
 
