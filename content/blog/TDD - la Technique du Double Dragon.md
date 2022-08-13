@@ -1,7 +1,6 @@
 ---
 title: "TDD - la Technique du Double Dragon"
 date: "2022-08-13T06:49:18+02:00"
-draft: true
 tags:
 - TDD
 ---
@@ -369,9 +368,9 @@ A noter que dans certains cas, il peut y avoir plusieurs étapes avant de pouvoi
 
 ## Exemple 
 
+Voici un exemple en vidéo où je mets en évidence cette technique. En fait, c'est durant cet exercice où j'ai finalisé la technique du double dragon.
 
+Je l'effectue sur le kata minesweeper en rust : https://www.youtube.com/watch?v=-VSavtR5aCY
 
-
-
-
+TODO : faire un exemple en python
 
