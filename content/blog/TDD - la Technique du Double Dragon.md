@@ -368,10 +368,13 @@ A noter que dans certains cas, il peut y avoir plusieurs étapes avant de pouvoi
 
 ## Exemple 
 
-Voici un exemple en vidéo où je mets en évidence cette technique. En fait, c'est durant cet exercice où j'ai finalisé la technique du double dragon.
+Voici un exemple de la technique du double dragon en python sur le kata prime factor : 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/iP7FW1PPdVo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+Voici un second exemple. En fait, c'est durant cet exercice que j'ai finalisé la technique du double dragon.
 
-Je l'effectue sur le kata minesweeper en rust : [Regarder la vidéo](https://www.youtube.com/watch?v=-VSavtR5aCY)
-Le code du kata est accessible sur cyberdojo avec chaque étape ici : [accéder au code]([https://cyber-dojo.org/kata/edit/aR5mXj](https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqbngzZTBOV2cxYVlwQ0xEcVgycG40X0RhQkZDZ3xBQ3Jtc0tubWlJWVFEdU1oYUVYdFVJRDNCVjg4WnFhOEQ3Sko2VlkwdlljWnRWdUhXX1ZSeXROYzNSRlVQeW5YUUFUemlweXhINnhPM3lzb283LXlXVVpvbEEtZ1ctZmEzSmg1NUlCaml0QUhpYThwM2pqWC14NA&q=https%3A%2F%2Fcyber-dojo.org%2Fkata%2Fedit%2FaR5mXj&v=-VSavtR5aCY))
+Je l'effectue sur le kata minesweeper en rust : 
 
-TODO : faire un exemple plus simple en python
+<iframe width="560" height="315" src="https://www.youtube.com/embed/-VSavtR5aCY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+Le code de ce dernier kata est accessible sur cyberdojo avec chaque étape ici : [accéder au code]([https://cyber-dojo.org/kata/edit/aR5mXj](https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqbngzZTBOV2cxYVlwQ0xEcVgycG40X0RhQkZDZ3xBQ3Jtc0tubWlJWVFEdU1oYUVYdFVJRDNCVjg4WnFhOEQ3Sko2VlkwdlljWnRWdUhXX1ZSeXROYzNSRlVQeW5YUUFUemlweXhINnhPM3lzb283LXlXVVpvbEEtZ1ctZmEzSmg1NUlCaml0QUhpYThwM2pqWC14NA&q=https%3A%2F%2Fcyber-dojo.org%2Fkata%2Fedit%2FaR5mXj&v=-VSavtR5aCY))
 
