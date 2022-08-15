@@ -7,16 +7,13 @@ tags:
 
 La technique du double dragon, aussi appelée la technique de la triche constante, ou la technique du double code m'a permis de me simplifier la vie dans la pratique du Test Driven Development. 
 
-Elle repose sur les principes suivants : 
-- Red - Green - Refactoring
-- Transformation Priority Premise (TPP)
-- La maîtrise du code
-- Les baby steps
-- La triche
-- La clarification
-- La mise en évidence de la duplication
-- La suppression de la duplication
-- Le copier / coller
+## TL;DR
+
+Si tu n'as pas le temps de lire tout l'article, je te montre un exemple de la technique dans cette vidéo, sur le kata prime factor en python : 
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/iP7FW1PPdVo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+## Les principes
 
 ## Pourquoi cette technique ?
 Lorsque je code, je vise la fluidité maximale, c'est à dire que mon taux d'interruption pour savoir quel code écrire doit être minimal. Je ne veux pas qu'après avoir écrit un test, je me demande comment le faire passer. Pour arriver à cela, la phase Green doit être la plus rapide possible, de l'ordre de la diazine de secondes, écriture du code comprise.
@@ -27,6 +24,17 @@ Quoiqu'il en soit, mes premières expérimentations me donnent l'impression d'ê
 
 ## Comment ça fonctionne ?
 Avant d'aller plus loin dans le fonctionnement (désolé pour le teasing), il faut déjà connaître les principes que j'applique. Je vais essayer de les résumer en quelques mots.
+
+Elle repose sur les principes suivants : 
+- Red - Green - Refactoring
+- Transformation Priority Premise (TPP)
+- La maîtrise du code
+- Les baby steps
+- La triche
+- La clarification
+- La mise en évidence de la duplication
+- La suppression de la duplication
+- Le copier / coller
 
 ### Red - Green - Refactoring
 C'est le principe même de TDD. Si tu ne le connais pas, je t'invite à étudier cette méthode avant de poursuivre l'article, car tout repose dessus.
