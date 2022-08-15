@@ -13,8 +13,6 @@ Si tu n'as pas le temps de lire tout l'article, je te montre un exemple de la te
 
 https://www.youtube.com/watch?v=iP7FW1PPdVo
 
-## Les principes
-
 ## Pourquoi cette technique ?
 Lorsque je code, je vise la fluidité maximale, c'est à dire que mon taux d'interruption pour savoir quel code écrire doit être minimal. Je ne veux pas qu'après avoir écrit un test, je me demande comment le faire passer. Pour arriver à cela, la phase Green doit être la plus rapide possible, de l'ordre de la diazine de secondes, écriture du code comprise.
 
