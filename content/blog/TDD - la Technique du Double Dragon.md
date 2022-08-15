@@ -11,7 +11,7 @@ La technique du double dragon, aussi appelée la technique de la triche constant
 
 Si tu n'as pas le temps de lire tout l'article, je te montre un exemple de la technique dans cette vidéo, sur le kata prime factor en python : 
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/iP7FW1PPdVo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+{{<iframe width="560" height="315" src="https://www.youtube.com/embed/iP7FW1PPdVo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>}}
 
 ## Les principes
 
