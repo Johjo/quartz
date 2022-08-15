@@ -11,7 +11,7 @@ La technique du double dragon, aussi appelée la technique de la triche constant
 
 Si tu n'as pas le temps de lire tout l'article, je te montre un exemple de la technique dans cette vidéo, sur le kata prime factor en python : 
 
-{{<iframe width="560" height="315" src="https://www.youtube.com/embed/iP7FW1PPdVo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>}}
+https://www.youtube.com/watch?v=iP7FW1PPdVo
 
 ## Les principes
 
@@ -377,12 +377,14 @@ A noter que dans certains cas, il peut y avoir plusieurs étapes avant de pouvoi
 ## Exemple 
 
 Voici un exemple de la technique du double dragon en python sur le kata prime factor : 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/iP7FW1PPdVo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+https://www.youtube.com/watch?v=iP7FW1PPdVo
+
 Voici un second exemple. En fait, c'est durant cet exercice que j'ai finalisé la technique du double dragon.
 
 Je l'effectue sur le kata minesweeper en rust : 
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/-VSavtR5aCY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+https://www.youtube.com/embed/-VSavtR5aCY
 
 Le code de ce dernier kata est accessible sur cyberdojo avec chaque étape ici : [accéder au code]([https://cyber-dojo.org/kata/edit/aR5mXj](https://www.youtube.com/redirect?event=video_description&redir_token=QUFFLUhqbngzZTBOV2cxYVlwQ0xEcVgycG40X0RhQkZDZ3xBQ3Jtc0tubWlJWVFEdU1oYUVYdFVJRDNCVjg4WnFhOEQ3Sko2VlkwdlljWnRWdUhXX1ZSeXROYzNSRlVQeW5YUUFUemlweXhINnhPM3lzb283LXlXVVpvbEEtZ1ctZmEzSmg1NUlCaml0QUhpYThwM2pqWC14NA&q=https%3A%2F%2Fcyber-dojo.org%2Fkata%2Fedit%2FaR5mXj&v=-VSavtR5aCY))
 
