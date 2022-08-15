@@ -9,7 +9,7 @@ La technique du double dragon, aussi appelée la technique de la triche constant
 
 Elle repose sur les principes suivants : 
 - Red - Green - Refactoring
-- TPP
+- Transformation Priority Premise (TPP)
 - La maîtrise du code
 - Les baby steps
 - La triche
@@ -19,7 +19,7 @@ Elle repose sur les principes suivants :
 - Le copier / coller
 
 ## Pourquoi cette technique ?
-Lorsque je code, je vise la fluidité maximale, c'est à dire que mon taux d'interruption pour savoir quel code écrire doit être minimal. Je ne veux pas qu'après avoir écrit un test, je me demande comment le faire passer. Pour arriver à cela, la phase Green doit être la plus rapide possible, de l'ordre des 10 secondes, écriture du code comprise.
+Lorsque je code, je vise la fluidité maximale, c'est à dire que mon taux d'interruption pour savoir quel code écrire doit être minimal. Je ne veux pas qu'après avoir écrit un test, je me demande comment le faire passer. Pour arriver à cela, la phase Green doit être la plus rapide possible, de l'ordre de la diazine de secondes, écriture du code comprise.
 
 Bien sûr, il y a des limites. Avec un langage très verbeux, ce temps est rallongé. La complexité du code et l'architecture que l'on utilise impacte aussi la fluidité. 
 
@@ -35,7 +35,7 @@ C'est le principe même de TDD. Si tu ne le connais pas, je t'invite à étudier
 - Green : On écrit le code de production qui fait passer ce test
 - Refactoring : On retravaille le code de test et de production pour l'améliorer 
 
-L'étape Green est souvent très compliquée pour les dévellopeur.e.s parce qu'il faut trouver le code à écrire. Une part importante de la reflexion se trouve ici. Je pense que ce n'est pas la bonne manière de faire. Cette étape doit être la plus rapide possible. et doit se faire sans réflexion. Si tu dois réfléchir, fais le aux deux autres étapes.
+L'étape Green est souvent très compliquée pour les dévellopeur.e.s parce qu'il faut trouver le code à écrire. J'ai constaté que l'on passe parfois un long temps de réfléxion pour valider l'étape Green. Je pense qu'au contraire, cette étape devrait être la plus rapide possible.  
 
 L'étape Red consiste à faire apparaître les concepts du code au moyen des tests. Si l'on s'y prend mal, on peut en faire apparaître plusieurs en même temps. Dans ce cas, la phase Green devient plus complexe. Il faut prendre du temps pour écrire le test qui introduit le moins de concept possible par rapport au code actuel.
 
