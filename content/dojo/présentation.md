@@ -3,7 +3,7 @@ title: "Dojo ytreza.dev"
 ---
 
 * [[dojo/onboarding|Onboarding]]
-* [[dojo/organisation|Organisation et plannification]]
+* [[dojo/organisation|Organisation et planification]]
 
 ## Session passées
 * [[dojo-session/|Liste des sessions passées]]
