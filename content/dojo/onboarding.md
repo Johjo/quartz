@@ -7,6 +7,8 @@ Bienvenue au dojo ytreza.dev. Si tu trouves sur cette page, c'est que tu souhait
 Je t'encourage à revenir régulièrement sur cette page car le dojo évolue en même temps que ses membres. De nouveaux outils et de nouveaux concepts peuvent apparaître tandis que des manières de faire peuvent disparaître si nous constatons qu'elles ne respectent pas la philosophie du dojo.
 
 ## Vidéo explicative
+<iframe src="https://example.com/"></iframe>
+
 
 <p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/bQ2kQyGawhY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
