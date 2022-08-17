@@ -1,6 +1,5 @@
 ---
 title: "Onboarding du dojo ytreza.dev"
-iframe: "<iframe src="https://example.com/"></iframe>"
 ---
 
 Bienvenue au dojo ytreza.dev. Si tu trouves sur cette page, c'est que tu souhaites en savoir plus sur le fonctionnement du dojo. En effet, il y a des règles à connaître et nous utilisons des outils afin de pouvoir travailler ensemble tout en étant à distance.
