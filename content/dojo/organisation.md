@@ -12,6 +12,10 @@ Légende des choses :
 
 Une fois que tu as voté et que tu constates qu'il y a du monde sur la tranche horaire qui t'interesse, connecte toi sur le slack et organise la session sur le canal **[#sparring-partner](https://dojoytrezadev.slack.com/archives/C03TWTRPX50)**. Indique sur quoi tu veux travailler, le langage et l'exercice qui t'intéressent, et vérifie que tout le monde est OK.
 
+## Sondage pour mettre en place une routine d'entraînement
+
+[Sondage - sur quel créneau pourrais-tu mettre en place une routine d'entraînement ?](https://crab.fit/dojo-ytrezadev-quelles-sont-tes-disponibilits-pour-une-routine-dentranement-mch55b-949822)
+
 ## Indiquer sa présence
 -   [Sondage - Semaine du 15 Août](https://framadate.org/Qye19pU4CTkKQYBk)
 -   [Sondage - Semaine du 22 Août](https://framadate.org/nyx4NME7v9V8YxJT)
