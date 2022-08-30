@@ -2,26 +2,19 @@
 title: "Dojo ytreza.dev"
 ---
 
-* [[dojo/onboarding|Onboarding]]
-* [[dojo/organisation|Organisation et planification]]
+Bienvenue au dojo ytreza.dev. 
 
-## Session passées
-* [[dojo-session/|Liste des sessions passées]]
-- [[dojo-session/dojo-2022-06-27-12-00|Dojo du 27/06/2022 (12:00) ]]
-- [[dojo-session/dojo-2022-06-28-09-11|Dojo du 28/06/2022 (09:11) ]]
-- [[dojo-session/dojo-2022-06-30-09-26|Dojo du 30/06/2022 (09:26) ]]
+Tu souhaites progresser dans l'art du développement ? Devenir plus efficace, apprendre de nouvelles techniques, faire moins de bug ? Alors, le dojo est fait pour toi. A l'instart des sportifs qui ont des salles de sport pour s'entraîner, nous avons nous aussi un lieu pour nous exercer.
 
+## Pour commencer
+Afin de prendre tes marques le plus rapidement possible, je t'invite à étudier la section onboarding qui te présentera les différents outils utilisés au sein du dojo.
 
+* [[dojo/onboarding|Accéder à l'onboarding]]
 
+## Démarrer la routine d'entraînement
+Tu commences à prendre tes marques dans le dojo ? C'est le moment de mettre en place une routine d'entraînement. Pour cela, il va falloir synchroniser ton emploi du temps avec celui du dojo. 
 
-
-
-
-
-Accéder au groupe : 
-- https://mobilizon.fr/@dojo_ytrezadev
-
-
+* [[dojo/organisation|Accéder à l'organisation et la planification des sessions du dojo]]
 
 
 
