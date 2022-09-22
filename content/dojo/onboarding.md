@@ -36,6 +36,11 @@ Slack nous permet d'organiser les dojos et de partager les informations utiles.
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/wWADKBAlxX8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+### Présentation de Sympa, la liste de diffusion
+Sympa nous permet d'organiser les dojos et de partager les informations utiles par mail.
+
+- [Clique ici pour t'abonner à la liste de diffusion](https://framalistes.org/sympa/subscribe/dojo-ytreza.dev)
+- [Notice d'utilisation de la liste de diffusion](https://framalistes.org/sympa/help/user.html)
 
 ### Autres outils
 - Mobilizon
@@ -43,6 +48,7 @@ Slack nous permet d'organiser les dojos et de partager les informations utiles.
 * rustdesk : https://rustdesk.com/
 * mobtime : [http://mobtime.hadrienmp.fr/mob/dojo-ytreza-dev](http://mobtime.hadrienmp.fr/mob/dojo-ytreza-dev)
 * framapad : https://hebdo.framapad.org/p/dojo-ytreza-dev-9v07?lang=fr
+
 
 ### Katas
 * Bowling : [https://www.ytreza.dev/kata/bowling/](https://www.ytreza.dev/kata/bowling/)
